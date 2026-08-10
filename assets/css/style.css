@@ -1,0 +1,163 @@
+.name {
+ background-color: blue; 
+ color: orange;
+ padding: 20px;
+ font-style: oblique;
+ border: 10px;
+ border-radius: none;
+
+}
+#chapter
+{ background-color: blue; 
+ color: whitesmoke;
+ padding: 20px;
+ font-style:inherit
+ border: 10px;
+ border-radius: 30px;
+}
+
+  .header{ 
+            background-color: blue;
+            color: azure;
+            text-align: center;
+            padding: 20px;
+            border: none;
+            border-radius: none;
+        }
+        body{
+            background-color: azure;
+            font-family: Verdana, Geneva, Tahoma, sans-serif;
+            test-align: center;
+
+        }
+        footer{ 
+            background-color: blue;
+            color: azure;
+            text-align: center;
+            padding: 20px;
+            border: none;
+            border-radius: none;
+        }
+
+        header{ 
+            background-color: blue;
+            color: azure;
+            text-align: center;
+            padding: 20px;
+            border: none;
+            border-radius: 0%;
+        }
+        body{
+            background-color: azure;
+            font-family: Verdana, Geneva, Tahoma, sans-serif;
+
+        }
+        footer{ 
+            background-color: blue;
+            color: azure;
+            text-align: center;
+            padding: 20px;
+            border: none;
+            border-radius: none;
+        }
+        h1{
+            text-align: center;
+        }
+        p{
+            text-align: center;
+        }
+        nav{
+            background-color: navy;
+            text-align: center;
+            color: azure;
+            text-decoration: none;
+            padding: 10px;
+        }
+
+        nav a {
+            color: azure;
+            text-decoration: none;
+            margin: 10px;
+        }
+        img{
+            display: block;
+            margin: auto;
+            width:50%;
+
+        }
+        footer{
+            background-color: blue;
+            color: azure;
+            background-color: blue;
+            color: azure;
+            text-align: center;
+            padding: 2px;
+            border: none;
+            border-radius: none;
+        }
+        article{
+            color: orangered;
+            text-align: center;
+        }
+        button{
+            display: block;
+            margin: auto;
+            text-decoration: none;
+            width:50%;
+            background-color: rgb(46, 45, 45); 
+            color:aliceblue; 
+            paddiing: 30px; 
+            border: none; 
+            border-radius:none;
+            text-align: center;
+        }
+        dd{
+            background-color: blue;
+            color: azure;
+            text-align: center;
+            padding: 10x;
+            border: none;
+            border-radius: none;
+        }
+        bdi{
+            background-color: green;
+            color: azure;
+            text-align: center;
+            padding: 10x;
+            border: none;
+            border-radius: 5px;
+            background-size: auto;
+        }
+        del{
+            background-color:red;
+            color: azure;
+            text-align: center;
+            padding: 10x;
+            border: 5px;
+            border-radius: 5px;
+            background-size: auto;
+        }
+        aside{
+            background-color:green;
+            color: azure;
+            text-align: center;
+            padding: 10x;
+            border: 5px;
+            border-radius: 5px;
+            background-size: auto;
+        }
+        a{
+            text-decoration: none;
+            text-decoration-color: black;
+
+
+        }   
+        
+
+
+
+
+
+
+
+
