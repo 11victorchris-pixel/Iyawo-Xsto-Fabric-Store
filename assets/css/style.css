@@ -66,19 +66,21 @@
         p{
             text-align: center;
         }
-        nav{
+        nav {
             background-color: navy;
             text-align: center;
             color: azure;
             text-decoration: none;
             padding: 10px;
-        }
+            position: sticky;
+        } 
 
         nav a {
             color: azure;
             text-decoration: none;
             margin: 10px;
         }
+        
         img{
             display: block;
             margin: auto;
