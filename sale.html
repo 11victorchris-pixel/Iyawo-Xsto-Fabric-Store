@@ -3,51 +3,215 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title> Sales</title>
-    <link rel="stylesheet" href="assets/css/style.css"> 
+
+    <title>Sales | IYAWO XSTO Fabric Store</title>
+
+    <!-- Bootstrap CSS -->
+    <link
+        href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css"
+        rel="stylesheet"
+    >
+
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="assets/css/style.css">
 </head>
-<body style="background-color: rgba(255, 166, 0, 0.678);">
-    <div class="name">
-        <h1 id="page-1">
-            <header>
-                <img src="assets/logo/logo.png"width="200" height="200">
-                <h1 style="background-color:black">
-                    <b style="color:orange;">IYAWO</b>                
-                    <b style="color: blue">XSTO</b>
-                    <b style="color:WHITE;">FABRIC STORE</b>
-                </h1> 
-                <h2> 
-                    <small> <marquee> *** your outlook is our priorty 😊***</marquee> </small>
-                </h2>
-                <hr>
-                <p> recieve up to 
-                    <h3>50%
-                    </h3>
-                    discount
-                </p>
-            </header>
-        </h1>
-    </div>
-     
-    <nav>    
-        <a href="index.html">Home</a>
-        <a href="sale.html">Sales</a>
-        <a href="about-us.html">About</a>
-        <a href="contact-us.html">Contact us</a>
-        <a href="find-job.html"> Find job</a>
+
+<body>
+
+   
+    <!-- ================= HEADER ================= -->
+    <header class="store-header py-4" id="top">
+
+        <div class="container text-center">
+
+            <img
+                src="assets/logo/logo.png"
+                alt="IYAWO XSTO Fabric Store Logo"
+                class="store-logo mb-3"
+            >
+
+            <div class="brand-name">
+                <span class="iyawo">IYAWO</span>
+                <span class="xsto">XSTO</span>
+                <span class="fabric">FABRIC STORE</span>
+            </div>
+
+            <p class="tagline mt-3 mb-2">
+                *** Your outlook is our priority 😊 ***
+            </p>
+
+            <hr class="border-light">
+
+            <div class="discount">
+                Receive up to
+                <span>20%</span>
+                discount
+            </div>
+
+        </div>
+
+    </header>
+
+
+    <!-- ================= NAVIGATION ================= -->
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark sticky-top">
+
+        <div class="container">
+            
+        <a class="navbar-brand fw-bold" href="index.html">
+            <i class="bi bi-shop"></i>
+            IYAWO XSTO
+        </a>
+
+
+            <!-- Mobile Menu Button -->
+            <button
+                class="navbar-toggler"
+                type="button"
+                data-bs-toggle="collapse"
+                data-bs-target="#mainNavbar"
+                aria-controls="mainNavbar"
+                aria-expanded="false"
+                aria-label="Toggle navigation"
+            >
+                <span class="navbar-toggler-icon"></span>
+            </button>
+
+            <!-- Navigation Links -->
+            <div class="collapse navbar-collapse" id="mainNavbar">
+
+                <ul class="navbar-nav ms-auto text-center">
+
+                    <li class="nav-item">
+                        <a class="nav-link" href="index.html">
+                            Home
+                        </a>
+                    </li>
+                    
+                    <li class="nav-item">
+                        <a class="nav-link active" href="sale.html">
+                            Sales
+                        </a>
+                    </li>
+
+
+                    <li class="nav-item">
+                        <a class="nav-link" href="about-us.html">
+                            About
+                        </a>
+                    </li>
+
+                    <li class="nav-item">
+                        <a class="nav-link" href="contact-us.html">
+                            Contact Us
+                        </a>
+                    </li>
+
+                    <li class="nav-item">
+                        <a class="nav-link" href="find-job.html">
+                            Find Job
+                        </a>
+                    </li>
+
+                </ul>
+
+            </div>
+
+        </div>
+
     </nav>
- <hr>
-  <article style="text-align: center;"><b>Welcome to IYAWO XSTO Fabric Store</b></article>
- <article style="text-align: center;"> We sell quality Fabric in wholesales and retail of different categories.</article> <br> 
- <aside style="text-align: center ;"  > <b>OUR SERVICES</b></aside>
+    <!-- Main Content -->
+    <main class="container my-5">
 
-    <h1> not availabe for now </h1>
-    <p> click <a href="htpps:wame;+2347079057773">here</a> for more info</p>
+        <!-- Welcome -->
+        <section class="text-center mb-5">
 
-<a href="#page-1" style="margin-left: 800px;"> peak up </a>
+            <h1 class="fw-bold">
+                Welcome to
+                <span class="text-primary">
+                    IYAWO XSTO Fabric Store
+                </span>
+            </h1>
+
+            <p class="lead">
+                We sell quality fabrics wholesale and retail
+                in different categories.
+            </p>
+
+        </section>
 
 
+        <!-- Services -->
+        <section class="services-section">
 
+            <div class="section-title">
+                <h2>OUR SERVICES</h2>
+            </div>
+
+            <div class="row justify-content-center mt-4">
+
+                <div class="col-md-8 col-lg-6">
+
+                    <div class="card shadow border-0 text-center">
+
+                        <div class="card-body p-5">
+
+                            <div class="service-icon">
+                                🧵
+                            </div>
+
+                            <h3 class="card-title mt-3">
+                                Services Not Available
+                            </h3>
+
+                            <p class="card-text text-muted">
+                                Our services are currently unavailable.
+                                Please contact us for more information
+                                about our fabrics and future availability.
+                            </p>
+
+                            <a
+                                href="tel:+2347079057773"
+                                class="btn btn-primary px-4"
+                            >
+                                Contact Us
+                            </a>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- Back to top -->
+        <div class="text-center mt-5">
+            <a href="#top" class="btn btn-dark">
+                Back to Top
+            </a>
+        </div>
+
+    </main>
+
+
+    <!-- Footer -->
+    <footer class="store-footer">
+        <div class="container text-center py-4">
+
+            <p class="mb-1">
+                &copy; 2026 IYAWO XSTO Fabric Store
+            </p>
+
+            <small>
+                Quality fabrics at affordable prices.
+            </small>
+
+        </div>
+    </footer>
 
 </body>
 </html>

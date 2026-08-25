@@ -1,160 +1,943 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
+
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <title>IYAWO XSTO Fabric Store | Quality Lace & Fabrics</title>
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
 
-    <!-- Bootstrap CSS -->
+    <title>Specials | SAVOUR HOUSE</title>
+
+    <!-- =========================================================
+         BOOTSTRAP
+    ========================================================== -->
+
     <link
         href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css"
         rel="stylesheet"
     >
 
-    <!-- Custom CSS -->
-    <link rel="stylesheet" href="assets/css/test.css">
+
+    <!-- =========================================================
+         GOOGLE FONT
+    ========================================================== -->
+
+    <link
+        href="https://fonts.googleapis.com/css2?family=DM+Serif+Display&family=Montserrat:wght@400;500;600;700;800&display=swap"
+        rel="stylesheet"
+    >
+
+
+    <!-- =========================================================
+         CUSTOM CSS
+    ========================================================== -->
+
+    <style>
+
+        /* =========================================================
+           GLOBAL
+        ========================================================= */
+
+        :root {
+            --orange: #f5a623;
+            --dark: #111111;
+            --cream: #f8f5ef;
+            --white: #ffffff;
+            --gray: #666666;
+            --light-gray: #eeeeee;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: "Montserrat", sans-serif;
+            color: var(--dark);
+            background: #ffffff;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        a {
+            text-decoration: none;
+        }
+
+        .section-padding {
+            padding: 100px 0;
+        }
+
+        .section-label {
+            color: var(--orange);
+            font-size: 0.78rem;
+            font-weight: 800;
+            letter-spacing: 3px;
+        }
+
+        .section-title {
+            font-family: "DM Serif Display", serif;
+            font-size: clamp(2.5rem, 5vw, 4.2rem);
+            line-height: 1.1;
+            margin-top: 15px;
+        }
+
+        .section-title span {
+            color: var(--orange);
+        }
+
+
+        /* =========================================================
+           NAVBAR
+        ========================================================== */
+
+        .navbar {
+            background: rgba(17, 17, 17, 0.97);
+            padding: 18px 0;
+        }
+
+        .navbar-brand {
+            font-size: 1.5rem;
+            letter-spacing: 1px;
+        }
+
+        .brand-orange {
+            color: var(--orange);
+        }
+
+        .brand-white {
+            color: #ffffff;
+        }
+
+        .navbar .nav-link {
+            color: rgba(255,255,255,0.8);
+            font-size: 0.9rem;
+            font-weight: 600;
+            margin-left: 12px;
+            transition: 0.3s ease;
+        }
+
+        .navbar .nav-link:hover,
+        .navbar .nav-link.active {
+            color: var(--orange);
+        }
+
+        .navbar-btn {
+            padding: 11px 22px;
+            font-weight: 700;
+            color: #111;
+            border: none;
+        }
+
+
+        /* =========================================================
+           HERO
+        ========================================================== */
+
+        .specials-hero {
+
+            min-height: 78vh;
+
+            background:
+                linear-gradient(
+                    rgba(0,0,0,0.72),
+                    rgba(0,0,0,0.82)
+                ),
+                url("https://images.unsplash.com/photo-1547592180-85f173990554?auto=format&fit=crop&w=2000&q=85")
+                center/cover no-repeat;
+
+            display: flex;
+            align-items: center;
+
+            color: #ffffff;
+
+            padding-top: 100px;
+        }
+
+        .specials-hero-content {
+            max-width: 850px;
+        }
+
+        .hero-tag {
+            display: inline-block;
+            color: var(--orange);
+            font-size: 0.8rem;
+            font-weight: 800;
+            letter-spacing: 3px;
+        }
+
+        .specials-hero h1 {
+            font-family: "DM Serif Display", serif;
+            font-size: clamp(3.5rem, 8vw, 7rem);
+            line-height: 0.95;
+            margin: 25px 0;
+        }
+
+        .specials-hero h1 span {
+            color: var(--orange);
+        }
+
+        .specials-hero p {
+            max-width: 680px;
+            font-size: 1.1rem;
+            line-height: 1.9;
+            color: rgba(255,255,255,0.82);
+        }
+
+
+        /* =========================================================
+           INTRODUCTION
+        ========================================================== */
+
+        .special-intro {
+            background: var(--cream);
+        }
+
+        .special-intro p {
+            color: var(--gray);
+            line-height: 1.9;
+        }
+
+
+        /* =========================================================
+           SPECIAL CARDS
+        ========================================================== */
+
+        .specials-section {
+            background: #ffffff;
+        }
+
+        .special-card {
+            height: 100%;
+            background: #ffffff;
+            border: 1px solid #e8e8e8;
+            overflow: hidden;
+            transition: all 0.35s ease;
+        }
+
+        .special-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 20px 50px rgba(0,0,0,0.12);
+        }
+
+        .special-image {
+            height: 280px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .special-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s ease;
+        }
+
+        .special-card:hover .special-image img {
+            transform: scale(1.08);
+        }
+
+        .special-badge {
+            position: absolute;
+            top: 18px;
+            left: 18px;
+            background: var(--orange);
+            color: #111;
+            padding: 8px 14px;
+            font-size: 0.7rem;
+            font-weight: 800;
+            letter-spacing: 1px;
+            z-index: 2;
+        }
+
+        .special-info {
+            padding: 28px;
+        }
+
+        .special-category {
+            color: var(--orange);
+            font-size: 0.7rem;
+            font-weight: 800;
+            letter-spacing: 2px;
+        }
+
+        .special-info h3 {
+            font-family: "DM Serif Display", serif;
+            font-size: 1.8rem;
+            margin: 10px 0;
+        }
+
+        .special-info p {
+            color: #707070;
+            font-size: 0.92rem;
+            line-height: 1.7;
+            margin-bottom: 20px;
+        }
+
+        .special-price {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            margin-bottom: 20px;
+        }
+
+        .special-price del {
+            color: #999;
+            font-size: 0.9rem;
+        }
+
+        .special-price strong {
+            color: #111;
+            font-size: 1.3rem;
+        }
+
+
+        /* =========================================================
+           FEATURE SPECIAL
+        ========================================================== */
+
+        .featured-special {
+            background: #111111;
+            color: #ffffff;
+            overflow: hidden;
+        }
+
+        .featured-image {
+            min-height: 600px;
+
+            background:
+                linear-gradient(
+                    rgba(0,0,0,0.15),
+                    rgba(0,0,0,0.15)
+                ),
+                url("https://images.unsplash.com/photo-1544025162-d76694265947?auto=format&fit=crop&w=1600&q=85")
+                center/cover no-repeat;
+        }
+
+        .featured-content {
+            padding: 80px;
+        }
+
+        .featured-content h2 {
+            font-family: "DM Serif Display", serif;
+            font-size: clamp(2.8rem, 5vw, 5rem);
+            line-height: 1;
+            margin-top: 20px;
+        }
+
+        .featured-content h2 span {
+            color: var(--orange);
+        }
+
+        .featured-content p {
+            color: rgba(255,255,255,0.75);
+            line-height: 1.9;
+            max-width: 550px;
+        }
+
+        .featured-price {
+            color: var(--orange);
+            font-size: 2rem;
+            font-weight: 800;
+        }
+
+
+        /* =========================================================
+           CHEF'S CHOICE
+        ========================================================== */
+
+        .chef-section {
+            background: var(--cream);
+        }
+
+        .chef-card {
+            background: #ffffff;
+            height: 100%;
+            border: none;
+            overflow: hidden;
+        }
+
+        .chef-image {
+            height: 320px;
+            overflow: hidden;
+        }
+
+        .chef-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s ease;
+        }
+
+        .chef-card:hover img {
+            transform: scale(1.06);
+        }
+
+        .chef-info {
+            padding: 30px;
+        }
+
+        .chef-info h3 {
+            font-family: "DM Serif Display", serif;
+            font-size: 1.9rem;
+        }
+
+        .chef-info p {
+            color: var(--gray);
+            line-height: 1.8;
+        }
+
+
+        /* =========================================================
+           SPECIAL DEALS
+        ========================================================== */
+
+        .deal-section {
+            background: #ffffff;
+        }
+
+        .deal-card {
+            position: relative;
+            height: 100%;
+            min-height: 350px;
+            padding: 45px;
+            color: #ffffff;
+            overflow: hidden;
+
+            background:
+                linear-gradient(
+                    rgba(0,0,0,0.72),
+                    rgba(0,0,0,0.72)
+                ),
+                url("https://images.unsplash.com/photo-1513104890138-7c749659a591?auto=format&fit=crop&w=1200&q=85")
+                center/cover no-repeat;
+        }
+
+        .deal-card:nth-child(2) {
+            background:
+                linear-gradient(
+                    rgba(0,0,0,0.72),
+                    rgba(0,0,0,0.72)
+                ),
+                url("https://images.unsplash.com/photo-1565299624946-b28f40a0ae38?auto=format&fit=crop&w=1200&q=85")
+                center/cover no-repeat;
+        }
+
+        .deal-number {
+            color: var(--orange);
+            font-size: 0.75rem;
+            font-weight: 800;
+            letter-spacing: 2px;
+        }
+
+        .deal-card h3 {
+            font-family: "DM Serif Display", serif;
+            font-size: 2.7rem;
+            margin: 20px 0 15px;
+        }
+
+        .deal-card p {
+            color: rgba(255,255,255,0.8);
+            line-height: 1.8;
+            max-width: 500px;
+        }
+
+        .deal-price {
+            font-size: 1.5rem;
+            font-weight: 800;
+            color: var(--orange);
+            margin: 20px 0;
+        }
+
+
+        /* =========================================================
+           WHY CHOOSE US
+        ========================================================== */
+
+        .benefit-card {
+            text-align: center;
+            padding: 35px 20px;
+        }
+
+        .benefit-icon {
+            width: 65px;
+            height: 65px;
+            margin: 0 auto 20px;
+
+            background: #111111;
+            color: var(--orange);
+
+            display: flex;
+            align-items: center;
+            justify-content: center;
+
+            font-size: 1.5rem;
+            font-weight: 700;
+        }
+
+        .benefit-card h4 {
+            font-weight: 800;
+            margin-bottom: 12px;
+        }
+
+        .benefit-card p {
+            color: #777;
+            font-size: 0.9rem;
+            line-height: 1.7;
+        }
+
+
+        /* =========================================================
+           ORDER PROCESS
+        ========================================================== */
+
+        .process-section {
+            background: var(--cream);
+        }
+
+        .process-step {
+            text-align: center;
+            padding: 20px;
+        }
+
+        .process-number {
+            width: 65px;
+            height: 65px;
+            margin: 0 auto 25px;
+
+            border-radius: 50%;
+
+            background: #111;
+            color: var(--orange);
+
+            display: flex;
+            align-items: center;
+            justify-content: center;
+
+            font-weight: 800;
+        }
+
+        .process-step h4 {
+            font-family: "DM Serif Display", serif;
+            font-size: 1.6rem;
+        }
+
+        .process-step p {
+            color: #666;
+            line-height: 1.7;
+        }
+
+
+        /* =========================================================
+           CTA
+        ========================================================== */
+
+        .specials-cta {
+
+            padding: 120px 0;
+
+            color: #ffffff;
+
+            background:
+                linear-gradient(
+                    rgba(0,0,0,0.84),
+                    rgba(0,0,0,0.84)
+                ),
+                url("https://images.unsplash.com/photo-1515003197210-e0cd71810b5f?auto=format&fit=crop&w=2000&q=85")
+                center/cover no-repeat;
+        }
+
+        .specials-cta h2 {
+            font-family: "DM Serif Display", serif;
+            font-size: clamp(3rem, 6vw, 5rem);
+            line-height: 1;
+        }
+
+        .specials-cta h2 span {
+            color: var(--orange);
+        }
+
+        .specials-cta p {
+            max-width: 650px;
+            margin: 25px auto;
+            color: rgba(255,255,255,0.8);
+            line-height: 1.8;
+        }
+
+
+        /* =========================================================
+           FOOTER
+        ========================================================== */
+
+        .footer {
+            background: #111111;
+            color: #ffffff;
+            padding: 80px 0 25px;
+        }
+
+        .footer-brand {
+            font-size: 1.6rem;
+            font-weight: 800;
+        }
+
+        .footer p {
+            color: rgba(255,255,255,0.65);
+            line-height: 1.8;
+        }
+
+        .footer h5 {
+            color: #ffffff;
+            font-size: 0.85rem;
+            letter-spacing: 2px;
+            margin-bottom: 22px;
+        }
+
+        .footer-links {
+            list-style: none;
+            padding: 0;
+        }
+
+        .footer-links li {
+            margin-bottom: 12px;
+        }
+
+        .footer-links a {
+            color: rgba(255,255,255,0.65);
+            transition: 0.3s ease;
+        }
+
+        .footer-links a:hover {
+            color: var(--orange);
+        }
+
+        .contact-item {
+            margin-bottom: 22px;
+        }
+
+        .contact-item span {
+            display: block;
+            color: var(--orange);
+            font-size: 0.7rem;
+            font-weight: 800;
+            letter-spacing: 2px;
+            margin-bottom: 6px;
+        }
+
+        .contact-item a {
+            color: #ffffff;
+        }
+
+        .footer-bottom {
+            border-top: 1px solid rgba(255,255,255,0.12);
+            margin-top: 60px;
+            padding-top: 25px;
+
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .footer-bottom p {
+            margin: 0;
+            font-size: 0.75rem;
+        }
+
+        .footer-bottom a {
+            color: var(--orange);
+            font-size: 0.8rem;
+            font-weight: 700;
+        }
+
+
+        /* =========================================================
+           RESPONSIVE
+        ========================================================== */
+
+        @media (max-width: 991px) {
+
+            .navbar .nav-link {
+                margin-left: 0;
+                padding: 10px 0;
+            }
+
+            .featured-content {
+                padding: 55px 30px;
+            }
+
+            .featured-image {
+                min-height: 400px;
+            }
+
+        }
+
+
+        @media (max-width: 576px) {
+
+            .section-padding {
+                padding: 75px 0;
+            }
+
+            .specials-hero {
+                min-height: 85vh;
+            }
+
+            .specials-hero h1 {
+                font-size: 3.5rem;
+            }
+
+            .special-image {
+                height: 240px;
+            }
+
+            .deal-card {
+                padding: 35px 25px;
+            }
+
+            .specials-cta {
+                padding: 85px 20px;
+            }
+
+            .footer-bottom {
+                flex-direction: column;
+                gap: 15px;
+                text-align: center;
+            }
+
+        }
+
+    </style>
+
 </head>
 
-<body>
 
-<!-- ================= NAVBAR ================= -->
-<nav class="navbar navbar-expand-lg navbar-dark bg-dark sticky-top shadow">
+<body id="top">
+
+
+<!-- =========================================================
+     NAVBAR
+========================================================= -->
+
+<nav class="navbar navbar-expand-lg navbar-dark fixed-top">
+
     <div class="container">
 
-        <a class="navbar-brand fw-bold" href="index.html">
-            <span class="brand-orange">IYAWO</span>
-            <span class="brand-blue">XSTO</span>
+        <a
+            class="navbar-brand fw-bold"
+            href="index.html"
+        >
+
+            <span class="brand-orange">
+                SAVOUR
+            </span>
+
+            <span class="brand-white">
+                HOUSE
+            </span>
+
         </a>
 
+
         <button
-            class="navbar-toggler"
+            class="navbar-toggler border-0 shadow-none"
             type="button"
             data-bs-toggle="collapse"
             data-bs-target="#mainNavbar"
+            aria-controls="mainNavbar"
+            aria-expanded="false"
+            aria-label="Toggle navigation"
         >
+
             <span class="navbar-toggler-icon"></span>
+
         </button>
 
-        <div class="collapse navbar-collapse" id="mainNavbar">
 
-            <ul class="navbar-nav ms-auto">
+        <div
+            class="collapse navbar-collapse"
+            id="mainNavbar"
+        >
+
+            <ul class="navbar-nav ms-auto align-items-lg-center">
 
                 <li class="nav-item">
-                    <a class="nav-link active" href="index.html">Home</a>
+
+                    <a
+                        class="nav-link"
+                        href="index.html"
+                    >
+                        Home
+                    </a>
+
                 </li>
 
-                <li class="nav-item">
-                    <a class="nav-link" href="sale.html">Sales</a>
-                </li>
 
                 <li class="nav-item">
-                    <a class="nav-link" href="about-us.html">About</a>
+
+                    <a
+                        class="nav-link active"
+                        href="specials.html"
+                    >
+                        Specials
+                    </a>
+
                 </li>
 
-                <li class="nav-item">
-                    <a class="nav-link" href="services.html">Services</a>
-                </li>
 
                 <li class="nav-item">
-                    <a class="nav-link" href="contact-us.html">Contact</a>
+
+                    <a
+                        class="nav-link"
+                        href="menu.html"
+                    >
+                        Menu
+                    </a>
+
                 </li>
 
+
                 <li class="nav-item">
-                    <a class="nav-link" href="find-job.html">Find Job</a>
+
+                    <a
+                        class="nav-link"
+                        href="about.html"
+                    >
+                        About
+                    </a>
+
+                </li>
+
+
+                <li class="nav-item">
+
+                    <a
+                        class="nav-link"
+                        href="contact.html"
+                    >
+                        Contact
+                    </a>
+
+                </li>
+
+
+                <li class="nav-item ms-lg-3 mt-3 mt-lg-0">
+
+                    <a
+                        href="contact.html"
+                        class="btn btn-warning navbar-btn"
+                    >
+                        Reserve A Table
+                    </a>
+
                 </li>
 
             </ul>
 
         </div>
+
     </div>
+
 </nav>
 
 
-<!-- ================= HERO ================= -->
-<header class="hero-section">
+
+<!-- =========================================================
+     HERO
+========================================================= -->
+
+<header class="specials-hero">
 
     <div class="container">
-        <div class="row align-items-center">
 
-            <div class="col-lg-6 text-center text-lg-start">
+        <div class="specials-hero-content">
 
-                <span class="badge bg-warning text-dark mb-3">
-                    QUALITY FABRICS & LACE
-                </span>
+            <span class="hero-tag">
+                TODAY'S SPECIALS
+            </span>
 
-                <h1 class="display-4 fw-bold">
-                    IYAWO
-                    <span class="text-warning">XSTO</span>
-                    Fabric Store
-                </h1>
+            <h1>
 
-                <p class="lead">
-                    Your outlook is our priority.
-                </p>
+                Something
+                <span>Delicious</span>
+                Awaits.
 
-                <p>
-                    Discover premium fabrics and beautiful lace designs
-                    available for wholesale and retail.
-                </p>
+            </h1>
 
-                <div class="mt-4">
+            <p>
 
-                    <a href="sale.html" class="btn btn-warning btn-lg me-2">
-                        Shop Now
-                    </a>
+                Discover our chef-selected dishes,
+                irresistible combos and special offers
+                prepared with fresh ingredients and
+                served with love.
 
-                    <a href="about-us.html" class="btn btn-outline-light btn-lg">
-                        Learn More
-                    </a>
-
-                </div>
-
-            </div>
+            </p>
 
 
-            <div class="col-lg-6 text-center mt-5 mt-lg-0">
+            <div class="mt-4">
 
-                <img
-                    src="assets/logo/logo.png"
-                    alt="Iyawo Xsto Fabric Store Logo"
-                    class="img-fluid hero-logo"
+                <a
+                    href="#specials"
+                    class="btn btn-warning btn-lg me-2"
                 >
+                    Explore Specials
+                </a>
+
+                <a
+                    href="menu.html"
+                    class="btn btn-outline-light btn-lg"
+                >
+                    View Full Menu
+                </a>
 
             </div>
 
         </div>
+
     </div>
 
 </header>
 
 
-<!-- ================= PROMOTION ================= -->
-<section class="promotion-section py-4">
+
+<!-- =========================================================
+     INTRODUCTION
+========================================================= -->
+
+<section class="special-intro section-padding">
 
     <div class="container">
 
-        <div class="row text-center g-3">
+        <div class="row justify-content-center text-center">
 
-            <div class="col-md-4">
-                <div class="promo-box">
-                    <h3>20%</h3>
-                    <p>Discount Available</p>
-                </div>
-            </div>
+            <div class="col-lg-8">
 
-            <div class="col-md-4">
-                <div class="promo-box">
-                    <h3>Wholesale</h3>
-                    <p>Great prices for bulk purchases</p>
-                </div>
-            </div>
+                <span class="section-label">
+                    SPECIALS AT SAVOUR HOUSE
+                </span>
 
-            <div class="col-md-4">
-                <div class="promo-box">
-                    <h3>Retail</h3>
-                    <p>Quality fabrics for everyone</p>
-                </div>
+                <h2 class="section-title">
+
+                    Great Food.
+                    <span>Special Moments.</span>
+
+                </h2>
+
+                <p class="mt-4">
+
+                    Our specials are created for people who
+                    love good food and memorable experiences.
+                    From hearty meals to refreshing drinks and
+                    sharing platters, there is always something
+                    exciting waiting for you at Savour House.
+
+                </p>
+
             </div>
 
         </div>
@@ -164,190 +947,33 @@
 </section>
 
 
-<!-- ================= INTRODUCTION ================= -->
-<section class="py-5">
 
-    <div class="container text-center">
+<!-- =========================================================
+     SPECIALS
+========================================================= -->
 
-        <span class="section-label">WELCOME</span>
-
-        <h2 class="section-title">
-            Welcome to IYAWO XSTO Fabric Store
-        </h2>
-
-        <p class="section-text mx-auto">
-            We sell quality fabrics in wholesale and retail,
-            offering different categories of beautiful lace and
-            fashion materials for your perfect outfit.
-        </p>
-
-    </div>
-
-</section>
-
-
-<!-- ================= CATEGORIES ================= -->
-<section class="bg-light py-5">
+<section
+    class="specials-section section-padding"
+    id="specials"
+>
 
     <div class="container">
 
         <div class="text-center mb-5">
 
-            <span class="section-label">SHOP BY CATEGORY</span>
+            <span class="section-label">
+                FEATURED DISHES
+            </span>
 
             <h2 class="section-title">
-                Our Fabric Collection
+
+                Our
+                <span>Special Picks</span>
+
             </h2>
 
-        </div>
-
-
-        <div class="row g-4">
-
-            <!-- Swiss Lace -->
-            <div class="col-md-6 col-lg-3">
-
-                <a href="swiss-lace.html" class="text-decoration-none">
-
-                    <div class="category-card">
-
-                        <img
-                            src="assets/images/Swiss Lace/1 (27).jpg"
-                            alt="Swiss Lace"
-                            class="img-fluid"
-                        >
-
-                        <div class="category-content">
-                            <h4>Swiss Lace</h4>
-                            <span>Explore Collection →</span>
-                        </div>
-
-                    </div>
-
-                </a>
-
-            </div>
-
-
-            <!-- Damask -->
-            <div class="col-md-6 col-lg-3">
-
-                <a href="damask.html" class="text-decoration-none">
-
-                    <div class="category-card">
-
-                        <img
-                            src="assets/images/Damask/1 (2).jpg"
-                            alt="Damask"
-                            class="img-fluid"
-                        >
-
-                        <div class="category-content">
-                            <h4>Damask</h4>
-                            <span>Explore Collection →</span>
-                        </div>
-
-                    </div>
-
-                </a>
-
-            </div>
-
-
-            <!-- Ankara -->
-            <div class="col-md-6 col-lg-3">
-
-                <a href="ankara-lace.html" class="text-decoration-none">
-
-                    <div class="category-card">
-
-                        <img
-                            src="assets/images/Ankara Lace/1 (11).jpg"
-                            alt="Ankara Lace"
-                            class="img-fluid"
-                        >
-
-                        <div class="category-content">
-                            <h4>Ankara Lace</h4>
-                            <span>Explore Collection →</span>
-                        </div>
-
-                    </div>
-
-                </a>
-
-            </div>
-
-
-            <!-- Beaded -->
-            <div class="col-md-6 col-lg-3">
-
-                <a href="beaded.html" class="text-decoration-none">
-
-                    <div class="category-card">
-
-                        <img
-                            src="assets/images/Beaded Lace/1 (16).jpg"
-                            alt="Beaded Lace"
-                            class="img-fluid"
-                        >
-
-                        <div class="category-content">
-                            <h4>Beaded Lace</h4>
-                            <span>Explore Collection →</span>
-                        </div>
-
-                    </div>
-
-                </a>
-
-            </div>
-
-        </div>
-
-    </div>
-
-</section>
-
-
-<!-- ================= NEW ARRIVALS ================= -->
-<section class="py-5">
-
-    <div class="container">
-
-        <div class="text-center mb-5">
-
-            <span class="section-label">NEW ARRIVALS</span>
-
-            <h2 class="section-title">
-                Fresh Styles Just For You
-            </h2>
-
-            <p>
-                Explore some of our latest fabric collections.
-            </p>
-
-        </div>
-
-    </div>
-
-</section>
-
-
-<!-- ================= PRODUCT SECTION ================= -->
-<section class="product-section py-5" id="swiss-lace">
-
-    <div class="container">
-
-        <div class="section-heading">
-
-            <span class="section-label">OUR COLLECTION</span>
-
-            <h2>Swiss Lace</h2>
-
-            <p>
-                Beautiful Swiss lace designs available in units
-                and bulk quantities.
+            <p class="text-muted mt-3">
+                Delicious dishes selected specially for you.
             </p>
 
         </div>
@@ -355,42 +981,62 @@
 
         <div class="row g-4">
 
-            <!-- Product 1 -->
+
+            <!-- SPECIAL 01 -->
+
             <div class="col-md-6 col-lg-4">
 
-                <div class="product-card">
+                <div class="special-card">
 
-                    <div class="product-image">
+                    <div class="special-image">
+
+                        <span class="special-badge">
+                            CHEF'S PICK
+                        </span>
 
                         <img
-                            src="assets/images/Swiss Lace/1 (24).jpg"
-                            alt="Latest Swiss Lace"
-                            class="img-fluid"
+                            src="https://images.unsplash.com/photo-1547592180-85f173990554?auto=format&fit=crop&w=1000&q=85"
+                            alt="Jollof rice with grilled chicken"
                         >
 
                     </div>
 
-                    <div class="product-info">
 
-                        <h5>Latest Swiss Lace</h5>
+                    <div class="special-info">
+
+                        <span class="special-category">
+                            MAIN COURSE
+                        </span>
+
+                        <h3>
+                            Signature Jollof & Chicken
+                        </h3>
 
                         <p>
-                            Beautiful Swiss lace available in unit
-                            and bulk quantities.
+                            Smoky Nigerian-style jollof rice
+                            served with perfectly grilled
+                            chicken and fresh vegetables.
                         </p>
 
-                        <small>Price per yard</small>
 
-                        <div class="price">
+                        <div class="special-price">
 
-                            <del>₦14,000</del>
+                            <del>
+                                ₦12,000
+                            </del>
 
-                            <strong>₦12,000</strong>
+                            <strong>
+                                ₦9,500
+                            </strong>
 
                         </div>
 
-                        <a href="sale.html" class="btn btn-dark w-100">
-                            Add to Cart
+
+                        <a
+                            href="contact.html"
+                            class="btn btn-dark w-100"
+                        >
+                            Order This Special
                         </a>
 
                     </div>
@@ -400,42 +1046,62 @@
             </div>
 
 
-            <!-- Product 2 -->
+
+            <!-- SPECIAL 02 -->
+
             <div class="col-md-6 col-lg-4">
 
-                <div class="product-card">
+                <div class="special-card">
 
-                    <div class="product-image">
+                    <div class="special-image">
+
+                        <span class="special-badge">
+                            POPULAR
+                        </span>
 
                         <img
-                            src="assets/images/Swiss Lace/1 (10).jpg"
-                            alt="Block Design Swiss Lace"
-                            class="img-fluid"
+                            src="https://images.unsplash.com/photo-1544025162-d76694265947?auto=format&fit=crop&w=1000&q=85"
+                            alt="Grilled steak with vegetables"
                         >
 
                     </div>
 
-                    <div class="product-info">
 
-                        <h5>Block Design Swiss Lace</h5>
+                    <div class="special-info">
+
+                        <span class="special-category">
+                            GRILL
+                        </span>
+
+                        <h3>
+                            House Grilled Steak
+                        </h3>
 
                         <p>
-                            Elegant block design lace available
-                            for retail and wholesale.
+                            Tender grilled steak served with
+                            seasoned vegetables, fries and
+                            our signature sauce.
                         </p>
 
-                        <small>Price per yard</small>
 
-                        <div class="price">
+                        <div class="special-price">
 
-                            <del>₦8,000</del>
+                            <del>
+                                ₦25,000
+                            </del>
 
-                            <strong>₦6,500</strong>
+                            <strong>
+                                ₦21,500
+                            </strong>
 
                         </div>
 
-                        <a href="sale.html" class="btn btn-dark w-100">
-                            Add to Cart
+
+                        <a
+                            href="contact.html"
+                            class="btn btn-dark w-100"
+                        >
+                            Order This Special
                         </a>
 
                     </div>
@@ -445,42 +1111,255 @@
             </div>
 
 
-            <!-- Product 3 -->
+
+            <!-- SPECIAL 03 -->
+
             <div class="col-md-6 col-lg-4">
 
-                <div class="product-card">
+                <div class="special-card">
 
-                    <div class="product-image">
+                    <div class="special-image">
+
+                        <span class="special-badge">
+                            NEW
+                        </span>
 
                         <img
-                            src="assets/images/Swiss Lace/1 (15).jpg"
-                            alt="Wine Swiss Lace"
-                            class="img-fluid"
+                            src="https://images.unsplash.com/photo-1565299507177-b0ac66763828?auto=format&fit=crop&w=1000&q=85"
+                            alt="Gourmet burger"
                         >
 
                     </div>
 
-                    <div class="product-info">
 
-                        <h5>Wine Sequence Lace</h5>
+                    <div class="special-info">
+
+                        <span class="special-category">
+                            BURGERS
+                        </span>
+
+                        <h3>
+                            Savour House Burger
+                        </h3>
 
                         <p>
-                            Plain wine lace with beautiful sequence
-                            detailing.
+                            Juicy beef patty, melted cheese,
+                            fresh vegetables and our special
+                            house sauce.
                         </p>
 
-                        <small>Price per yard</small>
 
-                        <div class="price">
+                        <div class="special-price">
 
-                            <del>₦7,000</del>
+                            <del>
+                                ₦10,000
+                            </del>
 
-                            <strong>₦6,000</strong>
+                            <strong>
+                                ₦8,500
+                            </strong>
 
                         </div>
 
-                        <a href="sale.html" class="btn btn-dark w-100">
-                            Add to Cart
+
+                        <a
+                            href="contact.html"
+                            class="btn btn-dark w-100"
+                        >
+                            Order This Special
+                        </a>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+
+
+            <!-- SPECIAL 04 -->
+
+            <div class="col-md-6 col-lg-4">
+
+                <div class="special-card">
+
+                    <div class="special-image">
+
+                        <span class="special-badge">
+                            WEEKEND
+                        </span>
+
+                        <img
+                            src="https://images.unsplash.com/photo-1513104890138-7c749659a591?auto=format&fit=crop&w=1000&q=85"
+                            alt="Fresh pizza"
+                        >
+
+                    </div>
+
+
+                    <div class="special-info">
+
+                        <span class="special-category">
+                            PIZZA
+                        </span>
+
+                        <h3>
+                            Loaded House Pizza
+                        </h3>
+
+                        <p>
+                            A crispy baked pizza topped with
+                            premium cheese, vegetables and
+                            delicious meats.
+                        </p>
+
+
+                        <div class="special-price">
+
+                            <del>
+                                ₦15,000
+                            </del>
+
+                            <strong>
+                                ₦12,500
+                            </strong>
+
+                        </div>
+
+
+                        <a
+                            href="contact.html"
+                            class="btn btn-dark w-100"
+                        >
+                            Order This Special
+                        </a>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+
+
+            <!-- SPECIAL 05 -->
+
+            <div class="col-md-6 col-lg-4">
+
+                <div class="special-card">
+
+                    <div class="special-image">
+
+                        <span class="special-badge">
+                            FAVORITE
+                        </span>
+
+                        <img
+                            src="https://images.unsplash.com/photo-1515003197210-e0cd71810b5f?auto=format&fit=crop&w=1000&q=85"
+                            alt="Restaurant pasta dish"
+                        >
+
+                    </div>
+
+
+                    <div class="special-info">
+
+                        <span class="special-category">
+                            PASTA
+                        </span>
+
+                        <h3>
+                            Creamy Chicken Pasta
+                        </h3>
+
+                        <p>
+                            Creamy pasta tossed with seasoned
+                            chicken, herbs and fresh vegetables.
+                        </p>
+
+
+                        <div class="special-price">
+
+                            <del>
+                                ₦13,000
+                            </del>
+
+                            <strong>
+                                ₦10,500
+                            </strong>
+
+                        </div>
+
+
+                        <a
+                            href="contact.html"
+                            class="btn btn-dark w-100"
+                        >
+                            Order This Special
+                        </a>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+
+
+            <!-- SPECIAL 06 -->
+
+            <div class="col-md-6 col-lg-4">
+
+                <div class="special-card">
+
+                    <div class="special-image">
+
+                        <span class="special-badge">
+                            DESSERT
+                        </span>
+
+                        <img
+                            src="https://images.unsplash.com/photo-1551024506-0bccd828d307?auto=format&fit=crop&w=1000&q=85"
+                            alt="Fresh dessert"
+                        >
+
+                    </div>
+
+
+                    <div class="special-info">
+
+                        <span class="special-category">
+                            DESSERT
+                        </span>
+
+                        <h3>
+                            House Sweet Treat
+                        </h3>
+
+                        <p>
+                            Finish your meal with our delicious
+                            freshly prepared dessert selection.
+                        </p>
+
+
+                        <div class="special-price">
+
+                            <del>
+                                ₦7,000
+                            </del>
+
+                            <strong>
+                                ₦5,500
+                            </strong>
+
+                        </div>
+
+
+                        <a
+                            href="contact.html"
+                            class="btn btn-dark w-100"
+                        >
+                            Order This Special
                         </a>
 
                     </div>
@@ -491,12 +1370,85 @@
 
         </div>
 
+    </div>
 
-        <div class="text-center mt-5">
+</section>
 
-            <a href="swiss-lace.html" class="btn btn-outline-dark btn-lg">
-                View All Swiss Lace
-            </a>
+
+
+<!-- =========================================================
+     FEATURED SPECIAL
+========================================================= -->
+
+<section class="featured-special">
+
+    <div class="container-fluid">
+
+        <div class="row g-0 align-items-stretch">
+
+
+            <div class="col-lg-6">
+
+                <div class="featured-image"></div>
+
+            </div>
+
+
+            <div class="col-lg-6">
+
+                <div class="featured-content">
+
+                    <span class="section-label">
+                        CHEF'S SIGNATURE
+                    </span>
+
+
+                    <h2>
+
+                        The Ultimate
+                        <span>Dining Experience.</span>
+
+                    </h2>
+
+
+                    <p class="mt-4">
+
+                        Our signature grill platter brings
+                        together carefully seasoned meats,
+                        delicious sides and fresh vegetables
+                        for a meal made for sharing.
+
+                    </p>
+
+
+                    <p>
+
+                        Perfect for date nights, family dinners,
+                        celebrations or simply treating yourself
+                        to something special.
+
+                    </p>
+
+
+                    <div class="featured-price mt-4">
+                        ₦35,000
+                    </div>
+
+
+                    <div class="mt-4">
+
+                        <a
+                            href="contact.html"
+                            class="btn btn-warning btn-lg"
+                        >
+                            Order Signature Platter
+                        </a>
+
+                    </div>
+
+                </div>
+
+            </div>
 
         </div>
 
@@ -505,55 +1457,68 @@
 </section>
 
 
-<!-- ================= ANKARA LACE ================= -->
-<section class="product-section bg-light py-5">
+
+<!-- =========================================================
+     CHEF'S CHOICE
+========================================================= -->
+
+<section class="chef-section section-padding">
 
     <div class="container">
 
-        <div class="section-heading">
+        <div class="text-center mb-5">
 
-            <span class="section-label">FEATURED</span>
+            <span class="section-label">
+                CHEF'S CHOICE
+            </span>
 
-            <h2>Ankara Lace</h2>
+            <h2 class="section-title">
+
+                Made With
+                <span>Passion.</span>
+
+            </h2>
+
+            <p class="text-muted mt-3">
+                Three dishes our kitchen team recommends.
+            </p>
 
         </div>
 
 
         <div class="row g-4">
 
-            <!-- Product 1 -->
-            <div class="col-md-6 col-lg-4">
 
-                <div class="product-card">
+            <!-- CHEF 01 -->
 
-                    <img
-                        src="assets/images/Ankara Lace/1 (21).jpg"
-                        alt="White Ankara Lace"
-                        class="product-img"
-                    >
+            <div class="col-md-4">
 
-                    <div class="product-info">
+                <div class="chef-card">
 
-                        <h5>White Ankara Lace</h5>
+                    <div class="chef-image">
+
+                        <img
+                            src="https://images.unsplash.com/photo-1515003197210-e0cd71810b5f?auto=format&fit=crop&w=1000&q=85"
+                            alt="Chef special meal"
+                        >
+
+                    </div>
+
+                    <div class="chef-info">
+
+                        <span class="section-label">
+                            CHEF'S CHOICE 01
+                        </span>
+
+                        <h3 class="mt-2">
+                            Creamy Pasta
+                        </h3>
 
                         <p>
-                            Latest Ankara lace available in unit
-                            and bulk quantities.
+                            Rich, creamy and packed with flavour,
+                            this is one of our most requested
+                            comfort meals.
                         </p>
-
-                        <small>Price per yard</small>
-
-                        <div class="price">
-
-                            <del>₦35,000</del>
-
-                            <strong>₦33,000</strong>
-
-                        </div>
-
-                        <a href="sale.html" class="btn btn-dark w-100">
-                            Add to Cart
-                        </a>
 
                     </div>
 
@@ -562,39 +1527,37 @@
             </div>
 
 
-            <!-- Product 2 -->
-            <div class="col-md-6 col-lg-4">
 
-                <div class="product-card">
+            <!-- CHEF 02 -->
 
-                    <img
-                        src="assets/images/Ankara Lace/1 (12).jpg"
-                        alt="Two Colored Ankara Lace"
-                        class="product-img"
-                    >
+            <div class="col-md-4">
 
-                    <div class="product-info">
+                <div class="chef-card">
 
-                        <h5>Two Colored Ankara Lace</h5>
+                    <div class="chef-image">
+
+                        <img
+                            src="https://images.unsplash.com/photo-1547592180-85f173990554?auto=format&fit=crop&w=1000&q=85"
+                            alt="Rice and chicken meal"
+                        >
+
+                    </div>
+
+                    <div class="chef-info">
+
+                        <span class="section-label">
+                            CHEF'S CHOICE 02
+                        </span>
+
+                        <h3 class="mt-2">
+                            Signature Rice
+                        </h3>
 
                         <p>
-                            Beautiful two-colour lace with
-                            double-layer design.
+                            Fragrant rice prepared with carefully
+                            selected spices and served with juicy
+                            grilled chicken.
                         </p>
-
-                        <small>Price per yard</small>
-
-                        <div class="price">
-
-                            <del>₦25,000</del>
-
-                            <strong>₦23,000</strong>
-
-                        </div>
-
-                        <a href="sale.html" class="btn btn-dark w-100">
-                            Add to Cart
-                        </a>
 
                     </div>
 
@@ -603,54 +1566,43 @@
             </div>
 
 
-            <!-- Product 3 -->
-            <div class="col-md-6 col-lg-4">
 
-                <div class="product-card">
+            <!-- CHEF 03 -->
 
-                    <img
-                        src="assets/images/Ankara Lace/1 (7).jpg"
-                        alt="Multi Layer Ankara Lace"
-                        class="product-img"
-                    >
+            <div class="col-md-4">
 
-                    <div class="product-info">
+                <div class="chef-card">
 
-                        <h5>Multi Layer Lace</h5>
+                    <div class="chef-image">
+
+                        <img
+                            src="https://images.unsplash.com/photo-1544025162-d76694265947?auto=format&fit=crop&w=1000&q=85"
+                            alt="Grilled meat"
+                        >
+
+                    </div>
+
+                    <div class="chef-info">
+
+                        <span class="section-label">
+                            CHEF'S CHOICE 03
+                        </span>
+
+                        <h3 class="mt-2">
+                            Premium Grill
+                        </h3>
 
                         <p>
-                            Elegant multi-layer lace with
-                            double-layer detailing.
+                            Succulent grilled meat prepared with
+                            our signature seasoning and served
+                            fresh from the kitchen.
                         </p>
-
-                        <small>Price per yard</small>
-
-                        <div class="price">
-
-                            <del>₦25,000</del>
-
-                            <strong>₦23,000</strong>
-
-                        </div>
-
-                        <a href="sale.html" class="btn btn-dark w-100">
-                            Add to Cart
-                        </a>
 
                     </div>
 
                 </div>
 
             </div>
-
-        </div>
-
-
-        <div class="text-center mt-5">
-
-            <a href="ankara-lace.html" class="btn btn-outline-dark btn-lg">
-                View All Ankara Lace
-            </a>
 
         </div>
 
@@ -659,606 +1611,103 @@
 </section>
 
 
-<!-- ================= BEADED LACE ================= -->
-<section class="product-section py-5">
+
+<!-- =========================================================
+     SPECIAL DEALS
+========================================================= -->
+
+<section class="deal-section section-padding">
 
     <div class="container">
 
-        <div class="section-heading">
+        <div class="text-center mb-5">
 
-            <span class="section-label">FEATURED</span>
+            <span class="section-label">
+                SPECIAL DEALS
+            </span>
 
-            <h2>Beaded Lace</h2>
+            <h2 class="section-title">
+
+                More Food.
+                <span>Better Value.</span>
+
+            </h2>
 
         </div>
 
 
         <div class="row g-4">
 
-            <div class="col-md-6 col-lg-4">
 
-                <div class="product-card">
+            <!-- DEAL 01 -->
 
-                    <img
-                        src="assets/images/Beaded Lace/1 (7).jpg"
-                        alt="Full Beaded Lace"
-                        class="product-img"
-                    >
+            <div class="col-lg-6">
 
-                    <div class="product-info">
+                <div class="deal-card">
 
-                        <h5>Full Beaded Lace</h5>
+                    <span class="deal-number">
+                        DEAL 01 / FAMILY
+                    </span>
 
-                        <p>
-                            Premium full beaded lace for elegant
-                            occasions.
-                        </p>
+                    <h3>
+                        Family Feast
+                    </h3>
 
-                        <small>Price per yard</small>
+                    <p>
+                        A generous combination of rice, grilled
+                        chicken, sides and drinks designed for
+                        the whole family.
+                    </p>
 
-                        <div class="price">
-
-                            <del>₦25,000</del>
-
-                            <strong>₦22,000</strong>
-
-                        </div>
-
-                        <a href="sale.html" class="btn btn-dark w-100">
-                            Add to Cart
-                        </a>
-
+                    <div class="deal-price">
+                        ₦30,000
                     </div>
-
-                </div>
-
-            </div>
-
-
-            <div class="col-md-6 col-lg-4">
-
-                <div class="product-card">
-
-                    <img
-                        src="assets/images/Beaded Lace/1 (17).jpg"
-                        alt="Beaded Lace"
-                        class="product-img"
-                    >
-
-                    <div class="product-info">
-
-                        <h5>Premium Beaded Lace</h5>
-
-                        <p>
-                            Stylish beaded lace available in
-                            different designs.
-                        </p>
-
-                        <small>Price per yard</small>
-
-                        <div class="price">
-
-                            <del>₦25,000</del>
-
-                            <strong>₦22,000</strong>
-
-                        </div>
-
-                        <a href="sale.html" class="btn btn-dark w-100">
-                            Add to Cart
-                        </a>
-
-                    </div>
-
-                </div>
-
-            </div>
-
-
-            <div class="col-md-6 col-lg-4">
-
-                <div class="product-card">
-
-                    <img
-                        src="assets/images/Beaded Lace/1 (34).jpg"
-                        alt="Luxury Beaded Lace"
-                        class="product-img"
-                    >
-
-                    <div class="product-info">
-
-                        <h5>Luxury Beaded Lace</h5>
-
-                        <p>
-                            Beautiful luxury lace for special
-                            occasions.
-                        </p>
-
-                        <small>Price per yard</small>
-
-                        <div class="price">
-
-                            <del>₦20,000</del>
-
-                            <strong>₦18,000</strong>
-
-                        </div>
-
-                        <a href="sale.html" class="btn btn-dark w-100">
-                            Add to Cart
-                        </a>
-
-                    </div>
-
-                </div>
-
-            </div>
-
-        </div>
-
-
-        <div class="text-center mt-5">
-
-            <a href="beaded.html" class="btn btn-outline-dark btn-lg">
-                View All Beaded Lace
-            </a>
-
-        </div>
-
-    </div>
-
-</section>
-
-
-<!-- ================= WHITE LACE ================= -->
-<section class="product-section bg-light py-5">
-
-    <div class="container">
-
-        <div class="section-heading">
-
-            <span class="section-label">FEATURED</span>
-
-            <h2>White Lace</h2>
-
-        </div>
-
-
-        <div class="row g-4">
-
-            <div class="col-md-6 col-lg-4">
-
-                <div class="product-card">
-
-                    <img
-                        src="assets/images/White fine lace/1 (23).jpg"
-                        alt="White Swiss Lace"
-                        class="product-img"
-                    >
-
-                    <div class="product-info">
-
-                        <h5>White Swiss Lace</h5>
-
-                        <p>
-                            Beautiful white Swiss lace for
-                            elegant outfits.
-                        </p>
-
-                        <small>Price per yard</small>
-
-                        <div class="price">
-
-                            <del>₦8,500</del>
-
-                            <strong>₦7,000</strong>
-
-                        </div>
-
-                        <a href="sale.html" class="btn btn-dark w-100">
-                            Add to Cart
-                        </a>
-
-                    </div>
-
-                </div>
-
-            </div>
-
-
-            <div class="col-md-6 col-lg-4">
-
-                <div class="product-card">
-
-                    <img
-                        src="assets/images/White fine lace/1 (27).jpg"
-                        alt="White Fine Lace"
-                        class="product-img"
-                    >
-
-                    <div class="product-info">
-
-                        <h5>White Fine Lace</h5>
-
-                        <p>
-                            Quality white lace suitable for
-                            different occasions.
-                        </p>
-
-                        <small>Price per yard</small>
-
-                        <div class="price">
-
-                            <del>₦8,500</del>
-
-                            <strong>₦7,000</strong>
-
-                        </div>
-
-                        <a href="sale.html" class="btn btn-dark w-100">
-                            Add to Cart
-                        </a>
-
-                    </div>
-
-                </div>
-
-            </div>
-
-
-            <div class="col-md-6 col-lg-4">
-
-                <div class="product-card">
-
-                    <img
-                        src="assets/images/White fine lace/1 (25).jpg"
-                        alt="Premium White Lace"
-                        class="product-img"
-                    >
-
-                    <div class="product-info">
-
-                        <h5>Premium White Lace</h5>
-
-                        <p>
-                            High-quality white lace for your
-                            fashion needs.
-                        </p>
-
-                        <small>Price per yard</small>
-
-                        <div class="price">
-
-                            <del>₦8,500</del>
-
-                            <strong>₦7,000</strong>
-
-                        </div>
-
-                        <a href="sale.html" class="btn btn-dark w-100">
-                            Add to Cart
-                        </a>
-
-                    </div>
-
-                </div>
-
-            </div>
-
-        </div>
-
-
-        <div class="text-center mt-5">
-
-            <a href="white -lace.html" class="btn btn-outline-dark btn-lg">
-                View All White Lace
-            </a>
-
-        </div>
-
-    </div>
-
-</section>
-
-
-<!-- ================= DAMASK ================= -->
-<section class="product-section py-5">
-
-    <div class="container">
-
-        <div class="section-heading">
-
-            <span class="section-label">FEATURED</span>
-
-            <h2>Damask</h2>
-
-        </div>
-
-
-        <div class="row g-4">
-
-            <div class="col-md-6 col-lg-4">
-
-                <div class="product-card">
-
-                    <img
-                        src="assets/images/Damask/1 (15).jpg"
-                        alt="Quality Damask"
-                        class="product-img"
-                    >
-
-                    <div class="product-info">
-
-                        <h5>Quality Damask</h5>
-
-                        <p>
-                            Quality Damask double-length fabric.
-                        </p>
-
-                        <small>Price per yard</small>
-
-                        <div class="price">
-
-                            <del>₦8,000</del>
-
-                            <strong>₦7,500</strong>
-
-                        </div>
-
-                        <a href="sale.html" class="btn btn-dark w-100">
-                            Add to Cart
-                        </a>
-
-                    </div>
-
-                </div>
-
-            </div>
-
-
-            <div class="col-md-6 col-lg-4">
-
-                <div class="product-card">
-
-                    <img
-                        src="assets/images/Damask/1 (19).jpg"
-                        alt="Damask Double Length"
-                        class="product-img"
-                    >
-
-                    <div class="product-info">
-
-                        <h5>Damask Double Length</h5>
-
-                        <p>
-                            Beautiful Damask material available
-                            in unit and bulk.
-                        </p>
-
-                        <small>Price per yard</small>
-
-                        <div class="price">
-
-                            <del>₦8,000</del>
-
-                            <strong>₦7,500</strong>
-
-                        </div>
-
-                        <a href="sale.html" class="btn btn-dark w-100">
-                            Add to Cart
-                        </a>
-
-                    </div>
-
-                </div>
-
-            </div>
-
-
-            <div class="col-md-6 col-lg-4">
-
-                <div class="product-card">
-
-                    <img
-                        src="assets/images/Damask/1 (7).jpg"
-                        alt="Latest Damask"
-                        class="product-img"
-                    >
-
-                    <div class="product-info">
-
-                        <h5>Latest Damask</h5>
-
-                        <p>
-                            Elegant Damask double-length material
-                            for beautiful outfits.
-                        </p>
-
-                        <small>Price per yard</small>
-
-                        <div class="price">
-
-                            <del>₦8,000</del>
-
-                            <strong>₦7,500</strong>
-
-                        </div>
-
-                        <a href="sale.html" class="btn btn-dark w-100">
-                            Add to Cart
-                        </a>
-
-                    </div>
-
-                </div>
-
-            </div>
-
-        </div>
-
-
-        <div class="text-center mt-5">
-
-            <a href="damask.html" class="btn btn-outline-dark btn-lg">
-                View All Damask
-            </a>
-
-        </div>
-
-    </div>
-
-</section>
-
-
-<!-- ================= ABOUT CTA ================= -->
-<section class="cta-section py-5">
-
-    <div class="container text-center">
-
-        <h2>Looking for Quality Fashion Fabric?</h2>
-
-        <p>
-            Shop our latest collections or contact us for
-            wholesale and retail enquiries.
-        </p>
-
-        <a href="sale.html" class="btn btn-warning btn-lg me-2">
-            Shop Now
-        </a>
-
-        <a href="contact-us.html" class="btn btn-outline-light btn-lg">
-            Contact Us
-        </a>
-
-    </div>
-
-</section>
-
-
-<!-- ================= FOOTER ================= -->
-<footer class="footer">
-
-    <div class="container py-5">
-
-        <div class="row g-4">
-
-            <!-- About -->
-            <div class="col-md-6 col-lg-4">
-
-                <h4>
-                    <span class="brand-orange">IYAWO</span>
-                    <span class="brand-blue">XSTO</span>
-                </h4>
-
-                <p>
-                    Iyawo Xsto Fabric Store is a unisex fashion
-                    brand offering quality lace and fabrics in
-                    wholesale and retail.
-                </p>
-
-                <p>
-                    For quality fashion, contact Iyawo Xsto
-                    Fabric Store today.
-                </p>
-
-            </div>
-
-
-            <!-- Main Menu -->
-            <div class="col-6 col-lg-2">
-
-                <h5>MAIN MENU</h5>
-
-                <ul class="footer-links">
-
-                    <li><a href="sale.html">Sales</a></li>
-
-                    <li><a href="swiss-lace.html">Swiss Lace</a></li>
-
-                    <li><a href="beaded.html">Beaded Lace</a></li>
-
-                    <li><a href="ankara-lace.html">Ankara Lace</a></li>
-
-                    <li><a href="damask.html">Damask</a></li>
-
-                    <li><a href="white -lace.html">White Lace</a></li>
-
-                </ul>
-
-            </div>
-
-
-            <!-- Information -->
-            <div class="col-6 col-lg-2">
-
-                <h5>INFORMATION</h5>
-
-                <ul class="footer-links">
-
-                    <li>
-                        <a href="about-us.html">
-                            Shipping Policy
-                        </a>
-                    </li>
-
-                    <li>
-                        <a href="about-us.html">
-                            Privacy Policy
-                        </a>
-                    </li>
-
-                    <li>
-                        <a href="about-us.html">
-                            Return Policy
-                        </a>
-                    </li>
-
-                    <li>
-                        <a href="about-us.html">
-                            Store Locator
-                        </a>
-                    </li>
-
-                </ul>
-
-            </div>
-
-
-            <!-- Contact -->
-            <div class="col-md-6 col-lg-4">
-
-                <h5>CONTACT INFORMATION</h5>
-
-                <p>
-                    <strong>WhatsApp:</strong><br>
 
                     <a
-                        href="https://wa.me/2347079057773"
-                        target="_blank"
+                        href="contact.html"
+                        class="btn btn-warning"
                     >
-                        +234 707 905 7773
+                        Get This Deal
                     </a>
-                </p>
 
-                <p>
-                    <strong>Email:</strong><br>
+                </div>
 
-                    <a href="mailto:11victorchris@gmail.com">
-                        11victorchris@gmail.com
+            </div>
+
+
+
+            <!-- DEAL 02 -->
+
+            <div class="col-lg-6">
+
+                <div class="deal-card">
+
+                    <span class="deal-number">
+                        DEAL 02 / SHARING
+                    </span>
+
+                    <h3>
+                        Pizza & Chill
+                    </h3>
+
+                    <p>
+                        Enjoy a large pizza, delicious sides and
+                        refreshing drinks. Perfect for sharing
+                        with friends.
+                    </p>
+
+                    <div class="deal-price">
+                        ₦22,000
+                    </div>
+
+                    <a
+                        href="contact.html"
+                        class="btn btn-warning"
+                    >
+                        Get This Deal
                     </a>
-                </p>
 
-                <p>
-                    <strong>Locations:</strong><br>
-
-                    No. 1 Fagba Street, Ago Market,
-                    Ilorin, Kwara State.
-                    <br><br>
-
-                    No. 2 Bolanta Street, Zambari Market,
-                    Ilorin, Kwara State.
-                </p>
+                </div>
 
             </div>
 
@@ -1266,31 +1715,548 @@
 
     </div>
 
+</section>
 
-    <div class="footer-bottom">
 
-        <div class="container">
 
-            <div class="row align-items-center">
+<!-- =========================================================
+     WHY CHOOSE US
+========================================================= -->
 
-                <div class="col-md-8">
+<section class="section-padding">
 
-                    <p class="mb-0">
-                        © 2026 IYAWO XSTO FABRIC STORE.
-                        ALL RIGHTS RESERVED.
+    <div class="container">
+
+        <div class="row justify-content-center text-center mb-5">
+
+            <div class="col-lg-8">
+
+                <span class="section-label">
+                    WHY SAVOUR HOUSE
+                </span>
+
+                <h2 class="section-title">
+
+                    Good Food.
+                    <span>Good People.</span>
+
+                </h2>
+
+                <p class="text-muted mt-3">
+
+                    We focus on fresh ingredients, generous
+                    portions and a dining experience that keeps
+                    our guests coming back.
+
+                </p>
+
+            </div>
+
+        </div>
+
+
+        <div class="row g-4">
+
+
+            <div class="col-6 col-lg-3">
+
+                <div class="benefit-card">
+
+                    <div class="benefit-icon">
+                        ★
+                    </div>
+
+                    <h4>
+                        Fresh Ingredients
+                    </h4>
+
+                    <p>
+                        Carefully selected ingredients prepared
+                        fresh for every meal.
                     </p>
 
                 </div>
 
-                <div class="col-md-4 text-md-end">
+            </div>
 
-                    <a href="#top" class="back-top">
-                        Back to Top ↑
+
+
+            <div class="col-6 col-lg-3">
+
+                <div class="benefit-card">
+
+                    <div class="benefit-icon">
+                        ◆
+                    </div>
+
+                    <h4>
+                        Great Taste
+                    </h4>
+
+                    <p>
+                        Delicious recipes packed with flavour
+                        and carefully balanced seasoning.
+                    </p>
+
+                </div>
+
+            </div>
+
+
+
+            <div class="col-6 col-lg-3">
+
+                <div class="benefit-card">
+
+                    <div class="benefit-icon">
+                        ✦
+                    </div>
+
+                    <h4>
+                        Generous Portions
+                    </h4>
+
+                    <p>
+                        Meals designed to leave you satisfied
+                        and ready for your next visit.
+                    </p>
+
+                </div>
+
+            </div>
+
+
+
+            <div class="col-6 col-lg-3">
+
+                <div class="benefit-card">
+
+                    <div class="benefit-icon">
+                        ♢
+                    </div>
+
+                    <h4>
+                        Great Service
+                    </h4>
+
+                    <p>
+                        Friendly service and a comfortable
+                        environment for every guest.
+                    </p>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+
+<!-- =========================================================
+     HOW TO ORDER
+========================================================= -->
+
+<section class="process-section section-padding">
+
+    <div class="container">
+
+        <div class="text-center mb-5">
+
+            <span class="section-label">
+                HOW TO ORDER
+            </span>
+
+            <h2 class="section-title">
+
+                Enjoy Your Meal
+                <span>In Four Steps.</span>
+
+            </h2>
+
+        </div>
+
+
+        <div class="row g-4">
+
+
+            <div class="col-md-6 col-lg-3">
+
+                <div class="process-step">
+
+                    <div class="process-number">
+                        01
+                    </div>
+
+                    <h4>
+                        Choose
+                    </h4>
+
+                    <p>
+                        Browse our specials and select your
+                        favourite meal.
+                    </p>
+
+                </div>
+
+            </div>
+
+
+
+            <div class="col-md-6 col-lg-3">
+
+                <div class="process-step">
+
+                    <div class="process-number">
+                        02
+                    </div>
+
+                    <h4>
+                        Order
+                    </h4>
+
+                    <p>
+                        Place your order with our restaurant
+                        team.
+                    </p>
+
+                </div>
+
+            </div>
+
+
+
+            <div class="col-md-6 col-lg-3">
+
+                <div class="process-step">
+
+                    <div class="process-number">
+                        03
+                    </div>
+
+                    <h4>
+                        Relax
+                    </h4>
+
+                    <p>
+                        Sit back while our kitchen prepares
+                        your meal fresh.
+                    </p>
+
+                </div>
+
+            </div>
+
+
+
+            <div class="col-md-6 col-lg-3">
+
+                <div class="process-step">
+
+                    <div class="process-number">
+                        04
+                    </div>
+
+                    <h4>
+                        Enjoy
+                    </h4>
+
+                    <p>
+                        Dig in and enjoy every delicious bite.
+                    </p>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+
+<!-- =========================================================
+     CTA
+========================================================= -->
+
+<section class="specials-cta">
+
+    <div class="container">
+
+        <div class="row justify-content-center text-center">
+
+            <div class="col-lg-9">
+
+                <span class="section-label">
+                    READY FOR SOMETHING DELICIOUS?
+                </span>
+
+                <h2 class="mt-3">
+
+                    Your Next Favourite
+                    <span>Meal Is Waiting.</span>
+
+                </h2>
+
+                <p>
+
+                    Come hungry and leave happy. Explore our
+                    specials, reserve your table or contact us
+                    today to place your order.
+
+                </p>
+
+
+                <div class="mt-4">
+
+                    <a
+                        href="menu.html"
+                        class="btn btn-warning btn-lg me-2"
+                    >
+                        View Full Menu
+                    </a>
+
+                    <a
+                        href="contact.html"
+                        class="btn btn-outline-light btn-lg"
+                    >
+                        Reserve A Table
                     </a>
 
                 </div>
 
             </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+
+<!-- =========================================================
+     FOOTER
+========================================================= -->
+
+<footer class="footer">
+
+    <div class="container">
+
+        <div class="row g-5">
+
+
+            <!-- BRAND -->
+
+            <div class="col-lg-4">
+
+                <a
+                    href="index.html"
+                    class="footer-brand"
+                >
+
+                    <span class="brand-orange">
+                        SAVOUR
+                    </span>
+
+                    <span class="brand-white">
+                        HOUSE
+                    </span>
+
+                </a>
+
+
+                <p class="mt-3">
+
+                    Savour House is a modern restaurant serving
+                    delicious meals, refreshing drinks and
+                    memorable dining experiences.
+
+                </p>
+
+
+                <p>
+
+                    Good food. Great atmosphere.
+                    Unforgettable moments.
+
+                </p>
+
+            </div>
+
+
+
+            <!-- MENU -->
+
+            <div class="col-6 col-lg-2">
+
+                <h5>
+                    MENU
+                </h5>
+
+                <ul class="footer-links">
+
+                    <li>
+                        <a href="menu.html">
+                            Full Menu
+                        </a>
+                    </li>
+
+                    <li>
+                        <a href="specials.html">
+                            Specials
+                        </a>
+                    </li>
+
+                    <li>
+                        <a href="menu.html">
+                            Main Courses
+                        </a>
+                    </li>
+
+                    <li>
+                        <a href="menu.html">
+                            Drinks
+                        </a>
+                    </li>
+
+                    <li>
+                        <a href="menu.html">
+                            Desserts
+                        </a>
+                    </li>
+
+                </ul>
+
+            </div>
+
+
+
+            <!-- COMPANY -->
+
+            <div class="col-6 col-lg-2">
+
+                <h5>
+                    COMPANY
+                </h5>
+
+                <ul class="footer-links">
+
+                    <li>
+                        <a href="about.html">
+                            About Us
+                        </a>
+                    </li>
+
+                    <li>
+                        <a href="specials.html">
+                            Specials
+                        </a>
+                    </li>
+
+                    <li>
+                        <a href="contact.html">
+                            Contact
+                        </a>
+                    </li>
+
+                    <li>
+                        <a href="contact.html">
+                            Reservations
+                        </a>
+                    </li>
+
+                </ul>
+
+            </div>
+
+
+
+            <!-- CONTACT -->
+
+            <div class="col-lg-4">
+
+                <h5>
+                    CONTACT
+                </h5>
+
+
+                <div class="contact-item">
+
+                    <span>
+                        PHONE
+                    </span>
+
+                    <a href="tel:+2348000000000">
+                        +234 800 000 0000
+                    </a>
+
+                </div>
+
+
+                <div class="contact-item">
+
+                    <span>
+                        EMAIL
+                    </span>
+
+                    <a href="mailto:hello@savourhouse.com">
+                        hello@savourhouse.com
+                    </a>
+
+                </div>
+
+
+                <div class="contact-item">
+
+                    <span>
+                        LOCATION
+                    </span>
+
+                    <p>
+                        25 Restaurant Street,
+                        Lagos, Nigeria.
+                    </p>
+
+                </div>
+
+
+                <div class="contact-item">
+
+                    <span>
+                        OPENING HOURS
+                    </span>
+
+                    <p>
+                        Monday – Sunday<br>
+                        10:00 AM – 11:00 PM
+                    </p>
+
+                </div>
+
+            </div>
+
+        </div>
+
+
+
+        <!-- FOOTER BOTTOM -->
+
+        <div class="footer-bottom">
+
+            <p>
+                © 2026 SAVOUR HOUSE.
+                ALL RIGHTS RESERVED.
+            </p>
+
+            <a href="#top">
+                Back to Top ↑
+            </a>
 
         </div>
 
@@ -1299,10 +2265,16 @@
 </footer>
 
 
-<!-- Bootstrap JS -->
+
+<!-- =========================================================
+     BOOTSTRAP JS
+========================================================= -->
+
 <script
     src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js">
 </script>
 
+
 </body>
+
 </html>

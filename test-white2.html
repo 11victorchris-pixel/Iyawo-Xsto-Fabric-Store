@@ -1,921 +1,2280 @@
-```html
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <title>White Laces | Collection</title>
+    <title>SAVOURA | Fine Dining & Restaurant</title>
 
-    <!-- Bootstrap CSS -->
+    <!-- Bootstrap -->
     <link
         href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css"
         rel="stylesheet"
     >
 
-    <style>
-        /* =========================
-           GENERAL STYLING
-        ========================== */
+    <!-- Google Font -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 
-        body {
-            background-color: #f8f8f8;
-            color: #222;
-            font-family: Arial, Helvetica, sans-serif;
+    <link
+        href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:wght@500;600;700&display=swap"
+        rel="stylesheet"
+    >
+
+    <style>
+
+        /* =====================================================
+           GLOBAL
+        ===================================================== */
+
+        :root {
+            --orange: #d88932;
+            --dark: #171411;
+            --cream: #f7f2e9;
+            --light: #fffaf3;
+            --brown: #6d4b32;
+            --text: #33302c;
         }
 
-        /* =========================
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: "DM Sans", sans-serif;
+            color: var(--text);
+            background: var(--light);
+        }
+
+        h1,
+        h2,
+        h3,
+        h4,
+        h5 {
+            font-family: "Playfair Display", serif;
+        }
+
+        a {
+            text-decoration: none;
+        }
+
+        .section-padding {
+            padding: 100px 0;
+        }
+
+        .section-label {
+            display: inline-block;
+            font-size: 12px;
+            font-weight: 700;
+            letter-spacing: 3px;
+            color: var(--orange);
+            margin-bottom: 15px;
+        }
+
+        .section-title {
+            font-size: clamp(38px, 5vw, 60px);
+            font-weight: 600;
+            line-height: 1.1;
+            color: var(--dark);
+        }
+
+        .section-title span {
+            color: var(--orange);
+        }
+
+        .section-description {
+            font-size: 17px;
+            line-height: 1.9;
+            color: #6b655f;
+        }
+
+
+        /* =====================================================
            NAVBAR
-        ========================== */
+        ===================================================== */
 
         .navbar {
-            background-color: #111;
-            box-shadow: 0 3px 10px rgba(0, 0, 0, 0.15);
+            background: rgba(23, 20, 17, 0.95);
+            backdrop-filter: blur(10px);
+            padding: 20px 0;
         }
 
         .navbar-brand {
-            color: #fff !important;
-            font-size: 1.4rem;
+            font-family: "Playfair Display", serif;
+            font-size: 28px;
+            letter-spacing: 1px;
+        }
+
+        .brand-orange {
+            color: var(--orange);
+        }
+
+        .brand-white {
+            color: white;
+        }
+
+        .navbar .nav-link {
+            color: rgba(255,255,255,.8);
+            margin-left: 22px;
+            font-size: 14px;
+            font-weight: 500;
+            transition: .3s;
+        }
+
+        .navbar .nav-link:hover,
+        .navbar .nav-link.active {
+            color: var(--orange);
+        }
+
+        .navbar-btn {
+            border-radius: 0;
+            padding: 11px 22px;
+            font-weight: 700;
+        }
+
+
+        /* =====================================================
+           HERO
+        ===================================================== */
+
+        .hero-section {
+            min-height: 100vh;
+            position: relative;
+            background:
+                linear-gradient(
+                    90deg,
+                    rgba(15,12,10,.88) 0%,
+                    rgba(15,12,10,.68) 45%,
+                    rgba(15,12,10,.25) 100%
+                ),
+                url("https://images.unsplash.com/photo-1515003197210-e0cd71810b5f?auto=format&fit=crop&w=2000&q=85")
+                center/cover no-repeat;
+
+            color: white;
+        }
+
+        .hero-content {
+            padding-top: 80px;
+        }
+
+        .hero-tag {
+            display: inline-block;
+            color: var(--orange);
+            font-size: 12px;
+            font-weight: 700;
+            letter-spacing: 4px;
+            margin-bottom: 20px;
+        }
+
+        .hero-section h1 {
+            font-size: clamp(55px, 8vw, 95px);
+            line-height: .95;
+            max-width: 800px;
+            margin-bottom: 25px;
+        }
+
+        .hero-section h1 span {
+            color: var(--orange);
+        }
+
+        .hero-lead {
+            font-family: "Playfair Display", serif;
+            font-size: 28px;
+            margin-bottom: 15px;
+        }
+
+        .hero-description {
+            max-width: 600px;
+            font-size: 17px;
+            line-height: 1.8;
+            color: rgba(255,255,255,.8);
+        }
+
+        .hero-buttons {
+            margin-top: 30px;
+        }
+
+        .hero-buttons .btn {
+            border-radius: 0;
+            padding: 14px 28px;
+            margin-right: 10px;
+            font-weight: 600;
+        }
+
+        .hero-features {
+            display: flex;
+            gap: 45px;
+        }
+
+        .hero-features div {
+            display: flex;
+            flex-direction: column;
+            gap: 4px;
+        }
+
+        .hero-features strong {
+            color: var(--orange);
+            font-family: "Playfair Display", serif;
+            font-size: 24px;
+        }
+
+        .hero-features span {
+            font-size: 12px;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            color: rgba(255,255,255,.7);
+        }
+
+
+        /* =====================================================
+           PROMOTION
+        ===================================================== */
+
+        .promo-section {
+            background: var(--orange);
+            color: white;
+        }
+
+        .promo-item {
+            min-height: 120px;
+            padding: 30px;
+            display: flex;
+            align-items: center;
+            gap: 20px;
+            border-right: 1px solid rgba(255,255,255,.25);
+        }
+
+        .promo-section .col-md-4:last-child .promo-item {
+            border-right: 0;
+        }
+
+        .promo-number,
+        .promo-icon {
+            font-family: "Playfair Display", serif;
+            font-size: 35px;
+            min-width: 55px;
+        }
+
+        .promo-item strong {
+            font-size: 16px;
+        }
+
+        .promo-item p {
+            margin: 5px 0 0;
+            font-size: 13px;
+            opacity: .85;
+        }
+
+
+        /* =====================================================
+           INTRO
+        ===================================================== */
+
+        .intro-section {
+            background: var(--cream);
+        }
+
+        .intro-section .section-description {
+            max-width: 750px;
+            margin: 20px auto 0;
+        }
+
+        .intro-section .btn {
+            border-radius: 0;
+            padding: 13px 25px;
+        }
+
+
+        /* =====================================================
+           CATEGORIES
+        ===================================================== */
+
+        .categories-section {
+            background: white;
+        }
+
+        .section-heading {
+            margin-bottom: 50px;
+        }
+
+        .section-heading p {
+            color: #777;
+            margin-top: 15px;
+        }
+
+        .category-card {
+            height: 430px;
+            display: block;
+            position: relative;
+            overflow: hidden;
+            color: white;
+        }
+
+        .category-card img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform .6s ease;
+        }
+
+        .category-card:hover img {
+            transform: scale(1.08);
+        }
+
+        .category-overlay {
+            position: absolute;
+            inset: 0;
+            display: flex;
+            align-items: end;
+            padding: 30px;
+            background:
+                linear-gradient(
+                    transparent 30%,
+                    rgba(0,0,0,.8)
+                );
+        }
+
+        .category-overlay small {
+            font-size: 10px;
+            letter-spacing: 3px;
+            color: var(--orange);
+        }
+
+        .category-overlay h3 {
+            font-size: 30px;
+            margin: 8px 0;
+        }
+
+        .category-overlay span {
+            font-size: 13px;
+            color: white;
+        }
+
+
+        /* =====================================================
+           MENU
+        ===================================================== */
+
+        .menu-section {
+            background: var(--cream);
+        }
+
+        .collection-block {
+            margin-top: 90px;
+        }
+
+        .collection-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: end;
+            margin-bottom: 30px;
+            border-bottom: 1px solid #ddd2c5;
+            padding-bottom: 25px;
+        }
+
+        .collection-header h3 {
+            font-size: 40px;
+            margin: 5px 0;
+        }
+
+        .collection-header p {
+            margin: 0;
+            color: #777;
+        }
+
+        .collection-link {
+            color: var(--dark);
+            font-weight: 600;
+        }
+
+        .collection-link:hover {
+            color: var(--orange);
+        }
+
+
+        /* =====================================================
+           FOOD CARDS
+        ===================================================== */
+
+        .food-card {
+            background: white;
+            border: 0;
+            height: 100%;
+            transition: .3s;
+            overflow: hidden;
+        }
+
+        .food-card:hover {
+            transform: translateY(-7px);
+            box-shadow: 0 20px 50px rgba(0,0,0,.1);
+        }
+
+        .food-image {
+            height: 280px;
+            overflow: hidden;
+            position: relative;
+        }
+
+        .food-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: .5s;
+        }
+
+        .food-card:hover .food-image img {
+            transform: scale(1.06);
+        }
+
+        .food-badge {
+            position: absolute;
+            top: 15px;
+            left: 15px;
+            background: var(--orange);
+            color: white;
+            padding: 7px 12px;
+            font-size: 10px;
+            letter-spacing: 1px;
+            font-weight: 700;
+        }
+
+        .food-info {
+            padding: 25px;
+        }
+
+        .food-category {
+            color: var(--orange);
+            font-size: 10px;
             font-weight: 700;
             letter-spacing: 2px;
         }
 
-        .navbar-nav .nav-link {
-            color: #ddd !important;
-            margin-left: 15px;
-            transition: 0.3s;
+        .food-info h4 {
+            font-size: 26px;
+            margin: 8px 0;
         }
 
-        .navbar-nav .nav-link:hover,
-        .navbar-nav .nav-link.active {
-            color: #fff !important;
-        }
-
-        /* =========================
-           PAGE HEADER
-        ========================== */
-
-        .page-header {
-            text-align: center;
-            padding: 60px 20px 35px;
-        }
-
-        .page-header h1 {
-            font-size: 2.8rem;
-            font-weight: 700;
-            letter-spacing: 3px;
-            margin-bottom: 10px;
-        }
-
-        .page-header p {
+        .food-info p {
             color: #777;
-            font-size: 1rem;
+            font-size: 14px;
+            line-height: 1.7;
         }
 
-        .header-line {
-            width: 70px;
-            height: 3px;
-            background-color: #111;
-            margin: 20px auto;
-        }
-
-        /* =========================
-           PRODUCT CARD
-        ========================== */
-
-        .product-card {
-            background-color: #fff;
-            border: none;
-            border-radius: 12px;
-            overflow: hidden;
-            height: 100%;
-            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.08);
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
-        }
-
-        .product-card:hover {
-            transform: translateY(-7px);
-            box-shadow: 0 12px 30px rgba(0, 0, 0, 0.15);
-        }
-
-        .product-image {
-            width: 100%;
-            height: 280px;
-            object-fit: cover;
-            display: block;
-            transition: transform 0.4s ease;
-        }
-
-        .product-card:hover .product-image {
-            transform: scale(1.04);
-        }
-
-        .image-wrapper {
-            overflow: hidden;
-            background-color: #f1f1f1;
-        }
-
-        .product-body {
-            padding: 22px;
-        }
-
-        .product-title {
-            font-size: 1rem;
-            font-weight: 600;
-            line-height: 1.5;
-            margin-bottom: 8px;
-        }
-
-        .product-description {
-            color: #777;
-            font-size: 0.9rem;
-            margin-bottom: 15px;
-        }
-
-        .price {
-            display: flex;
-            align-items: center;
-            gap: 10px;
-            margin-bottom: 18px;
-        }
-
-        .old-price {
-            color: #999;
-            font-size: 0.9rem;
-        }
-
-        .new-price {
-            color: #111;
-            font-size: 1.25rem;
+        .food-price {
+            color: var(--dark);
+            font-family: "Playfair Display", serif;
+            font-size: 23px;
             font-weight: 700;
+            margin: 15px 0;
         }
 
-        /* =========================
-           BUTTON
-        ========================== */
-
-        .btn-shop {
-            width: 100%;
-            background-color: #111;
-            border: 2px solid #111;
-            color: #fff;
-            padding: 10px 20px;
-            border-radius: 6px;
-            font-weight: 600;
-            letter-spacing: 0.5px;
-            transition: 0.3s;
+        .food-info .btn {
+            border-radius: 0;
+            padding: 12px;
         }
 
-        .btn-shop:hover {
-            background-color: #fff;
-            color: #111;
+
+        /* =====================================================
+           RESERVATION CTA
+        ===================================================== */
+
+        .cta-section {
+            padding: 120px 0;
+            background:
+                linear-gradient(
+                    rgba(15,12,10,.82),
+                    rgba(15,12,10,.82)
+                ),
+                url("https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?auto=format&fit=crop&w=2000&q=85")
+                center/cover no-repeat;
+
+            color: white;
         }
 
-        /* =========================
+        .cta-section h2 {
+            font-size: clamp(40px, 6vw, 65px);
+            margin-bottom: 20px;
+        }
+
+        .cta-section h2 span {
+            color: var(--orange);
+        }
+
+        .cta-section p {
+            max-width: 650px;
+            margin: auto;
+            line-height: 1.8;
+            color: rgba(255,255,255,.75);
+        }
+
+        .cta-section .btn {
+            border-radius: 0;
+            padding: 14px 30px;
+        }
+
+
+        /* =====================================================
            FOOTER
-        ========================== */
+        ===================================================== */
 
-        footer {
-            background-color: #111;
-            color: #aaa;
-            text-align: center;
-            padding: 30px 15px;
-            margin-top: 70px;
+        .footer {
+            background: var(--dark);
+            color: rgba(255,255,255,.7);
+            padding: 80px 0 25px;
         }
 
-        footer h5 {
-            color: #fff;
-            margin-bottom: 10px;
+        .footer-brand {
+            font-family: "Playfair Display", serif;
+            font-size: 30px;
         }
 
-        /* =========================
+        .footer p {
+            font-size: 14px;
+            line-height: 1.8;
+        }
+
+        .footer h5 {
+            color: white;
+            font-family: "DM Sans", sans-serif;
+            font-size: 12px;
+            letter-spacing: 2px;
+            margin-bottom: 25px;
+        }
+
+        .footer-links {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        .footer-links li {
+            margin-bottom: 12px;
+        }
+
+        .footer-links a {
+            color: rgba(255,255,255,.65);
+            font-size: 14px;
+            transition: .3s;
+        }
+
+        .footer-links a:hover {
+            color: var(--orange);
+        }
+
+        .footer-contact-link {
+            color: var(--orange);
+            font-weight: 600;
+        }
+
+        .contact-item {
+            margin-bottom: 25px;
+        }
+
+        .contact-item span {
+            display: block;
+            color: var(--orange);
+            font-size: 10px;
+            font-weight: 700;
+            letter-spacing: 2px;
+            margin-bottom: 5px;
+        }
+
+        .contact-item a,
+        .contact-item p {
+            color: rgba(255,255,255,.7);
+            font-size: 14px;
+            margin: 0;
+        }
+
+        .footer-bottom {
+            border-top: 1px solid rgba(255,255,255,.1);
+            margin-top: 60px;
+            padding-top: 25px;
+            display: flex;
+            justify-content: space-between;
+            gap: 20px;
+        }
+
+        .footer-bottom p {
+            margin: 0;
+            font-size: 11px;
+            letter-spacing: 1px;
+        }
+
+        .footer-bottom a {
+            color: white;
+            font-size: 12px;
+        }
+
+
+        /* =====================================================
            RESPONSIVE
-        ========================== */
+        ===================================================== */
+
+        @media (max-width: 991px) {
+
+            .navbar .nav-link {
+                margin-left: 0;
+                padding: 10px 0;
+            }
+
+            .hero-section {
+                background:
+                    linear-gradient(
+                        rgba(15,12,10,.78),
+                        rgba(15,12,10,.78)
+                    ),
+                    url("https://images.unsplash.com/photo-1515003197210-e0cd71810b5f?auto=format&fit=crop&w=1600&q=85")
+                    center/cover no-repeat;
+            }
+
+            .hero-content {
+                text-align: center;
+            }
+
+            .hero-description {
+                margin: auto;
+            }
+
+            .hero-features {
+                justify-content: center;
+            }
+
+            .collection-header {
+                align-items: start;
+                flex-direction: column;
+                gap: 15px;
+            }
+        }
+
 
         @media (max-width: 767px) {
 
-            .page-header {
-                padding: 40px 15px 25px;
+            .section-padding {
+                padding: 70px 0;
             }
 
-            .page-header h1 {
-                font-size: 2rem;
+            .hero-section h1 {
+                font-size: 55px;
             }
 
-            .product-image {
-                height: 250px;
+            .hero-lead {
+                font-size: 23px;
+            }
+
+            .hero-buttons .btn {
+                display: block;
+                width: 100%;
+                margin: 10px 0;
+            }
+
+            .hero-features {
+                gap: 20px;
+                flex-wrap: wrap;
+            }
+
+            .hero-features strong {
+                font-size: 20px;
+            }
+
+            .promo-item {
+                border-right: 0;
+                border-bottom: 1px solid rgba(255,255,255,.2);
+            }
+
+            .category-card {
+                height: 380px;
+            }
+
+            .collection-header h3 {
+                font-size: 32px;
+            }
+
+            .footer-bottom {
+                flex-direction: column;
             }
         }
+
     </style>
 </head>
 
-<body>
 
-    <!-- =========================
-         NAVIGATION
-    ========================== -->
+<body id="top">
 
-    <nav class="navbar navbar-expand-lg navbar-dark sticky-top">
-        <div class="container">
 
-            <a class="navbar-brand" href="index.html">
-                WHITE LACES
-            </a>
+<!-- =========================================================
+     NAVBAR
+========================================================= -->
 
-            <button
-                class="navbar-toggler"
-                type="button"
-                data-bs-toggle="collapse"
-                data-bs-target="#mainNavbar"
-                aria-controls="mainNavbar"
-                aria-expanded="false"
-                aria-label="Toggle navigation"
-            >
-                <span class="navbar-toggler-icon"></span>
-            </button>
+<nav class="navbar navbar-expand-lg navbar-dark fixed-top">
 
-            <div class="collapse navbar-collapse" id="mainNavbar">
+    <div class="container">
 
-                <ul class="navbar-nav ms-auto">
+        <a class="navbar-brand fw-bold" href="#top">
+            <span class="brand-orange">SAVOURA</span>
+            <span class="brand-white">RESTAURANT</span>
+        </a>
 
-                    <li class="nav-item">
-                        <a class="nav-link" href="index.html">
-                            Home
+        <button
+            class="navbar-toggler border-0 shadow-none"
+            type="button"
+            data-bs-toggle="collapse"
+            data-bs-target="#mainNavbar"
+            aria-controls="mainNavbar"
+            aria-expanded="false"
+            aria-label="Toggle navigation"
+        >
+            <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="collapse navbar-collapse" id="mainNavbar">
+
+            <ul class="navbar-nav ms-auto align-items-lg-center">
+
+                <li class="nav-item">
+                    <a class="nav-link active" href="#top">
+                        Home
+                    </a>
+                </li>
+
+                <li class="nav-item">
+                    <a class="nav-link" href="#menu">
+                        Menu
+                    </a>
+                </li>
+
+                <li class="nav-item">
+                    <a class="nav-link" href="#about">
+                        About
+                    </a>
+                </li>
+
+                <li class="nav-item">
+                    <a class="nav-link" href="#specials">
+                        Specials
+                    </a>
+                </li>
+
+                <li class="nav-item">
+                    <a class="nav-link" href="#contact">
+                        Contact
+                    </a>
+                </li>
+
+                <li class="nav-item ms-lg-3 mt-3 mt-lg-0">
+
+                    <a
+                        href="#reservation"
+                        class="btn btn-warning navbar-btn"
+                    >
+                        Reserve a Table
+                    </a>
+
+                </li>
+
+            </ul>
+
+        </div>
+
+    </div>
+
+</nav>
+
+
+<!-- =========================================================
+     HERO
+========================================================= -->
+
+<header class="hero-section">
+
+    <div class="container position-relative">
+
+        <div class="row align-items-center min-vh-100">
+
+            <div class="col-lg-8">
+
+                <div class="hero-content">
+
+                    <span class="hero-tag">
+                        FINE DINING & CULINARY EXPERIENCE
+                    </span>
+
+                    <h1>
+                        Taste The
+                        <span>Extraordinary.</span>
+                    </h1>
+
+                    <p class="hero-lead">
+                        Where every meal tells a story.
+                    </p>
+
+                    <p class="hero-description">
+                        Welcome to Savoura Restaurant, where
+                        carefully selected ingredients, creative
+                        recipes and exceptional hospitality come
+                        together to create unforgettable dining
+                        experiences.
+                    </p>
+
+                    <div class="hero-buttons">
+
+                        <a
+                            href="#menu"
+                            class="btn btn-warning btn-lg"
+                        >
+                            Explore Menu
+                        </a>
+
+                        <a
+                            href="#reservation"
+                            class="btn btn-outline-light btn-lg"
+                        >
+                            Reserve a Table
+                        </a>
+
+                    </div>
+
+
+                    <div class="hero-features mt-5">
+
+                        <div>
+                            <strong>01</strong>
+                            <span>Fresh Ingredients</span>
+                        </div>
+
+                        <div>
+                            <strong>02</strong>
+                            <span>Expert Chefs</span>
+                        </div>
+
+                        <div>
+                            <strong>03</strong>
+                            <span>Exceptional Taste</span>
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</header>
+
+
+<!-- =========================================================
+     PROMOTION
+========================================================= -->
+
+<section class="promo-section">
+
+    <div class="container">
+
+        <div class="row g-0">
+
+            <div class="col-md-4">
+
+                <div class="promo-item">
+
+                    <span class="promo-number">
+                        20%
+                    </span>
+
+                    <div>
+
+                        <strong>
+                            Lunch Special
+                        </strong>
+
+                        <p>
+                            Enjoy selected lunch dishes at a special price.
+                        </p>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            <div class="col-md-4">
+
+                <div class="promo-item">
+
+                    <span class="promo-icon">
+                        ✦
+                    </span>
+
+                    <div>
+
+                        <strong>
+                            Fresh Every Day
+                        </strong>
+
+                        <p>
+                            Quality ingredients prepared daily.
+                        </p>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            <div class="col-md-4">
+
+                <div class="promo-item">
+
+                    <span class="promo-icon">
+                        ◆
+                    </span>
+
+                    <div>
+
+                        <strong>
+                            Private Dining
+                        </strong>
+
+                        <p>
+                            Celebrate your special moments with us.
+                        </p>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- =========================================================
+     INTRODUCTION
+========================================================= -->
+
+<section
+    class="intro-section section-padding"
+    id="about"
+>
+
+    <div class="container">
+
+        <div class="row justify-content-center text-center">
+
+            <div class="col-lg-8">
+
+                <span class="section-label">
+                    WELCOME TO SAVOURA
+                </span>
+
+                <h2 class="section-title">
+                    Where Flavour Meets
+                    <span>Elegance</span>
+                </h2>
+
+                <p class="section-description">
+
+                    At Savoura Restaurant, we believe great food
+                    should be more than just a meal.
+
+                    From our kitchen to your table, every dish is
+                    thoughtfully prepared using fresh ingredients,
+                    bold flavours and carefully crafted recipes.
+
+                    Whether you're enjoying a casual lunch,
+                    celebrating with family or having a romantic
+                    dinner, we are here to make every moment special.
+
+                </p>
+
+                <a
+                    href="#menu"
+                    class="btn btn-dark mt-3"
+                >
+                    Discover Our Menu
+                </a>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- =========================================================
+     FOOD CATEGORIES
+========================================================= -->
+
+<section class="categories-section section-padding">
+
+    <div class="container">
+
+        <div class="section-heading text-center">
+
+            <span class="section-label">
+                EXPLORE OUR MENU
+            </span>
+
+            <h2 class="section-title">
+                Something Delicious
+                <span>For Everyone</span>
+            </h2>
+
+            <p>
+                Discover dishes prepared to satisfy every craving.
+            </p>
+
+        </div>
+
+
+        <div class="row g-4">
+
+
+            <!-- BREAKFAST -->
+
+            <div class="col-sm-6 col-lg-3">
+
+                <a
+                    href="#breakfast"
+                    class="category-card"
+                >
+
+                    <img
+                        src="https://images.unsplash.com/photo-1533089860892-a7c6f0a88666?auto=format&fit=crop&w=900&q=80"
+                        alt="Breakfast"
+                    >
+
+                    <div class="category-overlay">
+
+                        <div>
+
+                            <small>
+                                COLLECTION 01
+                            </small>
+
+                            <h3>
+                                Breakfast
+                            </h3>
+
+                            <span>
+                                Explore →
+                            </span>
+
+                        </div>
+
+                    </div>
+
+                </a>
+
+            </div>
+
+
+            <!-- MAIN DISHES -->
+
+            <div class="col-sm-6 col-lg-3">
+
+                <a
+                    href="#main-dishes"
+                    class="category-card"
+                >
+
+                    <img
+                        src="https://images.unsplash.com/photo-1547592180-85f173990554?auto=format&fit=crop&w=900&q=80"
+                        alt="Main dishes"
+                    >
+
+                    <div class="category-overlay">
+
+                        <div>
+
+                            <small>
+                                COLLECTION 02
+                            </small>
+
+                            <h3>
+                                Main Dishes
+                            </h3>
+
+                            <span>
+                                Explore →
+                            </span>
+
+                        </div>
+
+                    </div>
+
+                </a>
+
+            </div>
+
+
+            <!-- GRILLS -->
+
+            <div class="col-sm-6 col-lg-3">
+
+                <a
+                    href="#grills"
+                    class="category-card"
+                >
+
+                    <img
+                        src="https://images.unsplash.com/photo-1544025162-d76694265947?auto=format&fit=crop&w=900&q=80"
+                        alt="Grilled food"
+                    >
+
+                    <div class="category-overlay">
+
+                        <div>
+
+                            <small>
+                                COLLECTION 03
+                            </small>
+
+                            <h3>
+                                Grills
+                            </h3>
+
+                            <span>
+                                Explore →
+                            </span>
+
+                        </div>
+
+                    </div>
+
+                </a>
+
+            </div>
+
+
+            <!-- DESSERTS -->
+
+            <div class="col-sm-6 col-lg-3">
+
+                <a
+                    href="#desserts"
+                    class="category-card"
+                >
+
+                    <img
+                        src="https://images.unsplash.com/photo-1551024506-0bccd828d307?auto=format&fit=crop&w=900&q=80"
+                        alt="Desserts"
+                    >
+
+                    <div class="category-overlay">
+
+                        <div>
+
+                            <small>
+                                COLLECTION 04
+                            </small>
+
+                            <h3>
+                                Desserts
+                            </h3>
+
+                            <span>
+                                Explore →
+                            </span>
+
+                        </div>
+
+                    </div>
+
+                </a>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- =========================================================
+     MENU
+========================================================= -->
+
+<section
+    class="menu-section section-padding"
+    id="menu"
+>
+
+    <div class="container">
+
+        <div class="row align-items-end mb-5">
+
+            <div class="col-lg-8">
+
+                <span class="section-label">
+                    OUR MENU
+                </span>
+
+                <h2 class="section-title mb-2">
+                    Fresh Flavours.
+                    <span>Beautiful Plates.</span>
+                </h2>
+
+                <p class="mb-0">
+                    Discover some of our favourite dishes.
+                </p>
+
+            </div>
+
+            <div class="col-lg-4 text-lg-end mt-4 mt-lg-0">
+
+                <a
+                    href="#reservation"
+                    class="btn btn-outline-dark"
+                >
+                    Book Your Table →
+                </a>
+
+            </div>
+
+        </div>
+
+
+        <!-- =================================================
+             BREAKFAST
+        ================================================== -->
+
+        <div
+            class="collection-block"
+            id="breakfast"
+        >
+
+            <div class="collection-header">
+
+                <div>
+
+                    <span class="section-label">
+                        01 / MENU
+                    </span>
+
+                    <h3>
+                        Breakfast
+                    </h3>
+
+                    <p>
+                        Start your day with something delicious.
+                    </p>
+
+                </div>
+
+            </div>
+
+
+            <div class="row g-4">
+
+
+                <!-- FOOD 1 -->
+
+                <div class="col-md-6 col-lg-4">
+
+                    <div class="food-card">
+
+                        <div class="food-image">
+
+                            <span class="food-badge">
+                                POPULAR
+                            </span>
+
+                            <img
+                                src="https://images.unsplash.com/photo-1533089860892-a7c6f0a88666?auto=format&fit=crop&w=900&q=80"
+                                alt="Pancakes with berries"
+                            >
+
+                        </div>
+
+                        <div class="food-info">
+
+                            <span class="food-category">
+                                BREAKFAST
+                            </span>
+
+                            <h4>
+                                Berry Pancakes
+                            </h4>
+
+                            <p>
+                                Fluffy pancakes served with fresh
+                                berries, cream and maple syrup.
+                            </p>
+
+                            <div class="food-price">
+                                ₦8,500
+                            </div>
+
+                            <a
+                                href="#reservation"
+                                class="btn btn-dark w-100"
+                            >
+                                Order Now
+                            </a>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+
+                <!-- FOOD 2 -->
+
+                <div class="col-md-6 col-lg-4">
+
+                    <div class="food-card">
+
+                        <div class="food-image">
+
+                            <img
+                                src="https://images.unsplash.com/photo-1525351484163-7529414344d8?auto=format&fit=crop&w=900&q=80"
+                                alt="Egg breakfast"
+                            >
+
+                        </div>
+
+                        <div class="food-info">
+
+                            <span class="food-category">
+                                BREAKFAST
+                            </span>
+
+                            <h4>
+                                Garden Breakfast
+                            </h4>
+
+                            <p>
+                                Farm eggs, avocado, fresh vegetables,
+                                toast and our house seasoning.
+                            </p>
+
+                            <div class="food-price">
+                                ₦9,500
+                            </div>
+
+                            <a
+                                href="#reservation"
+                                class="btn btn-dark w-100"
+                            >
+                                Order Now
+                            </a>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+
+                <!-- FOOD 3 -->
+
+                <div class="col-md-6 col-lg-4">
+
+                    <div class="food-card">
+
+                        <div class="food-image">
+
+                            <img
+                                src="https://images.unsplash.com/photo-1484723091739-30a097e8f929?auto=format&fit=crop&w=900&q=80"
+                                alt="French toast"
+                            >
+
+                        </div>
+
+                        <div class="food-info">
+
+                            <span class="food-category">
+                                BREAKFAST
+                            </span>
+
+                            <h4>
+                                French Toast
+                            </h4>
+
+                            <p>
+                                Golden French toast with berries,
+                                cream and a touch of cinnamon.
+                            </p>
+
+                            <div class="food-price">
+                                ₦7,500
+                            </div>
+
+                            <a
+                                href="#reservation"
+                                class="btn btn-dark w-100"
+                            >
+                                Order Now
+                            </a>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+
+        <!-- =================================================
+             MAIN DISHES
+        ================================================== -->
+
+        <div
+            class="collection-block"
+            id="main-dishes"
+        >
+
+            <div class="collection-header">
+
+                <div>
+
+                    <span class="section-label">
+                        02 / MENU
+                    </span>
+
+                    <h3>
+                        Main Dishes
+                    </h3>
+
+                    <p>
+                        Rich flavours prepared by our chefs.
+                    </p>
+
+                </div>
+
+            </div>
+
+
+            <div class="row g-4">
+
+
+                <!-- FOOD 1 -->
+
+                <div class="col-md-6 col-lg-4">
+
+                    <div class="food-card">
+
+                        <div class="food-image">
+
+                            <span class="food-badge">
+                                CHEF'S CHOICE
+                            </span>
+
+                            <img
+                                src="https://images.unsplash.com/photo-1547592180-85f173990554?auto=format&fit=crop&w=900&q=80"
+                                alt="Pasta dish"
+                            >
+
+                        </div>
+
+                        <div class="food-info">
+
+                            <span class="food-category">
+                                MAIN DISH
+                            </span>
+
+                            <h4>
+                                Creamy Pasta
+                            </h4>
+
+                            <p>
+                                Creamy pasta with herbs, vegetables
+                                and our signature house sauce.
+                            </p>
+
+                            <div class="food-price">
+                                ₦12,500
+                            </div>
+
+                            <a
+                                href="#reservation"
+                                class="btn btn-dark w-100"
+                            >
+                                Order Now
+                            </a>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+
+                <!-- FOOD 2 -->
+
+                <div class="col-md-6 col-lg-4">
+
+                    <div class="food-card">
+
+                        <div class="food-image">
+
+                            <img
+                                src="https://images.unsplash.com/photo-1547592166-23ac45744acd?auto=format&fit=crop&w=900&q=80"
+                                alt="Rice dish"
+                            >
+
+                        </div>
+
+                        <div class="food-info">
+
+                            <span class="food-category">
+                                MAIN DISH
+                            </span>
+
+                            <h4>
+                                Signature Rice
+                            </h4>
+
+                            <p>
+                                Fragrant seasoned rice served with
+                                vegetables and grilled protein.
+                            </p>
+
+                            <div class="food-price">
+                                ₦11,500
+                            </div>
+
+                            <a
+                                href="#reservation"
+                                class="btn btn-dark w-100"
+                            >
+                                Order Now
+                            </a>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+
+                <!-- FOOD 3 -->
+
+                <div class="col-md-6 col-lg-4">
+
+                    <div class="food-card">
+
+                        <div class="food-image">
+
+                            <img
+                                src="https://images.unsplash.com/photo-1512621776951-a57141f2eefd?auto=format&fit=crop&w=900&q=80"
+                                alt="Fresh salad"
+                            >
+
+                        </div>
+
+                        <div class="food-info">
+
+                            <span class="food-category">
+                                MAIN DISH
+                            </span>
+
+                            <h4>
+                                Garden Salad
+                            </h4>
+
+                            <p>
+                                Fresh seasonal vegetables, greens,
+                                avocado and house dressing.
+                            </p>
+
+                            <div class="food-price">
+                                ₦8,000
+                            </div>
+
+                            <a
+                                href="#reservation"
+                                class="btn btn-dark w-100"
+                            >
+                                Order Now
+                            </a>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+
+        <!-- =================================================
+             GRILLS
+        ================================================== -->
+
+        <div
+            class="collection-block"
+            id="grills"
+        >
+
+            <div class="collection-header">
+
+                <div>
+
+                    <span class="section-label">
+                        03 / MENU
+                    </span>
+
+                    <h3>
+                        Grills
+                    </h3>
+
+                    <p>
+                        Smoky, juicy and freshly prepared.
+                    </p>
+
+                </div>
+
+            </div>
+
+
+            <div class="row g-4">
+
+
+                <!-- GRILL 1 -->
+
+                <div class="col-md-6 col-lg-4">
+
+                    <div class="food-card">
+
+                        <div class="food-image">
+
+                            <img
+                                src="https://images.unsplash.com/photo-1544025162-d76694265947?auto=format&fit=crop&w=900&q=80"
+                                alt="Grilled steak"
+                            >
+
+                        </div>
+
+                        <div class="food-info">
+
+                            <span class="food-category">
+                                GRILLS
+                            </span>
+
+                            <h4>
+                                Grilled Steak
+                            </h4>
+
+                            <p>
+                                Tender grilled steak served with
+                                vegetables and signature sauce.
+                            </p>
+
+                            <div class="food-price">
+                                ₦18,500
+                            </div>
+
+                            <a
+                                href="#reservation"
+                                class="btn btn-dark w-100"
+                            >
+                                Order Now
+                            </a>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+
+                <!-- GRILL 2 -->
+
+                <div class="col-md-6 col-lg-4">
+
+                    <div class="food-card">
+
+                        <div class="food-image">
+
+                            <img
+                                src="https://images.unsplash.com/photo-1532550907401-a500c9a57435?auto=format&fit=crop&w=900&q=80"
+                                alt="Grilled chicken"
+                            >
+
+                        </div>
+
+                        <div class="food-info">
+
+                            <span class="food-category">
+                                GRILLS
+                            </span>
+
+                            <h4>
+                                Herb Grilled Chicken
+                            </h4>
+
+                            <p>
+                                Juicy chicken marinated with herbs
+                                and grilled to perfection.
+                            </p>
+
+                            <div class="food-price">
+                                ₦14,000
+                            </div>
+
+                            <a
+                                href="#reservation"
+                                class="btn btn-dark w-100"
+                            >
+                                Order Now
+                            </a>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+
+                <!-- GRILL 3 -->
+
+                <div class="col-md-6 col-lg-4">
+
+                    <div class="food-card">
+
+                        <div class="food-image">
+
+                            <img
+                                src="https://images.unsplash.com/photo-1558030006-450675393462?auto=format&fit=crop&w=900&q=80"
+                                alt="Roasted meat"
+                            >
+
+                        </div>
+
+                        <div class="food-info">
+
+                            <span class="food-category">
+                                GRILLS
+                            </span>
+
+                            <h4>
+                                Signature Roast
+                            </h4>
+
+                            <p>
+                                Slow-roasted premium meat with
+                                vegetables and rich gravy.
+                            </p>
+
+                            <div class="food-price">
+                                ₦17,500
+                            </div>
+
+                            <a
+                                href="#reservation"
+                                class="btn btn-dark w-100"
+                            >
+                                Order Now
+                            </a>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+
+        <!-- =================================================
+             DESSERTS
+        ================================================== -->
+
+        <div
+            class="collection-block"
+            id="desserts"
+        >
+
+            <div class="collection-header">
+
+                <div>
+
+                    <span class="section-label">
+                        04 / MENU
+                    </span>
+
+                    <h3>
+                        Desserts
+                    </h3>
+
+                    <p>
+                        Finish your meal on a sweet note.
+                    </p>
+
+                </div>
+
+            </div>
+
+
+            <div class="row g-4">
+
+
+                <!-- DESSERT 1 -->
+
+                <div class="col-md-6 col-lg-4">
+
+                    <div class="food-card">
+
+                        <div class="food-image">
+
+                            <span class="food-badge">
+                                NEW
+                            </span>
+
+                            <img
+                                src="https://images.unsplash.com/photo-1551024506-0bccd828d307?auto=format&fit=crop&w=900&q=80"
+                                alt="Donuts"
+                            >
+
+                        </div>
+
+                        <div class="food-info">
+
+                            <span class="food-category">
+                                DESSERT
+                            </span>
+
+                            <h4>
+                                Sweet Doughnuts
+                            </h4>
+
+                            <p>
+                                Soft, golden doughnuts finished
+                                with a delicious sweet glaze.
+                            </p>
+
+                            <div class="food-price">
+                                ₦5,500
+                            </div>
+
+                            <a
+                                href="#reservation"
+                                class="btn btn-dark w-100"
+                            >
+                                Order Now
+                            </a>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+
+                <!-- DESSERT 2 -->
+
+                <div class="col-md-6 col-lg-4">
+
+                    <div class="food-card">
+
+                        <div class="food-image">
+
+                            <img
+                                src="https://images.unsplash.com/photo-1578985545062-69928b1d9587?auto=format&fit=crop&w=900&q=80"
+                                alt="Chocolate cake"
+                            >
+
+                        </div>
+
+                        <div class="food-info">
+
+                            <span class="food-category">
+                                DESSERT
+                            </span>
+
+                            <h4>
+                                Chocolate Cake
+                            </h4>
+
+                            <p>
+                                Rich chocolate cake layered with
+                                smooth chocolate cream.
+                            </p>
+
+                            <div class="food-price">
+                                ₦6,500
+                            </div>
+
+                            <a
+                                href="#reservation"
+                                class="btn btn-dark w-100"
+                            >
+                                Order Now
+                            </a>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+
+                <!-- DESSERT 3 -->
+
+                <div class="col-md-6 col-lg-4">
+
+                    <div class="food-card">
+
+                        <div class="food-image">
+
+                            <img
+                                src="https://images.unsplash.com/photo-1565958011703-44f9829ba187?auto=format&fit=crop&w=900&q=80"
+                                alt="Cream cake"
+                            >
+
+                        </div>
+
+                        <div class="food-info">
+
+                            <span class="food-category">
+                                DESSERT
+                            </span>
+
+                            <h4>
+                                Cream Berry Cake
+                            </h4>
+
+                            <p>
+                                Light cream cake topped with fresh
+                                berries and delicate decoration.
+                            </p>
+
+                            <div class="food-price">
+                                ₦7,500
+                            </div>
+
+                            <a
+                                href="#reservation"
+                                class="btn btn-dark w-100"
+                            >
+                                Order Now
+                            </a>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- =========================================================
+     RESERVATION CTA
+========================================================= -->
+
+<section
+    class="cta-section"
+    id="reservation"
+>
+
+    <div class="container">
+
+        <div class="row justify-content-center text-center">
+
+            <div class="col-lg-8">
+
+                <span class="section-label">
+                    YOUR TABLE AWAITS
+                </span>
+
+                <h2>
+                    Make Every Meal
+                    <span>Unforgettable.</span>
+                </h2>
+
+                <p>
+                    Whether you're planning a romantic dinner,
+                    family celebration, business lunch or simply
+                    looking for great food, Savoura is ready to
+                    welcome you.
+                </p>
+
+                <div class="mt-4">
+
+                    <a
+                        href="tel:+2347079057773"
+                        class="btn btn-warning btn-lg me-2"
+                    >
+                        Call to Reserve
+                    </a>
+
+                    <a
+                        href="mailto:reservations@savoura.com"
+                        class="btn btn-outline-light btn-lg"
+                    >
+                        Email Us
+                    </a>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- =========================================================
+     FOOTER
+========================================================= -->
+
+<footer
+    class="footer"
+    id="contact"
+>
+
+    <div class="container">
+
+        <div class="row g-5">
+
+
+            <!-- BRAND -->
+
+            <div class="col-lg-4">
+
+                <a
+                    href="#top"
+                    class="footer-brand"
+                >
+
+                    <span class="brand-orange">
+                        SAVOURA
+                    </span>
+
+                    <span class="brand-white">
+                        RESTAURANT
+                    </span>
+
+                </a>
+
+                <p class="mt-3">
+                    Savoura is a modern restaurant offering
+                    delicious food, exceptional service and
+                    memorable dining experiences.
+                </p>
+
+                <p>
+                    Come hungry. Leave happy.
+                </p>
+
+                <a
+                    href="#reservation"
+                    class="footer-contact-link"
+                >
+                    Reserve your table →
+                </a>
+
+            </div>
+
+
+            <!-- MENU -->
+
+            <div class="col-6 col-lg-2">
+
+                <h5>
+                    MENU
+                </h5>
+
+                <ul class="footer-links">
+
+                    <li>
+                        <a href="#breakfast">
+                            Breakfast
                         </a>
                     </li>
 
-                    <li class="nav-item">
-                        <a class="nav-link active" href="sale.html">
-                            Sales
+                    <li>
+                        <a href="#main-dishes">
+                            Main Dishes
                         </a>
                     </li>
 
-                    <li class="nav-item">
-                        <a class="nav-link" href="about-us.html">
-                            About
+                    <li>
+                        <a href="#grills">
+                            Grills
                         </a>
                     </li>
 
-                    <li class="nav-item">
-                        <a class="nav-link" href="contact-us.html">
-                            Contact Us
+                    <li>
+                        <a href="#desserts">
+                            Desserts
                         </a>
                     </li>
 
                 </ul>
 
             </div>
-        </div>
-    </nav>
 
 
-    <!-- =========================
-         PAGE HEADER
-    ========================== -->
+            <!-- COMPANY -->
 
-    <header class="page-header">
+            <div class="col-6 col-lg-2">
 
-        <h1>WHITE LACES</h1>
+                <h5>
+                    COMPANY
+                </h5>
 
-        <div class="header-line"></div>
+                <ul class="footer-links">
 
-        <p>
-            Discover our latest collection of elegant white Swiss and
-            beaded laces.
-        </p>
-
-    </header>
-
-
-    <!-- =========================
-         PRODUCTS
-    ========================== -->
-
-    <main class="container pb-5">
-
-        <div class="row g-4">
-
-
-            <!-- PRODUCT 1 -->
-            <div class="col-12 col-sm-6 col-lg-4">
-                <div class="product-card">
-
-                    <a href="sale.html">
-                        <div class="image-wrapper">
-                            <img
-                                src="assets/images/White fine lace/1 (1).jpg"
-                                class="product-image"
-                                alt="White Swiss Lace"
-                            >
-                        </div>
-                    </a>
-
-                    <div class="product-body">
-
-                        <h2 class="product-title">
-                            Latest White Swiss Lace
-                        </h2>
-
-                        <p class="product-description">
-                            Available by unit or in bulk.
-                            Price is per yard.
-                        </p>
-
-                        <div class="price">
-                            <del class="old-price">&#8358;10,000</del>
-                            <span class="new-price">&#8358;8,000</span>
-                        </div>
-
-                        <a href="sale.html" class="btn btn-shop">
-                            ADD TO CART
+                    <li>
+                        <a href="#about">
+                            About Us
                         </a>
+                    </li>
 
-                    </div>
-                </div>
+                    <li>
+                        <a href="#menu">
+                            Our Menu
+                        </a>
+                    </li>
+
+                    <li>
+                        <a href="#reservation">
+                            Reservations
+                        </a>
+                    </li>
+
+                    <li>
+                        <a href="#contact">
+                            Contact
+                        </a>
+                    </li>
+
+                </ul>
+
             </div>
 
 
-            <!-- PRODUCT 2 -->
-            <div class="col-12 col-sm-6 col-lg-4">
-                <div class="product-card">
+            <!-- CONTACT -->
 
-                    <a href="sale.html">
-                        <div class="image-wrapper">
-                            <img
-                                src="assets/images/White fine lace/1 (2).jpg"
-                                class="product-image"
-                                alt="White Swiss Lace"
-                            >
-                        </div>
+            <div class="col-lg-4">
+
+                <h5>
+                    CONTACT
+                </h5>
+
+
+                <div class="contact-item">
+
+                    <span>
+                        PHONE
+                    </span>
+
+                    <a href="tel:+2347079057773">
+                        +234 707 905 7773
                     </a>
 
-                    <div class="product-body">
-
-                        <h2 class="product-title">
-                            Latest White Swiss Lace
-                        </h2>
-
-                        <p class="product-description">
-                            Available by unit or in bulk.
-                            Price is per yard.
-                        </p>
-
-                        <div class="price">
-                            <del class="old-price">&#8358;10,000</del>
-                            <span class="new-price">&#8358;8,000</span>
-                        </div>
-
-                        <a href="sale.html" class="btn btn-shop">
-                            ADD TO CART
-                        </a>
-
-                    </div>
                 </div>
-            </div>
 
 
-            <!-- PRODUCT 3 -->
-            <div class="col-12 col-sm-6 col-lg-4">
-                <div class="product-card">
+                <div class="contact-item">
 
-                    <a href="sale.html">
-                        <div class="image-wrapper">
-                            <img
-                                src="assets/images/White fine lace/1 (3).jpg"
-                                class="product-image"
-                                alt="White Swiss Lace"
-                            >
-                        </div>
+                    <span>
+                        EMAIL
+                    </span>
+
+                    <a href="mailto:reservations@savoura.com">
+                        reservations@savoura.com
                     </a>
 
-                    <div class="product-body">
-
-                        <h2 class="product-title">
-                            Latest White Swiss Lace
-                        </h2>
-
-                        <p class="product-description">
-                            Available by unit or in bulk.
-                            Price is per yard.
-                        </p>
-
-                        <div class="price">
-                            <del class="old-price">&#8358;10,000</del>
-                            <span class="new-price">&#8358;8,000</span>
-                        </div>
-
-                        <a href="sale.html" class="btn btn-shop">
-                            ADD TO CART
-                        </a>
-
-                    </div>
                 </div>
-            </div>
 
 
-            <!-- PRODUCT 4 -->
-            <div class="col-12 col-sm-6 col-lg-4">
-                <div class="product-card">
+                <div class="contact-item">
 
-                    <a href="sale.html">
-                        <div class="image-wrapper">
-                            <img
-                                src="assets/images/White fine lace/1 (4).jpg"
-                                class="product-image"
-                                alt="White Swiss Lace"
-                            >
-                        </div>
-                    </a>
+                    <span>
+                        LOCATION
+                    </span>
 
-                    <div class="product-body">
+                    <p>
+                        24 Restaurant Avenue,
+                        Victoria Island,
+                        Lagos, Nigeria.
+                    </p>
 
-                        <h2 class="product-title">
-                            Latest White Swiss Lace
-                        </h2>
-
-                        <p class="product-description">
-                            Available by unit or in bulk.
-                            Price is per yard.
-                        </p>
-
-                        <div class="price">
-                            <del class="old-price">&#8358;10,000</del>
-                            <span class="new-price">&#8358;8,000</span>
-                        </div>
-
-                        <a href="sale.html" class="btn btn-shop">
-                            ADD TO CART
-                        </a>
-
-                    </div>
                 </div>
-            </div>
 
 
-            <!-- PRODUCT 5 -->
-            <div class="col-12 col-sm-6 col-lg-4">
-                <div class="product-card">
+                <div class="contact-item">
 
-                    <a href="sale.html">
-                        <div class="image-wrapper">
-                            <img
-                                src="assets/images/White fine lace/1 (5).jpg"
-                                class="product-image"
-                                alt="White Swiss Lace"
-                            >
-                        </div>
-                    </a>
+                    <span>
+                        OPENING HOURS
+                    </span>
 
-                    <div class="product-body">
+                    <p>
+                        Monday – Sunday
+                    </p>
 
-                        <h2 class="product-title">
-                            Latest White Swiss Lace
-                        </h2>
+                    <p>
+                        10:00 AM – 11:00 PM
+                    </p>
 
-                        <p class="product-description">
-                            Available by unit or in bulk.
-                            Price is per yard.
-                        </p>
-
-                        <div class="price">
-                            <del class="old-price">&#8358;10,000</del>
-                            <span class="new-price">&#8358;8,000</span>
-                        </div>
-
-                        <a href="sale.html" class="btn btn-shop">
-                            ADD TO CART
-                        </a>
-
-                    </div>
                 </div>
-            </div>
 
-
-            <!-- PRODUCT 6 -->
-            <div class="col-12 col-sm-6 col-lg-4">
-                <div class="product-card">
-
-                    <a href="sale.html">
-                        <div class="image-wrapper">
-                            <img
-                                src="assets/images/White fine lace/1 (6).jpg"
-                                class="product-image"
-                                alt="White Swiss Lace"
-                            >
-                        </div>
-                    </a>
-
-                    <div class="product-body">
-
-                        <h2 class="product-title">
-                            Latest White Swiss Lace
-                        </h2>
-
-                        <p class="product-description">
-                            Available by unit or in bulk.
-                            Price is per yard.
-                        </p>
-
-                        <div class="price">
-                            <del class="old-price">&#8358;10,000</del>
-                            <span class="new-price">&#8358;8,000</span>
-                        </div>
-
-                        <a href="sale.html" class="btn btn-shop">
-                            ADD TO CART
-                        </a>
-
-                    </div>
-                </div>
-            </div>
-
-
-            <!-- PRODUCT 7 -->
-            <div class="col-12 col-sm-6 col-lg-4">
-                <div class="product-card">
-
-                    <a href="sale.html">
-                        <div class="image-wrapper">
-                            <img
-                                src="assets/images/White fine lace/1 (7).jpg"
-                                class="product-image"
-                                alt="White Swiss Lace"
-                            >
-                        </div>
-                    </a>
-
-                    <div class="product-body">
-
-                        <h2 class="product-title">
-                            Latest White Swiss Lace
-                        </h2>
-
-                        <p class="product-description">
-                            Available by unit or in bulk.
-                            Price is per yard.
-                        </p>
-
-                        <div class="price">
-                            <del class="old-price">&#8358;10,000</del>
-                            <span class="new-price">&#8358;8,000</span>
-                        </div>
-
-                        <a href="sale.html" class="btn btn-shop">
-                            ADD TO CART
-                        </a>
-
-                    </div>
-                </div>
-            </div>
-
-
-            <!-- PRODUCT 8 -->
-            <div class="col-12 col-sm-6 col-lg-4">
-                <div class="product-card">
-
-                    <a href="sale.html">
-                        <div class="image-wrapper">
-                            <img
-                                src="assets/images/White fine lace/1 (8).jpg"
-                                class="product-image"
-                                alt="White Swiss Lace"
-                            >
-                        </div>
-                    </a>
-
-                    <div class="product-body">
-
-                        <h2 class="product-title">
-                            Latest White Swiss Lace
-                        </h2>
-
-                        <p class="product-description">
-                            Available by unit or in bulk.
-                            Price is per yard.
-                        </p>
-
-                        <div class="price">
-                            <del class="old-price">&#8358;10,000</del>
-                            <span class="new-price">&#8358;8,000</span>
-                        </div>
-
-                        <a href="sale.html" class="btn btn-shop">
-                            ADD TO CART
-                        </a>
-
-                    </div>
-                </div>
-            </div>
-
-
-            <!-- PRODUCT 9 -->
-            <div class="col-12 col-sm-6 col-lg-4">
-                <div class="product-card">
-
-                    <a href="sale.html">
-                        <div class="image-wrapper">
-                            <img
-                                src="assets/images/White fine lace/1 (9).jpg"
-                                class="product-image"
-                                alt="White Swiss Lace"
-                            >
-                        </div>
-                    </a>
-
-                    <div class="product-body">
-
-                        <h2 class="product-title">
-                            Latest White Swiss Lace
-                        </h2>
-
-                        <p class="product-description">
-                            Available by unit or in bulk.
-                            Price is per yard.
-                        </p>
-
-                        <div class="price">
-                            <del class="old-price">&#8358;10,000</del>
-                            <span class="new-price">&#8358;8,000</span>
-                        </div>
-
-                        <a href="sale.html" class="btn btn-shop">
-                            ADD TO CART
-                        </a>
-
-                    </div>
-                </div>
-            </div>
-
-
-            <!-- PRODUCT 10 -->
-            <div class="col-12 col-sm-6 col-lg-4">
-                <div class="product-card">
-
-                    <a href="sale.html">
-                        <div class="image-wrapper">
-                            <img
-                                src="assets/images/White fine lace/1 (10).jpg"
-                                class="product-image"
-                                alt="White Swiss Lace"
-                            >
-                        </div>
-                    </a>
-
-                    <div class="product-body">
-
-                        <h2 class="product-title">
-                            Latest White Swiss Lace
-                        </h2>
-
-                        <p class="product-description">
-                            Available by unit or in bulk.
-                            Price is per yard.
-                        </p>
-
-                        <div class="price">
-                            <del class="old-price">&#8358;10,000</del>
-                            <span class="new-price">&#8358;8,000</span>
-                        </div>
-
-                        <a href="sale.html" class="btn btn-shop">
-                            ADD TO CART
-                        </a>
-
-                    </div>
-                </div>
-            </div>
-
-
-            <!-- PRODUCT 11 -->
-            <div class="col-12 col-sm-6 col-lg-4">
-                <div class="product-card">
-
-                    <a href="sale.html">
-                        <div class="image-wrapper">
-                            <img
-                                src="assets/images/White fine lace/1 (11).jpg"
-                                class="product-image"
-                                alt="White Swiss Lace"
-                            >
-                        </div>
-                    </a>
-
-                    <div class="product-body">
-
-                        <h2 class="product-title">
-                            Latest White Swiss Lace
-                        </h2>
-
-                        <p class="product-description">
-                            Available by unit or in bulk.
-                            Price is per yard.
-                        </p>
-
-                        <div class="price">
-                            <del class="old-price">&#8358;10,000</del>
-                            <span class="new-price">&#8358;8,000</span>
-                        </div>
-
-                        <a href="sale.html" class="btn btn-shop">
-                            ADD TO CART
-                        </a>
-
-                    </div>
-                </div>
-            </div>
-
-
-            <!-- PRODUCT 12 -->
-            <div class="col-12 col-sm-6 col-lg-4">
-                <div class="product-card">
-
-                    <a href="sale.html">
-                        <div class="image-wrapper">
-                            <img
-                                src="assets/images/White fine lace/1 (12).jpg"
-                                class="product-image"
-                                alt="White Swiss Lace"
-                            >
-                        </div>
-                    </a>
-
-                    <div class="product-body">
-
-                        <h2 class="product-title">
-                            Latest White Swiss Lace
-                        </h2>
-
-                        <p class="product-description">
-                            Available by unit or in bulk.
-                            Price is per yard.
-                        </p>
-
-                        <div class="price">
-                            <del class="old-price">&#8358;10,000</del>
-                            <span class="new-price">&#8358;8,000</span>
-                        </div>
-
-                        <a href="sale.html" class="btn btn-shop">
-                            ADD TO CART
-                        </a>
-
-                    </div>
-                </div>
-            </div>
-
-
-            <!-- 
-                CONTINUE THE SAME CARD STRUCTURE
-                FOR IMAGES 13 - 62.
-            -->
-
-            <!-- Example -->
-            <div class="col-12 col-sm-6 col-lg-4">
-                <div class="product-card">
-
-                    <a href="sale.html">
-                        <div class="image-wrapper">
-                            <img
-                                src="assets/images/White fine lace/1 (13).jpg"
-                                class="product-image"
-                                alt="White Lace"
-                            >
-                        </div>
-                    </a>
-
-                    <div class="product-body">
-
-                        <h2 class="product-title">
-                            Latest White Lace
-                        </h2>
-
-                        <p class="product-description">
-                            Available by unit or in bulk.
-                            Price is per yard.
-                        </p>
-
-                        <div class="price">
-                            <del class="old-price">&#8358;10,000</del>
-                            <span class="new-price">&#8358;8,000</span>
-                        </div>
-
-                        <a href="sale.html" class="btn btn-shop">
-                            ADD TO CART
-                        </a>
-
-                    </div>
-                </div>
-            </div>
-
-
-            <div class="col-12 col-sm-6 col-lg-4">
-                <div class="product-card">
-
-                    <a href="sale.html">
-                        <div class="image-wrapper">
-                            <img
-                                src="assets/images/White fine lace/1 (14).jpg"
-                                class="product-image"
-                                alt="White Lace"
-                            >
-                        </div>
-                    </a>
-
-                    <div class="product-body">
-
-                        <h2 class="product-title">
-                            Latest White Lace
-                        </h2>
-
-                        <p class="product-description">
-                            Available by unit or in bulk.
-                            Price is per yard.
-                        </p>
-
-                        <div class="price">
-                            <del class="old-price">&#8358;10,000</del>
-                            <span class="new-price">&#8358;8,000</span>
-                        </div>
-
-                        <a href="sale.html" class="btn btn-shop">
-                            ADD TO CART
-                        </a>
-
-                    </div>
-                </div>
-            </div>
-
-
-            <div class="col-12 col-sm-6 col-lg-4">
-                <div class="product-card">
-
-                    <a href="sale.html">
-                        <div class="image-wrapper">
-                            <img
-                                src="assets/images/White fine lace/1 (15).jpg"
-                                class="product-image"
-                                alt="White Beaded Lace"
-                            >
-                        </div>
-                    </a>
-
-                    <div class="product-body">
-
-                        <h2 class="product-title">
-                            Latest White Beaded Lace
-                        </h2>
-
-                        <p class="product-description">
-                            Available by unit or in bulk.
-                            Price is per yard.
-                        </p>
-
-                        <div class="price">
-                            <del class="old-price">&#8358;10,000</del>
-                            <span class="new-price">&#8358;8,000</span>
-                        </div>
-
-                        <a href="sale.html" class="btn btn-shop">
-                            ADD TO CART
-                        </a>
-
-                    </div>
-                </div>
             </div>
 
         </div>
 
-    </main>
 
+        <div class="footer-bottom">
 
-    <!-- =========================
-         FOOTER
-    ========================== -->
-
-    <footer>
-
-        <div class="container">
-
-            <h5>WHITE LACES</h5>
-
-            <p class="mb-0">
-                Beautiful lace fabrics for every occasion.
+            <p>
+                © 2026 SAVOURA RESTAURANT.
+                ALL RIGHTS RESERVED.
             </p>
 
-            <p class="mt-2 mb-0">
-                &copy; 2026 White Laces. All Rights Reserved.
-            </p>
+            <a href="#top">
+                Back to Top ↑
+            </a>
 
         </div>
 
-    </footer>
+    </div>
+
+</footer>
 
 
-    <!-- Bootstrap JS bundle -->
-    <script
-        src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js">
-    </script>
+<!-- Bootstrap JS -->
+
+<script
+    src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js">
+</script>
 
 </body>
 </html>
-```

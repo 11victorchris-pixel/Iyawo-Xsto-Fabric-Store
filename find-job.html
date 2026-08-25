@@ -1,172 +1,747 @@
- 
- 
- <!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=<device-width>, initial-scale=1.0">
-    <title>Admission</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Job Application Form</title>
+
+    <!-- Bootstrap CSS -->
+    <link 
+        href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" 
+        rel="stylesheet"
+    >
+
+    <!-- Custom CSS -->
+    <style>
+        body {
+            background: linear-gradient(135deg, #ff9800, #ffc107);
+            min-height: 100vh;
+            padding: 40px 0;
+        }
+
+        .application-card {
+            max-width: 1000px;
+            margin: auto;
+            border: none;
+            border-radius: 15px;
+            overflow: hidden;
+        }
+
+        .card-header {
+            background: #212529;
+            color: white;
+            padding: 30px;
+        }
+
+        .card-header h1 {
+            margin-bottom: 8px;
+            font-weight: 700;
+        }
+
+        .section-title {
+            color: #8b0000;
+            font-weight: 600;
+            border-left: 5px solid #dc3545;
+            padding-left: 12px;
+            margin-top: 30px;
+            margin-bottom: 20px;
+        }
+
+        .form-label {
+            font-weight: 600;
+        }
+
+        .required::after {
+            content: " *";
+            color: red;
+        }
+
+        .file-box {
+            background-color: #f8f9fa;
+            padding: 15px;
+            border-radius: 8px;
+            border: 1px solid #dee2e6;
+        }
+
+        .btn-submit {
+            padding: 12px 30px;
+        }
+
+        .btn-reset {
+            padding: 12px 30px;
+        }
+
+        footer {
+            text-align: center;
+            margin-top: 20px;
+            color: #555;
+        }
+    </style>
 </head>
 
-<body style="background-color: orange;">
-    <a href="index.html">Home</a>
+<body>
 
-    <form>
-         <h1 style="text-align: center;">Apply for Job opportuney</h1>
-         <small> please fill in the form below carefully </small>
+    <div class="container">
 
-        <h3 style="border: 2px soild black; color:rbg(105,16,16);" >Profile Information</h3>
-        <hr>
-        
-        <label> Students name:</label> <br>
-        <input type="text" placeholder="Full name" required> <br> <br> 
-         
-        <label> fathers name:</label> <br>
-        <input type="text" placeholder=" enter father's name " required> <br> <br>
-        
-        <label> Mother name:</label> <br>
-        <input type="text" placeholder=" enter mother's name" required> <br> <br>
-                
-        <label>Nationality:</label> <br>
-        <select required>
-           
-            <option selected disabled>--- select a country-- </option>
-            <option> Nigeria</option>
-            <option>Ghana</option>
-            <option>South Africa</option>
-            <option>United States</option>
-            <option>Kenya</option>
-            
-        </select> <br> <br>
+        <!-- Home Link -->
+        <div class="mb-3">
+            <a href="index.html" class="btn btn-dark">
+                &larr; Home
+            </a>
+        </div>
 
-        <label>Email:</label> <br>
-        <input type="mail" placeholder=" Enter your email" required> <br> <br>
+        <!-- Application Card -->
+        <div class="card shadow-lg application-card">
 
-        <label> State of Origin:</label> <br>
-        <input type="text" placeholder=" Enter your state of origin" required> <br> <br>
-        
-        <label> Gender:</label> <br>
-        <select required>
-           
-            <option selected disabled>--- select a gender-- </option>
-            <option> Male</option>
-            <option> Female</option>
-            <option selected disabled> perfer not to say</option>
-            
-        </select> <br> <br>
-        
-        <label> how many years exprisence did you have and for which company?</label>  <br>
-        <input type="text" required> <br> <br>
-        
-        <label> Date of birth:</label> <br>
-        <input type="date" placeholder="date"> <br> <br>
+            <!-- Header -->
+            <div class="card-header text-center">
+                <h1>Job Application Form</h1>
+                <p class="mb-0">
+                    Please fill in the form below carefully.
+                </p>
+            </div>
 
-        <label> Place of birth:</label> <br>
-        <select required>
-            <option selected disabled> --- select your place of birth--- </option>
-            <option> hospital</option>
-            <option> church</option>
-            <option>  home</option>
-            <option> mosque</option>
-            <option> On a trip</option>
-        </select> <br> <br>
+            <!-- Form -->
+            <div class="card-body p-4 p-md-5">
 
-        <label> Home address:</label> <br>
-        <input  type="text" placeholder="Street Address" required> <br> <br>
-        <input  type="text" placeholder=" Sereet address Line 2" required> <br> <br>
-        <input  type="text" placeholder=" City"> <br> <br>
-        <input  type="text" placeholder=" Region"> <br> <br>
-        <input  type="text" placeholder=" Postal/Zip Code"> <br> <br>
-     
-        <br> <br>
-        <label>Phone Number:</label> <br>
-        <input  type="tel" placeholder="0809976664"> <br> <br>
+                <form 
+                    action="#" 
+                    method="post" 
+                    enctype="multipart/form-data"
+                >
 
-        <label> Applying for: </label> <br>
-        <select required>
-            <option selected disabled>--- select a position--- </option>
-            <option>Manger</option>
-            <option> Accountant</option>
-            <option> Sales Rep</option>
-            <option>Clerk</option>
-            <option> secetry </option>
-            <option> cleaner </option>
-        </select>
-        <br> <br>
+                    <!-- ================= PROFILE INFORMATION ================= -->
 
-        
-        <h3>Academic Information</h3>
-        <hr>
-                
-        <label>Previous School Attended:</label> <br>
-        <input type="text" placeholder="enter your previous school" required> <br> <br> 
-        
-        <label> Select the Course studyed: </label> <br>
-        <select required>
-            <option selected disabled>--- select a Course--- </option>
-            <option>Engilsh</option>
-            <option> mass communication</option>
-            <option>Engineering</option>
-            <option> Pharmacy</option>
-        </select>
-        <br> <br>
+                    <h3 class="section-title">
+                        Profile Information
+                    </h3>
 
-        <label> Last class complete:</label> <br>
-        <input type="text" placeholder="enter your Last class complete" required> <br> <br> 
+                    <div class="row g-3">
+
+                        <!-- Student Name -->
+                        <div class="col-md-6">
+                            <label for="studentName" class="form-label required">
+                                Applicant's Name
+                            </label>
+
+                            <input 
+                                type="text"
+                                class="form-control"
+                                id="studentName"
+                                name="studentName"
+                                placeholder="Enter your full name"
+                                required
+                            >
+                        </div>
+
+                        <!-- Father's Name -->
+                        <div class="col-md-6">
+                            <label for="fatherName" class="form-label required">
+                                Father's Name
+                            </label>
+
+                            <input 
+                                type="text"
+                                class="form-control"
+                                id="fatherName"
+                                name="fatherName"
+                                placeholder="Enter father's name"
+                                required
+                            >
+                        </div>
+
+                        <!-- Mother's Name -->
+                        <div class="col-md-6">
+                            <label for="motherName" class="form-label required">
+                                Mother's Name
+                            </label>
+
+                            <input 
+                                type="text"
+                                class="form-control"
+                                id="motherName"
+                                name="motherName"
+                                placeholder="Enter mother's name"
+                                required
+                            >
+                        </div>
+
+                        <!-- Nationality -->
+                        <div class="col-md-6">
+                            <label for="nationality" class="form-label required">
+                                Nationality
+                            </label>
+
+                            <select 
+                                class="form-select"
+                                id="nationality"
+                                name="nationality"
+                                required
+                            >
+                                <option value="" selected disabled>
+                                    --- Select a country ---
+                                </option>
+                                <option value="Nigeria">Nigeria</option>
+                                <option value="Ghana">Ghana</option>
+                                <option value="South Africa">South Africa</option>
+                                <option value="United States">United States</option>
+                                <option value="Kenya">Kenya</option>
+                            </select>
+                        </div>
+
+                        <!-- Email -->
+                        <div class="col-md-6">
+                            <label for="email" class="form-label required">
+                                Email
+                            </label>
+
+                            <input 
+                                type="email"
+                                class="form-control"
+                                id="email"
+                                name="email"
+                                placeholder="Enter your email"
+                                required
+                            >
+                        </div>
+
+                        <!-- State -->
+                        <div class="col-md-6">
+                            <label for="state" class="form-label required">
+                                State of Origin
+                            </label>
+
+                            <input 
+                                type="text"
+                                class="form-control"
+                                id="state"
+                                name="state"
+                                placeholder="Enter your state of origin"
+                                required
+                            >
+                        </div>
+
+                        <!-- Gender -->
+                        <div class="col-md-6">
+                            <label for="gender" class="form-label required">
+                                Gender
+                            </label>
+
+                            <select 
+                                class="form-select"
+                                id="gender"
+                                name="gender"
+                                required
+                            >
+                                <option value="" selected disabled>
+                                    --- Select gender ---
+                                </option>
+                                <option value="Male">Male</option>
+                                <option value="Female">Female</option>
+                                <option value="Prefer not to say">
+                                    Prefer not to say
+                                </option>
+                            </select>
+                        </div>
+
+                        <!-- Experience -->
+                        <div class="col-md-6">
+                            <label for="experience" class="form-label required">
+                                Work Experience
+                            </label>
+
+                            <input 
+                                type="text"
+                                class="form-control"
+                                id="experience"
+                                name="experience"
+                                placeholder="e.g. 3 years at ABC Company"
+                                required
+                            >
+                        </div>
+
+                        <!-- Date of Birth -->
+                        <div class="col-md-6">
+                            <label for="dob" class="form-label required">
+                                Date of Birth
+                            </label>
+
+                            <input 
+                                type="date"
+                                class="form-control"
+                                id="dob"
+                                name="dob"
+                                required
+                            >
+                        </div>
+
+                        <!-- Place of Birth -->
+                        <div class="col-md-6">
+                            <label for="birthPlace" class="form-label required">
+                                Place of Birth
+                            </label>
+
+                            <select 
+                                class="form-select"
+                                id="birthPlace"
+                                name="birthPlace"
+                                required
+                            >
+                                <option value="" selected disabled>
+                                    --- Select place of birth ---
+                                </option>
+                                <option value="Hospital">Hospital</option>
+                                <option value="Church">Church</option>
+                                <option value="Home">Home</option>
+                                <option value="Mosque">Mosque</option>
+                                <option value="On a trip">On a trip</option>
+                            </select>
+                        </div>
+
+                    </div>
 
 
-       
-       <h3> Parent/Guardian Information</h3>
-       <hr>
-        <label>Parent/Guardian name:</label> <br>
-        <input type="text" placeholder=" Enter Your Parent/guardian name" required> <br> <br> 
-         
-        <label> Parent/Guardian Phone Number:</label> <br>
-        <input type="tel" placeholder=" enter Parent/Guardian number " required> <br> <br>
-        
-        <label> Parent/Guardian Email:</label> <br>
-        <input type="mail" placeholder=" enter Parent/Guardian email" required> <br> <br>
+                    <!-- ================= ADDRESS ================= -->
 
-        <label> Parent/Guardian Phone Address:</label> <br>
-        <input placeholder=" enter Parent/Guardian address " required> <br> <br>
-        
-        <label> Relationship to Student:</label> <br>
-        <input type="mail" placeholder=" enter relationship " required> <br> <br>
+                    <h3 class="section-title">
+                        Contact Information
+                    </h3>
 
-        
+                    <div class="row g-3">
 
-        <h3> Document:</h3>
-        <hr>
+                        <!-- Street -->
+                        <div class="col-md-6">
+                            <label for="street" class="form-label required">
+                                Street Address
+                            </label>
 
-        <label> Upload your waec certificate</label> <br>
-        <input type="file"> <br> <br>
+                            <input 
+                                type="text"
+                                class="form-control"
+                                id="street"
+                                name="street"
+                                placeholder="Street address"
+                                required
+                            >
+                        </div>
 
-        <label> Upload your pass port</label> <br>
-        <input type="file"> <br> <br>
-        
-        <label> Upload Birth Certificate</label> <br>
-        <input type="file"> <br> <br>
+                        <!-- Address Line 2 -->
+                        <div class="col-md-6">
+                            <label for="address2" class="form-label">
+                                Address Line 2
+                            </label>
 
-        <label> Upload Academic Transcripts:</label> <br>
-        <input type="file"> <br> <br>
+                            <input 
+                                type="text"
+                                class="form-control"
+                                id="address2"
+                                name="address2"
+                                placeholder="Apartment, suite, etc."
+                            >
+                        </div>
 
-        
-        <label> Upload Parent/Guardian ID:</label> <br>
-        <input type="file"> <br> <br>
+                        <!-- City -->
+                        <div class="col-md-4">
+                            <label for="city" class="form-label">
+                                City
+                            </label>
 
-        <label> Upload your CV or resume </label> <br>
-        <input type="file"> <br> <br>
+                            <input 
+                                type="text"
+                                class="form-control"
+                                id="city"
+                                name="city"
+                                placeholder="City"
+                            >
+                        </div>
 
-        <button style="background-color: #4CAF50; color:white; padding: 10px 20px; border-radius: 4px;" type="submit"> Submit Application</button>
-        <button style="background-color: #f44336; color:white; padding: 10px 20px; border-radius: 4px;" type="reset"> Reset Form</button>
+                        <!-- Region -->
+                        <div class="col-md-4">
+                            <label for="region" class="form-label">
+                                Region
+                            </label>
+
+                            <input 
+                                type="text"
+                                class="form-control"
+                                id="region"
+                                name="region"
+                                placeholder="Region"
+                            >
+                        </div>
+
+                        <!-- Postal Code -->
+                        <div class="col-md-4">
+                            <label for="postalCode" class="form-label">
+                                Postal/ZIP Code
+                            </label>
+
+                            <input 
+                                type="text"
+                                class="form-control"
+                                id="postalCode"
+                                name="postalCode"
+                                placeholder="Postal/ZIP Code"
+                            >
+                        </div>
+
+                        <!-- Phone -->
+                        <div class="col-md-6">
+                            <label for="phone" class="form-label required">
+                                Phone Number
+                            </label>
+
+                            <input 
+                                type="tel"
+                                class="form-control"
+                                id="phone"
+                                name="phone"
+                                placeholder="08012345678"
+                                required
+                            >
+                        </div>
+
+                        <!-- Position -->
+                        <div class="col-md-6">
+                            <label for="position" class="form-label required">
+                                Applying For
+                            </label>
+
+                            <select 
+                                class="form-select"
+                                id="position"
+                                name="position"
+                                required
+                            >
+                                <option value="" selected disabled>
+                                    --- Select a position ---
+                                </option>
+                                <option value="Manager">Manager</option>
+                                <option value="Accountant">Accountant</option>
+                                <option value="Sales Representative">
+                                    Sales Representative
+                                </option>
+                                <option value="Clerk">Clerk</option>
+                                <option value="Secretary">Secretary</option>
+                                <option value="Cleaner">Cleaner</option>
+                            </select>
+                        </div>
+
+                    </div>
 
 
-        
+                    <!-- ================= ACADEMIC INFORMATION ================= -->
+
+                    <h3 class="section-title">
+                        Academic Information
+                    </h3>
+
+                    <div class="row g-3">
+
+                        <!-- Previous School -->
+                        <div class="col-md-6">
+                            <label for="school" class="form-label required">
+                                Previous School Attended
+                            </label>
+
+                            <input 
+                                type="text"
+                                class="form-control"
+                                id="school"
+                                name="school"
+                                placeholder="Enter your previous school"
+                                required
+                            >
+                        </div>
+
+                        <!-- Course -->
+                        <div class="col-md-6">
+                            <label for="course" class="form-label required">
+                                Course Studied
+                            </label>
+
+                            <select 
+                                class="form-select"
+                                id="course"
+                                name="course"
+                                required
+                            >
+                                <option value="" selected disabled>
+                                    --- Select a course ---
+                                </option>
+                                <option value="English">English</option>
+                                <option value="Mass Communication">
+                                    Mass Communication
+                                </option>
+                                <option value="Engineering">
+                                    Engineering
+                                </option>
+                                <option value="Pharmacy">
+                                    Pharmacy
+                                </option>
+                            </select>
+                        </div>
+
+                        <!-- Last Class -->
+                        <div class="col-md-6">
+                            <label for="lastClass" class="form-label required">
+                                Last Class Completed
+                            </label>
+
+                            <input 
+                                type="text"
+                                class="form-control"
+                                id="lastClass"
+                                name="lastClass"
+                                placeholder="Enter your last class completed"
+                                required
+                            >
+                        </div>
+
+                    </div>
 
 
+                    <!-- ================= PARENT INFORMATION ================= -->
 
-      
+                    <h3 class="section-title">
+                        Parent/Guardian Information
+                    </h3>
 
-    </form>
+                    <div class="row g-3">
+
+                        <!-- Guardian Name -->
+                        <div class="col-md-6">
+                            <label for="guardianName" class="form-label required">
+                                Parent/Guardian Name
+                            </label>
+
+                            <input 
+                                type="text"
+                                class="form-control"
+                                id="guardianName"
+                                name="guardianName"
+                                placeholder="Enter parent/guardian name"
+                                required
+                            >
+                        </div>
+
+                        <!-- Guardian Phone -->
+                        <div class="col-md-6">
+                            <label for="guardianPhone" class="form-label required">
+                                Parent/Guardian Phone Number
+                            </label>
+
+                            <input 
+                                type="tel"
+                                class="form-control"
+                                id="guardianPhone"
+                                name="guardianPhone"
+                                placeholder="Enter phone number"
+                                required
+                            >
+                        </div>
+
+                        <!-- Guardian Email -->
+                        <div class="col-md-6">
+                            <label for="guardianEmail" class="form-label required">
+                                Parent/Guardian Email
+                            </label>
+
+                            <input 
+                                type="email"
+                                class="form-control"
+                                id="guardianEmail"
+                                name="guardianEmail"
+                                placeholder="Enter email address"
+                                required
+                            >
+                        </div>
+
+                        <!-- Guardian Address -->
+                        <div class="col-md-6">
+                            <label for="guardianAddress" class="form-label required">
+                                Parent/Guardian Address
+                            </label>
+
+                            <input 
+                                type="text"
+                                class="form-control"
+                                id="guardianAddress"
+                                name="guardianAddress"
+                                placeholder="Enter address"
+                                required
+                            >
+                        </div>
+
+                        <!-- Relationship -->
+                        <div class="col-md-6">
+                            <label for="relationship" class="form-label required">
+                                Relationship to Applicant
+                            </label>
+
+                            <input 
+                                type="text"
+                                class="form-control"
+                                id="relationship"
+                                name="relationship"
+                                placeholder="e.g. Father, Mother, Uncle"
+                                required
+                            >
+                        </div>
+
+                    </div>
+
+
+                    <!-- ================= DOCUMENTS ================= -->
+
+                    <h3 class="section-title">
+                        Required Documents
+                    </h3>
+
+                    <div class="row g-4">
+
+                        <!-- WAEC -->
+                        <div class="col-md-6">
+                            <div class="file-box">
+                                <label for="waec" class="form-label">
+                                    Upload WAEC Certificate
+                                </label>
+
+                                <input 
+                                    type="file"
+                                    class="form-control"
+                                    id="waec"
+                                    name="waec"
+                                    accept=".pdf,.jpg,.jpeg,.png"
+                                >
+                            </div>
+                        </div>
+
+                        <!-- Passport -->
+                        <div class="col-md-6">
+                            <div class="file-box">
+                                <label for="passport" class="form-label">
+                                    Upload Passport Photograph
+                                </label>
+
+                                <input 
+                                    type="file"
+                                    class="form-control"
+                                    id="passport"
+                                    name="passport"
+                                    accept=".jpg,.jpeg,.png"
+                                >
+                            </div>
+                        </div>
+
+                        <!-- Birth Certificate -->
+                        <div class="col-md-6">
+                            <div class="file-box">
+                                <label for="birthCertificate" class="form-label">
+                                    Upload Birth Certificate
+                                </label>
+
+                                <input 
+                                    type="file"
+                                    class="form-control"
+                                    id="birthCertificate"
+                                    name="birthCertificate"
+                                    accept=".pdf,.jpg,.jpeg,.png"
+                                >
+                            </div>
+                        </div>
+
+                        <!-- Transcript -->
+                        <div class="col-md-6">
+                            <div class="file-box">
+                                <label for="transcript" class="form-label">
+                                    Upload Academic Transcript
+                                </label>
+
+                                <input 
+                                    type="file"
+                                    class="form-control"
+                                    id="transcript"
+                                    name="transcript"
+                                    accept=".pdf,.jpg,.jpeg,.png"
+                                >
+                            </div>
+                        </div>
+
+                        <!-- Guardian ID -->
+                        <div class="col-md-6">
+                            <div class="file-box">
+                                <label for="guardianId" class="form-label">
+                                    Upload Parent/Guardian ID
+                                </label>
+
+                                <input 
+                                    type="file"
+                                    class="form-control"
+                                    id="guardianId"
+                                    name="guardianId"
+                                    accept=".pdf,.jpg,.jpeg,.png"
+                                >
+                            </div>
+                        </div>
+
+                        <!-- CV -->
+                        <div class="col-md-6">
+                            <div class="file-box">
+                                <label for="cv" class="form-label">
+                                    Upload CV / Resume
+                                </label>
+
+                                <input 
+                                    type="file"
+                                    class="form-control"
+                                    id="cv"
+                                    name="cv"
+                                    accept=".pdf,.doc,.docx"
+                                >
+                            </div>
+                        </div>
+
+                    </div>
+
+
+                    <!-- ================= BUTTONS ================= -->
+
+                    <div class="d-flex flex-column flex-md-row gap-3 justify-content-center mt-5">
+
+                        <button 
+                            type="submit" 
+                            class="btn btn-success btn-submit"
+                        >
+                            Submit Application
+                        </button>
+
+                        <button 
+                            type="reset" 
+                            class="btn btn-danger btn-reset"
+                        >
+                            Reset Form
+                        </button>
+
+                    </div>
+
+                </form>
+
+            </div>
+        </div>
+
+        <footer>
+            <p>&copy; 2026 Job Application Portal</p>
+        </footer>
+
+    </div>
+
+
+    <!-- Bootstrap JavaScript -->
+    <script 
+        src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js">
+    </script>
+
 </body>
 </html>
