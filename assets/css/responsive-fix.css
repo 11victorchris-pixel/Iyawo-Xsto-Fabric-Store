@@ -1,0 +1,296 @@
+/* =========================================================
+   IYAWO XSTO - responsive-fix.css
+   Global responsive overrides. Loaded AFTER s.css /
+   iyawo-pro.css / shop.css. Does not edit those files.
+   ========================================================= */
+
+/* ---------- 1. Base: prevent horizontal scroll ---------- */
+html {
+  overflow-x: hidden;
+}
+body {
+  overflow-x: hidden;
+}
+img,
+video,
+iframe {
+  max-width: 100%;
+  height: auto;
+}
+* {
+  min-width: 0;
+}
+table {
+  max-width: 100%;
+}
+
+/* ---------- 2. Fluid type ---------- */
+h1 {
+  font-size: clamp(2rem, 6vw + 1rem, 3.5rem);
+}
+.hero-section h1 {
+  font-size: clamp(2.2rem, 8vw, 4.5rem);
+}
+.section-title {
+  font-size: clamp(1.6rem, 5vw, 2.5rem);
+}
+.cta-section h2 {
+  font-size: clamp(1.8rem, 6vw, 2.8rem);
+}
+#confirmUnlockCode,
+#payUnlockCode,
+#unlockCodeInput {
+  word-break: break-all;
+  font-size: clamp(1.2rem, 5vw, 2rem);
+}
+
+/* ---------- 3. Hero: fluid logo, no overflow ---------- */
+.hero-section {
+  overflow: hidden;
+}
+.hero-logo-wrapper {
+  width: min(430px, 80vw);
+  height: min(430px, 80vw);
+  margin-inline: auto;
+}
+.hero-circle {
+  width: 90%;
+  height: 90%;
+}
+.hero-logo {
+  width: min(300px, 60vw);
+  height: auto;
+  aspect-ratio: 1;
+}
+#hero-3d {
+  max-width: 100%;
+}
+
+/* ---------- 4. Nav (mobile menu) ---------- */
+.navbar-toggler {
+  min-width: 44px;
+  min-height: 44px;
+}
+
+/* ---------- 5. Promo / collection ---------- */
+.promo-item {
+  min-height: auto;
+}
+.collection-header {
+  gap: 12px;
+}
+
+/* ---------- 6. Product images: aspect-ratio, not fixed height ---------- */
+.product-image img {
+  width: 100%;
+  object-fit: cover;
+  height: auto;
+  aspect-ratio: 4 / 5;
+  max-height: 330px;
+}
+.product-gallery-main img {
+  height: auto;
+  aspect-ratio: 4 / 5;
+  max-height: 520px;
+}
+.gallery-thumbs {
+  -webkit-overflow-scrolling: touch;
+}
+
+/* ---------- 7. Forms / touch targets (no iOS zoom, 44px targets) ---------- */
+input,
+select,
+textarea {
+  font-size: 16px !important;
+  min-height: 44px;
+}
+button,
+.btn {
+  min-height: 44px;
+}
+.qty-stepper button {
+  width: 44px;
+  height: 44px;
+  min-height: 44px;
+}
+.qty-stepper input {
+  width: 56px;
+  min-height: 44px;
+}
+
+/* ---------- 8. Tables / receipts ---------- */
+.table-responsive {
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+}
+.confirm-hero {
+  padding: 20px 12px;
+}
+pre,
+.receipt-text,
+.receipt-box,
+.order-receipt {
+  white-space: pre-wrap;
+  word-break: break-word;
+}
+
+/* ---------- 9. Footer / modals ---------- */
+.footer-bottom {
+  flex-wrap: wrap;
+  gap: 8px;
+}
+.modal-dialog {
+  margin: 0.75rem;
+}
+.modal-body {
+  word-break: break-word;
+}
+
+/* ---------- 10. Breakpoints ---------- */
+
+/* Desktop-first adjustments at 992px */
+@media (max-width: 991.98px) {
+  .navbar-collapse {
+    background: rgba(5, 9, 31, 0.98);
+    padding: 12px;
+    border-radius: 12px;
+    margin-top: 10px;
+  }
+  nav .btn,
+  .navbar-collapse .btn,
+  .navbar-collapse button {
+    width: 100%;
+    margin: 4px 0;
+  }
+  .navbar-collapse {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+  }
+  .summary-card {
+    position: static;
+  }
+  .product-image img {
+    max-height: 300px;
+  }
+  .product-gallery-main img {
+    max-height: 420px;
+  }
+}
+
+/* Tablets */
+@media (max-width: 767.98px) {
+  .section-padding,
+  .new-arrivals {
+    padding: 70px 0;
+  }
+  .page-shell {
+    padding-top: 100px;
+    padding-bottom: 70px;
+  }
+  .status-card,
+  .summary-card {
+    padding: 22px;
+  }
+  .product-gallery-main img {
+    max-height: 380px;
+  }
+  /* 2-col grids stay usable on tablets: force at least 2 cols where used */
+  .stay-2col {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+/* Large phones */
+@media (max-width: 575.98px) {
+  .product-image img {
+    max-height: 240px;
+  }
+  .product-gallery-main img {
+    max-height: 340px;
+  }
+  .page-shell {
+    padding-top: 100px;
+    padding-bottom: 64px;
+  }
+  .status-card,
+  .summary-card {
+    padding: 20px;
+  }
+  .section-padding {
+    padding: 64px 0;
+  }
+  .hero-buttons .btn {
+    width: 100%;
+  }
+  .shop-toolbar {
+    padding: 14px;
+  }
+  .cart-table .product-cell {
+    gap: 10px;
+  }
+}
+
+/* Small phones */
+@media (max-width: 360px) {
+  .page-shell {
+    padding-top: 96px;
+    padding-bottom: 60px;
+  }
+  .status-card,
+  .summary-card {
+    padding: 18px;
+  }
+  .section-padding {
+    padding: 60px 0;
+  }
+  .hero-section {
+    padding: 104px 0 64px;
+  }
+  .product-image img {
+    max-height: 220px;
+  }
+  .product-gallery-main img {
+    max-height: 300px;
+  }
+  .confirm-hero {
+    padding: 16px 8px;
+  }
+  .shop-toolbar {
+    padding: 12px;
+    gap: 8px;
+  }
+  .category-pills {
+    gap: 8px;
+  }
+}
+
+/* ---------- 11. Motion + landscape phones ---------- */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+@media (max-height: 500px) and (orientation: landscape) {
+  .hero-section {
+    padding: 90px 0 50px;
+    min-height: auto;
+  }
+  .hero-content {
+    padding-top: 10px;
+  }
+  .hero-logo-wrapper {
+    width: min(280px, 50vh);
+    height: min(280px, 50vh);
+  }
+  .page-shell {
+    padding-top: 90px;
+    padding-bottom: 50px;
+  }
+}

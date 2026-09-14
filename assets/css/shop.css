@@ -1,0 +1,445 @@
+/* =========================================================
+   IYAWO XSTO - SHOP / CART / CHECKOUT / TRACK STYLES
+   Designed to blend with assets/css/s.css (navy + orange).
+========================================================= */
+
+/* ---------- Page shell ---------- */
+.page-shell {
+  padding-top: 120px;
+  padding-bottom: 90px;
+  min-height: 70vh;
+  background: var(--cream, #faf8f3);
+}
+
+.page-header {
+  margin-bottom: 40px;
+}
+
+.page-header h1 {
+  color: var(--navy, #0a1238);
+  font-weight: 800;
+  letter-spacing: -1px;
+}
+
+/* ---------- Category pills ---------- */
+.category-pills {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-bottom: 30px;
+}
+
+.pill {
+  display: inline-block;
+  padding: 9px 18px;
+  border: 1px solid var(--border, #e8e5df);
+  border-radius: 50px;
+  background: #fff;
+  color: var(--navy, #0a1238);
+  font-size: 0.82rem;
+  font-weight: 700;
+  text-decoration: none;
+  transition: var(--transition, all 0.35s ease);
+}
+
+.pill:hover {
+  border-color: var(--orange, #f59e0b);
+  color: var(--orange-dark, #d97706);
+}
+
+.pill.active {
+  background: var(--navy, #0a1238);
+  border-color: var(--navy, #0a1238);
+  color: #fff;
+}
+
+/* ---------- Toolbar ---------- */
+.shop-toolbar {
+  background: #fff;
+  border: 1px solid var(--border, #e8e5df);
+  border-radius: 10px;
+  padding: 18px;
+  margin-bottom: 35px;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  align-items: center;
+}
+
+.shop-toolbar .form-control,
+.shop-toolbar .form-select {
+  border-radius: 8px;
+  font-size: 0.9rem;
+}
+
+.form-check-label {
+  font-size: 0.85rem;
+  font-weight: 600;
+}
+
+/* ---------- Product card tweaks (uses s.css .product-card) ---------- */
+.product-image {
+  cursor: pointer;
+}
+
+.product-image img {
+  height: 330px;
+}
+
+.out-of-stock-badge {
+  position: absolute;
+  z-index: 2;
+  top: 15px;
+  left: 15px;
+  padding: 7px 12px;
+  background: #6c757d;
+  color: #fff;
+  font-size: 0.65rem;
+  font-weight: 800;
+  letter-spacing: 1px;
+}
+
+.product-image.dimmed img {
+  opacity: 0.45;
+}
+
+/* ---------- Quantity stepper ---------- */
+.qty-stepper {
+  display: inline-flex;
+  align-items: stretch;
+  border: 1px solid var(--border, #e8e5df);
+  border-radius: 8px;
+  overflow: hidden;
+  background: #fff;
+}
+
+.qty-stepper button {
+  width: 42px;
+  border: 0;
+  background: #f3f1ed;
+  color: var(--navy, #0a1238);
+  font-size: 1.1rem;
+  font-weight: 800;
+  cursor: pointer;
+  transition: background 0.2s;
+}
+
+.qty-stepper button:hover {
+  background: var(--orange, #f59e0b);
+  color: #111;
+}
+
+.qty-stepper input {
+  width: 64px;
+  border: 0;
+  text-align: center;
+  font-weight: 700;
+  font-size: 1rem;
+  outline: none;
+}
+
+/* ---------- Cart table ---------- */
+.cart-table img {
+  width: 84px;
+  height: 84px;
+  object-fit: cover;
+  border-radius: 8px;
+}
+
+.cart-table .product-cell {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+}
+
+.cart-table .product-cell a {
+  color: var(--navy, #0a1238);
+  font-weight: 700;
+  text-decoration: none;
+}
+
+.cart-table .product-cell a:hover {
+  color: var(--orange-dark, #d97706);
+}
+
+.cart-table .unit-hint {
+  color: #888;
+  font-size: 0.75rem;
+}
+
+.cart-remove {
+  background: none;
+  border: none;
+  color: #dc3545;
+  font-size: 1.2rem;
+  cursor: pointer;
+}
+
+/* ---------- Summary card ---------- */
+.summary-card {
+  background: #fff;
+  border: 1px solid var(--border, #e8e5df);
+  border-radius: 14px;
+  padding: 28px;
+  position: sticky;
+  top: 100px;
+}
+
+.summary-card h5 {
+  color: var(--navy, #0a1238);
+  font-weight: 800;
+  margin-bottom: 20px;
+}
+
+.summary-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 8px 0;
+  font-size: 0.92rem;
+  color: var(--text, #555);
+}
+
+.summary-row.total {
+  border-top: 2px solid var(--border, #e8e5df);
+  margin-top: 10px;
+  padding-top: 16px;
+  font-size: 1.15rem;
+  font-weight: 800;
+  color: var(--navy, #0a1238);
+}
+
+.secure-note {
+  font-size: 0.78rem;
+  color: #888;
+  text-align: center;
+  margin-top: 14px;
+}
+
+/* ---------- Product detail page ---------- */
+.product-gallery-main {
+  border: 1px solid var(--border, #e8e5df);
+  border-radius: 14px;
+  overflow: hidden;
+  background: #fff;
+  margin-bottom: 14px;
+}
+
+.product-gallery-main img {
+  width: 100%;
+  height: 520px;
+  object-fit: cover;
+  display: block;
+}
+
+.gallery-thumbs {
+  display: flex;
+  gap: 10px;
+  overflow-x: auto;
+}
+
+.gallery-thumbs img {
+  width: 84px;
+  height: 84px;
+  object-fit: cover;
+  border-radius: 8px;
+  border: 2px solid transparent;
+  cursor: pointer;
+  opacity: 0.75;
+  transition: all 0.2s;
+}
+
+.gallery-thumbs img.active,
+.gallery-thumbs img:hover {
+  border-color: var(--orange, #f59e0b);
+  opacity: 1;
+}
+
+.product-detail-info h1 {
+  color: var(--navy, #0a1238);
+  font-weight: 800;
+}
+
+.stock-badge {
+  display: inline-block;
+  padding: 6px 14px;
+  border-radius: 50px;
+  font-size: 0.75rem;
+  font-weight: 800;
+  letter-spacing: 1px;
+}
+
+.stock-badge.in-stock {
+  background: #d1e7dd;
+  color: #0f5132;
+}
+
+.stock-badge.out-of-stock {
+  background: #f8d7da;
+  color: #842029;
+}
+
+.feature-tag {
+  display: inline-block;
+  background: #fff4df;
+  color: #d97706;
+  border: 1px solid #fde7c0;
+  border-radius: 50px;
+  padding: 4px 12px;
+  font-size: 0.7rem;
+  font-weight: 700;
+  margin-right: 6px;
+}
+
+/* ---------- Checkout ---------- */
+.checkout-form .form-label {
+  font-weight: 700;
+  font-size: 0.82rem;
+  color: var(--navy, #0a1238);
+}
+
+.checkout-form .form-control,
+.checkout-form .form-select {
+  border-radius: 8px;
+  padding: 12px;
+}
+
+.order-items-mini {
+  max-height: 260px;
+  overflow-y: auto;
+}
+
+.order-items-mini .mini-item {
+  display: flex;
+  gap: 12px;
+  align-items: center;
+  padding: 10px 0;
+  border-bottom: 1px dashed var(--border, #e8e5df);
+}
+
+.order-items-mini img {
+  width: 56px;
+  height: 56px;
+  object-fit: cover;
+  border-radius: 8px;
+}
+
+.order-items-mini .mini-name {
+  font-weight: 700;
+  font-size: 0.9rem;
+  color: var(--navy, #0a1238);
+}
+
+.order-items-mini .mini-sub {
+  font-size: 0.8rem;
+  color: #888;
+}
+
+/* ---------- Order confirmation / track ---------- */
+.confirm-hero {
+  text-align: center;
+  padding: 30px 0 10px;
+}
+
+.confirm-hero .icon-circle {
+  width: 92px;
+  height: 92px;
+  margin: 0 auto 22px;
+  border-radius: 50%;
+  background: #198754;
+  color: #fff;
+  font-size: 2.6rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 15px 35px rgba(25, 135, 84, 0.25);
+}
+
+.confirm-hero .icon-circle.whatsapp {
+  background: #25d366;
+}
+
+.status-card {
+  background: #fff;
+  border: 1px solid var(--border, #e8e5df);
+  border-radius: 14px;
+  padding: 26px;
+}
+
+.status-badge {
+  display: inline-block;
+  padding: 6px 14px;
+  border-radius: 50px;
+  font-size: 0.75rem;
+  font-weight: 800;
+  letter-spacing: 0.5px;
+}
+
+.status-badge.pending { background: #fff3cd; color: #664d03; }
+.status-badge.confirmed { background: #cfe2ff; color: #084298; }
+.status-badge.processing { background: #cff4fc; color: #055160; }
+.status-badge.ready_for_delivery { background: #e2d9f3; color: #432874; }
+.status-badge.shipped { background: #cfe2ff; color: #084298; }
+.status-badge.delivered { background: #d1e7dd; color: #0f5132; }
+.status-badge.cancelled { background: #f8d7da; color: #842029; }
+.status-badge.paid { background: #d1e7dd; color: #0f5132; }
+.status-badge.unpaid { background: #f8d7da; color: #842029; }
+.status-badge.failed { background: #f8d7da; color: #842029; }
+
+/* ---------- Empty states / loading ---------- */
+.empty-state {
+  text-align: center;
+  padding: 70px 20px;
+  color: #888;
+}
+
+.empty-state .empty-icon {
+  font-size: 3.4rem;
+  display: block;
+  margin-bottom: 14px;
+}
+
+/* ---------- Misc ---------- */
+.link-muted {
+  color: var(--navy, #0a1238);
+  font-size: 0.85rem;
+  font-weight: 700;
+  text-decoration: none;
+}
+
+.link-muted:hover {
+  color: var(--orange-dark, #d97706);
+}
+
+@media (max-width: 991px) {
+  .page-shell {
+    padding-top: 100px;
+  }
+
+  .product-image img {
+    height: 300px;
+  }
+
+  .product-gallery-main img {
+    height: 400px;
+  }
+}
+
+@media (max-width: 575px) {
+  .product-image img {
+    height: 260px;
+  }
+
+  .product-gallery-main img {
+    height: 320px;
+  }
+
+  .summary-card {
+    position: static;
+  }
+
+  .cart-table .product-cell img {
+    width: 64px;
+    height: 64px;
+  }
+}
