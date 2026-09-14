@@ -1,0 +1,233 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" type="image/svg+xml" href="assets/logo/favicon.svg">
+    <link rel="alternate icon" type="image/png" href="assets/logo/logo.png">
+    <link rel="apple-touch-icon" href="assets/logo/logo.png">
+    <meta name="theme-color" content="#0a1238">
+    <title>Cart | IYAWO XSTO Fabric Store</title>
+
+    <!-- Bootstrap -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Bootstrap Icons -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="assets/css/s.css">
+    <link rel="stylesheet" href="assets/css/iyawo-pro.css">
+    <link rel="stylesheet" href="assets/css/shop.css">
+    <link rel="stylesheet" href="assets/css/responsive-fix.css">
+    <style id="mobile-fix-cart">
+        /* Cart mobile fixes — no edits to s.css/shop.css */
+        .cart-row .product-cell{display:flex;gap:.65rem;align-items:center;min-width:0}
+        .cart-row .product-cell img{width:64px;height:64px;object-fit:cover;border-radius:8px;flex:0 0 auto}
+        .cart-row .product-cell-text{min-width:0;flex:1}
+        .cart-row .product-cell-text a{display:block;overflow-wrap:anywhere;word-break:break-word}
+        .qty-stepper button{min-width:44px;min-height:44px;display:inline-flex;align-items:center;justify-content:center}
+        .qty-stepper input{font-size:16px;min-height:44px;min-width:0}
+        .cart-remove{min-width:44px;min-height:44px;display:inline-flex;align-items:center;justify-content:center}
+        #cartItems input,#cartItems select,.summary-card input,.summary-card select{font-size:16px}
+        @media (max-width:767.98px){
+            .summary-card{position:static !important;top:auto !important}
+            .cart-row .product-cell img{width:56px;height:56px}
+            .cart-row [data-line-total]{overflow-wrap:anywhere;word-break:break-word}
+            #cartSummary .d-grid .btn{width:100%;min-height:48px}
+            #cartEmpty .btn{min-height:44px}
+        }
+        @media (max-width:360px){
+            .cart-row .qty-stepper{gap:2px}
+        }
+        .navbar-toggler{min-width:44px;min-height:44px}
+    </style>
+</head>
+
+<body id="top">
+
+<!-- ============ NAVBAR ============ -->
+<nav class="navbar navbar-expand-lg navbar-dark fixed-top">
+    <div class="container">
+        <a class="navbar-brand fw-bold" href="index.html">
+            <span class="brand-orange">IYAWO</span>
+            <span class="brand-white">XSTO</span>
+        </a>
+        <button class="navbar-toggler border-0 shadow-none" type="button"
+                data-bs-toggle="collapse" data-bs-target="#mainNavbar"
+                aria-controls="mainNavbar" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="mainNavbar">
+            <ul class="navbar-nav ms-auto align-items-lg-center">
+                <li class="nav-item"><a class="nav-link" href="index.html">Home</a></li>
+                <li class="nav-item"><a class="nav-link" href="sale.html">Sales</a></li>
+                <li class="nav-item"><a class="nav-link" href="shop.html">Shop</a></li>
+                <li class="nav-item"><a class="nav-link" href="about-us.html">About</a></li>
+                <li class="nav-item"><a class="nav-link" href="services.html">Services</a></li>
+                <li class="nav-item"><a class="nav-link" href="contact-us.html">Contact</a></li>
+                <li class="nav-item ms-lg-2 mt-3 mt-lg-0">
+                    <a href="cart.html" class="btn btn-warning navbar-btn position-relative" title="View Cart">
+                        <i class="bi bi-cart3"></i> Cart
+                        <span class="badge rounded-pill bg-danger position-absolute top-0 start-100 translate-middle" data-cart-count hidden>0</span>
+                    </a>
+                </li>
+            </ul>
+        </div>
+    </div>
+</nav>
+
+<!-- ============ MAIN ============ -->
+<main class="page-shell">
+    <div class="container">
+
+        <div class="page-header">
+            <span class="section-label">YOUR SELECTION</span>
+            <h1>Shopping Cart</h1>
+        </div>
+
+        <!-- Empty state -->
+        <div class="empty-state" id="cartEmpty" hidden>
+            <span class="empty-icon"><i class="bi bi-cart3"></i></span>
+            <p class="mb-1">Your cart is empty.</p>
+            <a href="shop.html" class="btn btn-warning mt-2">Browse Products</a>
+        </div>
+
+        <div class="row g-4">
+
+            <!-- Items -->
+            <div class="col-lg-8">
+                <div class="status-card">
+                    <div class="row d-none d-md-flex text-muted small fw-bold text-uppercase pb-2" style="border-bottom:1px solid var(--border,#e8e5df);font-size:0.72rem;letter-spacing:0.5px;">
+                        <div class="col-md-5">Product <span class="fw-normal text-capitalize">(per yard)</span></div>
+                        <div class="col-md-3">Yards</div>
+                        <div class="col-md-2 text-md-end">Line Total</div>
+                        <div class="col-md-2 text-end">Remove</div>
+                    </div>
+                    <div id="cartItems"></div>
+                    <p class="small text-muted mt-3 mb-0"><i class="bi bi-info-circle"></i> All fabrics are sold per yard. Adjust yards with <i class="bi bi-dash"></i> / <i class="bi bi-plus"></i> — line total = price per yard <i class="bi bi-x"></i> yards.</p>
+                </div>
+            </div>
+
+            <!-- Summary -->
+            <div class="col-lg-4">
+                <div class="summary-card" id="cartSummary" hidden>
+
+                    <h5>Order Summary</h5>
+
+                    <div class="mb-3">
+                        <label class="form-label fw-bold small" for="deliveryCity">City (for delivery estimate)</label>
+                        <input type="text" id="deliveryCity" class="form-control" placeholder="e.g. Ilorin">
+                    </div>
+
+                    <div class="mb-3">
+                        <label class="form-label fw-bold small" for="deliveryState">State</label>
+                        <select id="deliveryState" class="form-select">
+                            <option value="">Select state…</option>
+                            <option value="Kwara">Kwara</option>
+                            <option value="Lagos">Lagos</option>
+                            <option value="Oyo">Oyo</option>
+                            <option value="Ogun">Ogun</option>
+                            <option value="Kano">Kano</option>
+                            <option value="FCT - Abuja">FCT - Abuja</option>
+                            <option value="Other">Other / Outside Nigeria</option>
+                        </select>
+                    </div>
+
+                    <div class="summary-row">
+                        <span>Subtotal <small class="text-muted">(price per yard <i class="bi bi-x"></i> yards)</small></span>
+                        <span id="sumSubtotal">₦0</span>
+                    </div>
+                    <div class="summary-row">
+                        <span>Delivery</span>
+                        <span id="sumDelivery">At checkout</span>
+                    </div>
+                    <div class="summary-row total">
+                        <span>GRAND TOTAL</span>
+                        <span id="sumTotal">₦0</span>
+                    </div>
+
+                    <div class="d-grid gap-2 mt-3">
+                        <button class="btn btn-warning btn-lg fw-bold" id="checkoutBtn">Proceed to Checkout</button>
+                        <button class="btn btn-outline-success" id="whatsappBtn">
+                            <i class="bi bi-whatsapp"></i> Order via WhatsApp
+                        </button>
+                        <a href="shop.html" class="btn btn-outline-dark">Continue Shopping</a>
+                    </div>
+
+                    <p class="secure-note"><i class="bi bi-shield-lock"></i> Final amounts are always confirmed securely at checkout.</p>
+                </div>
+            </div>
+
+        </div>
+
+    </div>
+</main>
+
+<!-- ============ FOOTER ============ -->
+<footer class="footer">
+    <div class="container">
+        <div class="row g-5">
+            <div class="col-lg-4">
+                <a href="index.html" class="footer-brand">
+                    <span class="brand-orange">IYAWO</span>
+                    <span class="brand-white">XSTO</span>
+                </a>
+                <p class="mt-3">Iyawo Xsto Fabric Store is a unisex fashion brand offering quality lace and fabrics in wholesale and retail.</p>
+                <p>For quality fashion, contact Iyawo Xsto Fabric Store today.</p>
+                <a href="contact-us.html" class="footer-contact-link">Get in touch <i class="bi bi-arrow-right"></i></a>
+            </div>
+            <div class="col-6 col-lg-2">
+                <h5>SHOP</h5>
+                <ul class="footer-links">
+                    <li><a href="shop.html">All Products</a></li>
+                    <li><a href="sale.html">Sales</a></li>
+                    <li><a href="swiss-lace.html">Swiss Lace</a></li>
+                    <li><a href="ankara-lace.html">Ankara Lace</a></li>
+                    <li><a href="beaded.html">Beaded Lace</a></li>
+                    <li><a href="damask.html">Damask</a></li>
+                    <li><a href="white -lace.html">White Lace</a></li>
+                    <li><a href="unlock-package.html">Unlock Package</a></li>
+                </ul>
+            </div>
+            <div class="col-6 col-lg-2">
+                <h5>COMPANY</h5>
+                <ul class="footer-links">
+                    <li><a href="about-us.html">About Us</a></li>
+                    <li><a href="services.html">Services</a></li>
+                    <li><a href="contact-us.html">Contact</a></li>
+                    <li><a href="find-job.html">Find Job</a></li>
+                </ul>
+            </div>
+            <div class="col-lg-4">
+                <h5>CONTACT</h5>
+                <div class="contact-item">
+                    <span>WHATSAPP</span>
+                    <a href="https://wa.me/2347079057773" target="_blank" rel="noopener">+234 707 905 7773</a>
+                </div>
+                <div class="contact-item">
+                    <span>EMAIL</span>
+                    <a href="mailto:11victorchris@gmail.com">11victorchris@gmail.com</a>
+                </div>
+                <div class="contact-item">
+                    <span>LOCATIONS</span>
+                    <p>No. 1 Fagba Street, Ago Market, Ilorin, Kwara State.</p>
+                    <p>No. 2 Bolanta Street, Zambari Market, Ilorin, Kwara State.</p>
+                </div>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2026 IYAWO XSTO Fabric Store. All Rights Reserved.</p>
+            <a href="#top">Back to Top <i class="bi bi-arrow-up"></i></a>
+        </div>
+    </div>
+</footer>
+
+<!-- Scripts -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+<script src="assets/js/config.js"></script>
+<script src="assets/js/store-common.js"></script>
+<script src="assets/js/cart.js"></script>
+</body>
+</html>
