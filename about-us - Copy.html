@@ -1,0 +1,1247 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" type="image/svg+xml" href="assets/logo/favicon.svg">
+    <link rel="alternate icon" type="image/png" href="assets/logo/logo.png">
+    <link rel="apple-touch-icon" href="assets/logo/logo.png">
+    <meta name="theme-color" content="#0a1238">
+    <title>About Us | IYAWO XSTO Fabric Store</title>
+    <meta name="description" content="Discover the story of IYAWO XSTO Fabric Store — premium lace and fabrics from Ilorin, Kwara State. Wholesale & retail, quality sourcing, two store locations.">
+
+    <!-- Bootstrap -->
+    <link
+        href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css"
+        rel="stylesheet"
+    >
+
+    <!-- Bootstrap Icons -->
+    <link
+        rel="stylesheet"
+        href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css"
+    >
+
+    <!-- Unified Custom CSS -->
+    <link rel="stylesheet" href="assets/css/s.css">
+    <link rel="stylesheet" href="assets/css/iyawo-pro.css">
+    <link rel="stylesheet" href="assets/css/responsive-fix.css">
+
+    <style>
+        /* ---------- About hero ---------- */
+        .about-hero {
+            padding: 170px 0 90px;
+            min-height: 52vh;
+            display: flex;
+            align-items: center;
+        }
+        .about-hero h1 span { color: var(--orange); }
+        .breadcrumb-about {
+            display: inline-flex;
+            align-items: center;
+            gap: .5rem;
+            background: rgba(255,255,255,.1);
+            border: 1px solid rgba(255,255,255,.18);
+            padding: .4rem 1rem;
+            border-radius: 50px;
+            font-size: .85rem;
+        }
+        .breadcrumb-about a { color: #fff; opacity: .8; }
+        .breadcrumb-about a:hover { color: var(--orange); }
+        .breadcrumb-about .current { color: var(--orange); font-weight: 600; }
+
+        /* ---------- Reveal on scroll ---------- */
+        .reveal {
+            opacity: 0;
+            transform: translateY(28px);
+            transition: opacity .7s ease, transform .7s ease;
+        }
+        .reveal.visible { opacity: 1; transform: none; }
+        .reveal-delay-1 { transition-delay: .12s; }
+        .reveal-delay-2 { transition-delay: .24s; }
+
+        /* ---------- Stats ---------- */
+        .stats-band {
+            background: var(--navy);
+            color: #fff;
+            border-radius: 18px;
+            margin-top: -45px;
+            position: relative;
+            z-index: 3;
+            box-shadow: var(--shadow);
+        }
+        .stat-item { padding: 2rem 1rem; text-align: center; border-right: 1px solid rgba(255,255,255,.1); }
+        .stat-item:last-child { border-right: 0; }
+        .stat-item i {
+            font-size: 1.7rem; color: var(--orange);
+            display: inline-flex; width: 56px; height: 56px;
+            align-items: center; justify-content: center;
+            background: rgba(245,158,11,.14); border-radius: 50%;
+            margin-bottom: .75rem;
+        }
+        .stat-item strong { display: block; font-size: 2rem; font-weight: 800; }
+        .stat-item span { font-size: .85rem; letter-spacing: 1px; text-transform: uppercase; opacity: .75; }
+
+        /* ---------- Hover cards ---------- */
+        .hover-card {
+            background: #fff; border: 1px solid var(--border);
+            border-radius: 16px; padding: 2rem 1.6rem; height: 100%;
+            box-shadow: var(--shadow-sm); transition: var(--transition);
+        }
+        .hover-card:hover {
+            transform: translateY(-8px); box-shadow: var(--shadow);
+            border-color: var(--orange);
+        }
+        .icon-badge {
+            width: 60px; height: 60px; border-radius: 16px;
+            display: inline-flex; align-items: center; justify-content: center;
+            font-size: 1.6rem; margin-bottom: 1rem;
+            background: var(--navy); color: var(--orange);
+        }
+        .hover-card:hover .icon-badge { background: var(--orange); color: #111; }
+        .icon-badge.light { background: var(--orange-light); color: var(--orange-dark); }
+
+        /* ---------- Timeline ---------- */
+        .timeline { position: relative; padding-left: 30px; }
+        .timeline::before {
+            content: ""; position: absolute; left: 8px; top: 6px; bottom: 6px;
+            width: 2px; background: var(--border);
+        }
+        .timeline-item { position: relative; padding-bottom: 2rem; }
+        .timeline-item:last-child { padding-bottom: 0; }
+        .timeline-item::before {
+            content: ""; position: absolute; left: -28px; top: 4px;
+            width: 14px; height: 14px; border-radius: 50%;
+            background: var(--orange); border: 3px solid #fff;
+            box-shadow: 0 0 0 3px var(--orange-light);
+        }
+        .timeline-year {
+            display: inline-block; font-size: .78rem; font-weight: 700;
+            letter-spacing: 1px; color: var(--orange-dark);
+            background: var(--orange-light); border-radius: 50px;
+            padding: .2rem .8rem; margin-bottom: .4rem;
+        }
+
+        /* ---------- Process steps ---------- */
+        .step-number {
+            font-size: .8rem; font-weight: 800; letter-spacing: 2px;
+            color: var(--orange);
+        }
+
+        /* ---------- Team ---------- */
+        .team-card {
+            background: #fff; border: 1px solid var(--border);
+            border-radius: 16px; overflow: hidden; height: 100%;
+            box-shadow: var(--shadow-sm); transition: var(--transition);
+            text-align: center;
+        }
+        .team-card:hover { transform: translateY(-8px); box-shadow: var(--shadow); }
+        .team-avatar {
+            width: 96px; height: 96px; border-radius: 50%;
+            display: inline-flex; align-items: center; justify-content: center;
+            font-size: 2.4rem; color: #fff; background: var(--navy);
+            margin: 2rem auto 1rem; border: 4px solid var(--orange-light);
+        }
+        .team-card:nth-child(2) .team-avatar { background: var(--orange-dark); }
+
+        /* ---------- Testimonials ---------- */
+        .testimonial-card {
+            background: #fff; border: 1px solid var(--border);
+            border-radius: 16px; padding: 1.8rem; height: 100%;
+            box-shadow: var(--shadow-sm); transition: var(--transition);
+        }
+        .testimonial-card:hover { transform: translateY(-6px); box-shadow: var(--shadow); }
+        .testimonial-stars { color: var(--orange); letter-spacing: 2px; }
+
+        /* ---------- Location cards ---------- */
+        .store-card {
+            background: #fff; border: 1px solid var(--border);
+            border-radius: 16px; padding: 2rem; height: 100%;
+            box-shadow: var(--shadow-sm); transition: var(--transition);
+        }
+        .store-card:hover { transform: translateY(-6px); box-shadow: var(--shadow); border-color: var(--orange); }
+
+        /* ---------- FAQ ---------- */
+        .accordion-button:not(.collapsed) {
+            background: var(--navy); color: #fff;
+        }
+        .accordion-button:not(.collapsed)::after { filter: invert(1); }
+        .accordion-item { border-radius: 12px !important; overflow: hidden; border: 1px solid var(--border) !important; }
+
+        @media (max-width: 767px) {
+            .stat-item { border-right: 0; border-bottom: 1px solid rgba(255,255,255,.1); }
+            .stat-item:last-child { border-bottom: 0; }
+            .about-hero { padding: 150px 0 100px; }
+            .stats-band .row{display:flex;flex-wrap:wrap}
+            .stats-band .stat-item{flex:0 0 50%;max-width:50%}
+            .stat-item strong{font-size:1.5rem}
+            .timeline{padding-left:26px;overflow-x:hidden}
+            .accordion-button{min-height:48px;font-size:.95rem}
+            .accordion-body{font-size:.95rem}
+            table{width:100%;font-size:.95rem}
+        }
+    </style>
+</head>
+
+<body id="top">
+
+<!-- =========================================================
+     NAVBAR (identical to index.html)
+========================================================= -->
+
+<nav class="navbar navbar-expand-lg navbar-dark fixed-top">
+
+    <div class="container">
+
+        <a class="navbar-brand fw-bold" href="index.html">
+            <span class="brand-orange">IYAWO</span>
+            <span class="brand-white">XSTO</span>
+        </a>
+
+        <button
+            class="navbar-toggler border-0 shadow-none"
+            type="button"
+            data-bs-toggle="collapse"
+            data-bs-target="#mainNavbar"
+            aria-controls="mainNavbar"
+            aria-expanded="false"
+            aria-label="Toggle navigation"
+        >
+            <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="collapse navbar-collapse" id="mainNavbar">
+
+            <ul class="navbar-nav ms-auto align-items-lg-center">
+
+                <li class="nav-item">
+                    <a class="nav-link" href="index.html">
+                        Home
+                    </a>
+                </li>
+
+                <li class="nav-item">
+                    <a class="nav-link" href="sale.html">
+                        Sales
+                    </a>
+                </li>
+
+                <li class="nav-item">
+                    <a class="nav-link active" href="about-us.html">
+                        About
+                    </a>
+                </li>
+
+                <li class="nav-item">
+                    <a class="nav-link" href="services.html">
+                        Services
+                    </a>
+                </li>
+
+                <li class="nav-item">
+                    <a class="nav-link" href="contact-us.html">
+                        Contact
+                    </a>
+                </li>
+
+                <li class="nav-item">
+                    <a class="nav-link" href="find-job.html">
+                        Find Job
+                    </a>
+                </li>
+
+                <li class="nav-item ms-lg-3 mt-3 mt-lg-0">
+
+                    <a
+                        href="shop.html"
+                        class="btn btn-warning navbar-btn"
+                    >
+                        Shop Collection
+                    </a>
+
+                </li>
+
+                <li class="nav-item ms-lg-2 mt-3 mt-lg-0">
+
+                    <a
+                        href="cart.html"
+                        class="btn btn-outline-light position-relative"
+                        title="View Cart"
+                    >
+                        <i class="bi bi-cart3"></i>
+                        Cart
+                        <span
+                            class="badge rounded-pill bg-danger position-absolute top-0 start-100 translate-middle"
+                            data-cart-count
+                            hidden
+                        >0</span>
+                    </a>
+
+                </li>
+
+            </ul>
+
+        </div>
+
+    </div>
+
+</nav>
+
+
+<!-- =========================================================
+     HERO + BREADCRUMB
+========================================================= -->
+
+<header class="hero-section about-hero">
+
+    <div class="hero-overlay"></div>
+
+    <div class="container position-relative">
+
+        <div class="row">
+            <div class="col-lg-8">
+
+                <div class="hero-content">
+
+                    <nav aria-label="breadcrumb" class="mb-3">
+                        <span class="breadcrumb-about">
+                            <a href="index.html"><i class="bi bi-house-door"></i> Home</a>
+                            <i class="bi bi-chevron-right" style="font-size:.7rem; opacity:.6;"></i>
+                            <span class="current">About Us</span>
+                        </span>
+                    </nav>
+
+                    <span class="hero-tag">
+                        OUR STORY SINCE ILORIN
+                    </span>
+
+                    <h1>
+                        The Fabric Store
+                        <span>Behind Beautiful Outfits.</span>
+                    </h1>
+
+                    <p class="hero-description">
+                        From a single stall in Ago Market, Ilorin to two
+                        thriving stores and a nationwide online shop —
+                        IYAWO XSTO is built on quality, trust and style.
+                        Your outlook is our priority.
+                    </p>
+
+                    <div class="hero-buttons">
+                        <a href="shop.html" class="btn btn-warning btn-lg">
+                            <i class="bi bi-bag-fill me-2"></i>Shop Collection
+                        </a>
+                        <a href="https://wa.me/2347079057773" target="_blank" rel="noopener" class="btn btn-outline-light btn-lg">
+                            <i class="bi bi-whatsapp me-2"></i>Chat With Us
+                        </a>
+                    </div>
+
+                </div>
+
+            </div>
+        </div>
+
+    </div>
+
+</header>
+
+
+<main>
+
+<!-- =========================================================
+     STATS COUNTERS
+========================================================= -->
+
+<section>
+    <div class="container">
+        <div class="stats-band reveal">
+            <div class="row g-0">
+                <div class="col-6 col-lg-3 stat-item">
+                    <i class="bi bi-stack"></i>
+                    <strong><span data-count="12500">0</span>+</strong>
+                    <span>Yards of Fabric Sold</span>
+                </div>
+                <div class="col-6 col-lg-3 stat-item">
+                    <i class="bi bi-emoji-smile"></i>
+                    <strong><span data-count="5200">0</span>+</strong>
+                    <span>Happy Customers</span>
+                </div>
+                <div class="col-6 col-lg-3 stat-item">
+                    <i class="bi bi-award"></i>
+                    <strong><span data-count="7">0</span>+</strong>
+                    <span>Years of Experience</span>
+                </div>
+                <div class="col-6 col-lg-3 stat-item">
+                    <i class="bi bi-shop"></i>
+                    <strong><span data-count="2">0</span></strong>
+                    <span>Store Locations</span>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+
+<!-- =========================================================
+     BRAND STORY
+========================================================= -->
+
+<section class="intro-section section-padding pb-5">
+    <div class="container">
+        <div class="row align-items-center g-5">
+
+            <div class="col-lg-6 reveal">
+                <span class="section-label">OUR BRAND STORY</span>
+                <h2 class="section-title">Founded in Ilorin,<br><span>Worn Across Nigeria.</span></h2>
+                <p class="section-description text-start mx-0">
+                    IYAWO XSTO Fabric Store began in Ilorin, Kwara State,
+                    with a simple belief: everyone deserves beautiful,
+                    high-quality fabric at a fair price — whether buying
+                    one yard for personal use or hundreds of yards for
+                    resale and Aso Ebi.
+                </p>
+                <p>
+                    What started as a single table at Ago Market has grown
+                    into two full retail outlets — at Ago Market and
+                    Zambari Market — plus a fast-growing online store
+                    serving wholesale and retail customers nationwide.
+                    We stock Swiss lace, Organza, Coupon lace, Beaded lace,
+                    Aso Ebi, Senator materials, Dry lace, Ankara, Damask
+                    and many more curated collections.
+                </p>
+                <div class="d-flex flex-wrap gap-2 mt-4">
+                    <span class="badge rounded-pill text-bg-dark px-3 py-2"><i class="bi bi-patch-check me-1"></i> Verified Quality</span>
+                    <span class="badge rounded-pill text-bg-warning px-3 py-2"><i class="bi bi-truck me-1"></i> Nationwide Delivery</span>
+                    <span class="badge rounded-pill text-bg-dark px-3 py-2"><i class="bi bi-people me-1"></i> Wholesale & Retail</span>
+                </div>
+                <div class="mt-4">
+                    <a href="services.html" class="btn btn-dark me-2"><i class="bi bi-gear me-2"></i>Our Services</a>
+                    <a href="contact-us.html" class="btn btn-outline-dark"><i class="bi bi-telephone me-2"></i>Contact Us</a>
+                </div>
+            </div>
+
+            <div class="col-lg-6 reveal reveal-delay-1">
+                <div class="hover-card">
+                    <div class="icon-badge light"><i class="bi bi-heart-fill"></i></div>
+                    <h4 class="fw-bold">Why "Your outlook is our priority"</h4>
+                    <p class="mb-3">
+                        Every bride, every groom, every guest at an Owambe,
+                        every reseller building a business — your appearance
+                        matters. That is why we inspect every roll, confirm
+                        colourfastness, and help you match fabrics to your
+                        occasion, skin tone and budget before you pay a naira.
+                    </p>
+                    <ul class="list-unstyled mb-0">
+                        <li class="mb-2"><i class="bi bi-check-circle-fill text-success me-2"></i>Hand-checked lace and Ankara on arrival</li>
+                        <li class="mb-2"><i class="bi bi-check-circle-fill text-success me-2"></i>Honest wholesale pricing, no hidden charges</li>
+                        <li class="mb-2"><i class="bi bi-check-circle-fill text-success me-2"></i>Aso Ebi coordination for weddings & events</li>
+                        <li><i class="bi bi-check-circle-fill text-success me-2"></i>Easy WhatsApp ordering & quick dispatch</li>
+                    </ul>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</section>
+
+
+<!-- =========================================================
+     MISSION / VISION / VALUES
+========================================================= -->
+
+<section class="categories-section section-padding pt-5">
+    <div class="container">
+
+        <div class="section-heading text-center reveal">
+            <span class="section-label">WHAT DRIVES US</span>
+            <h2 class="section-title">Mission, Vision & Values</h2>
+            <p>Clear principles behind every yard we sell.</p>
+        </div>
+
+        <div class="row g-4">
+            <div class="col-md-4 reveal">
+                <div class="hover-card text-center">
+                    <div class="icon-badge"><i class="bi bi-bullseye"></i></div>
+                    <h4 class="fw-bold">Our Mission</h4>
+                    <p class="mb-0">
+                        To provide high-quality, beautiful fabrics that help
+                        customers express their unique style — with excellent
+                        service, honest value and satisfaction every time.
+                    </p>
+                </div>
+            </div>
+            <div class="col-md-4 reveal reveal-delay-1">
+                <div class="hover-card text-center">
+                    <div class="icon-badge"><i class="bi bi-eye"></i></div>
+                    <h4 class="fw-bold">Our Vision</h4>
+                    <p class="mb-0">
+                        To be Nigeria's most trusted fabric store — known for
+                        quality, style, affordability and exceptional
+                        customer experience, online and in-store.
+                    </p>
+                </div>
+            </div>
+            <div class="col-md-4 reveal reveal-delay-2">
+                <div class="hover-card text-center">
+                    <div class="icon-badge"><i class="bi bi-gem"></i></div>
+                    <h4 class="fw-bold">Our Promise</h4>
+                    <p class="mb-0">
+                        What you see is what you get: true colours, true
+                        yardage, and fabrics that are checked twice before
+                        they reach your tailor.
+                    </p>
+                </div>
+            </div>
+        </div>
+
+        <div class="row g-4 mt-1">
+            <div class="col-sm-6 col-lg-3 reveal">
+                <div class="hover-card text-center py-4">
+                    <div class="icon-badge light"><i class="bi bi-patch-check-fill"></i></div>
+                    <h6 class="fw-bold mb-1">Quality First</h6>
+                    <small class="text-muted">Only fabrics we would wear ourselves.</small>
+                </div>
+            </div>
+            <div class="col-sm-6 col-lg-3 reveal reveal-delay-1">
+                <div class="hover-card text-center py-4">
+                    <div class="icon-badge light"><i class="bi bi-tag-fill"></i></div>
+                    <h6 class="fw-bold mb-1">Fair Pricing</h6>
+                    <small class="text-muted">Wholesale and retail that respect your budget.</small>
+                </div>
+            </div>
+            <div class="col-sm-6 col-lg-3 reveal reveal-delay-1">
+                <div class="hover-card text-center py-4">
+                    <div class="icon-badge light"><i class="bi bi-palette-fill"></i></div>
+                    <h6 class="fw-bold mb-1">Style & Variety</h6>
+                    <small class="text-muted">Fresh designs for every taste and occasion.</small>
+                </div>
+            </div>
+            <div class="col-sm-6 col-lg-3 reveal reveal-delay-2">
+                <div class="hover-card text-center py-4">
+                    <div class="icon-badge light"><i class="bi bi-people-fill"></i></div>
+                    <h6 class="fw-bold mb-1">Customer Care</h6>
+                    <small class="text-muted">Patient guidance before, during and after sale.</small>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</section>
+
+
+<!-- =========================================================
+     TIMELINE 2019 - 2026
+========================================================= -->
+
+<section class="new-arrivals section-padding">
+    <div class="container">
+        <div class="row g-5">
+
+            <div class="col-lg-5 reveal">
+                <span class="section-label">OUR JOURNEY</span>
+                <h2 class="section-title mb-3">From Market Stall<br><span>to Household Name.</span></h2>
+                <p>
+                    Seven years of consistency: better sourcing, fairer
+                    prices, and customers who return with their families
+                    and friends.
+                </p>
+                <a href="sale.html" class="btn btn-warning mt-2">
+                    <i class="bi bi-bag-fill me-2"></i>Shop Bestsellers
+                </a>
+            </div>
+
+            <div class="col-lg-7 reveal reveal-delay-1">
+                <div class="timeline">
+                    <div class="timeline-item">
+                        <span class="timeline-year">2019 — THE BEGINNING</span>
+                        <h6 class="fw-bold mb-1">First stall at Ago Market, Ilorin</h6>
+                        <p class="mb-0 text-muted">Started with handpicked lace and Ankara, selling retail to local tailors and families.</p>
+                    </div>
+                    <div class="timeline-item">
+                        <span class="timeline-year">2020 — TRUST & GROWTH</span>
+                        <h6 class="fw-bold mb-1">Repeat customers & Aso Ebi orders</h6>
+                        <p class="mb-0 text-muted">Word of mouth brings wedding and celebration orders from across Kwara State.</p>
+                    </div>
+                    <div class="timeline-item">
+                        <span class="timeline-year">2022 — WHOLESALE LAUNCH</span>
+                        <h6 class="fw-bold mb-1">Bulk supply for resellers</h6>
+                        <p class="mb-0 text-muted">Introduced wholesale bundles, Senator materials and dry lace for boutiques and resellers.</p>
+                    </div>
+                    <div class="timeline-item">
+                        <span class="timeline-year">2024 — SECOND STORE</span>
+                        <h6 class="fw-bold mb-1">Branch opens at Zambari Market</h6>
+                        <p class="mb-0 text-muted">No. 2 Bolanta Street opens to serve more customers with bigger stock and variety.</p>
+                    </div>
+                    <div class="timeline-item">
+                        <span class="timeline-year">2026 — ONLINE STORE</span>
+                        <h6 class="fw-bold mb-1">Full e-commerce & nationwide delivery</h6>
+                        <p class="mb-0 text-muted">Shop, cart, checkout and WhatsApp ordering — with up to 20% seasonal discounts.</p>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</section>
+
+
+<!-- =========================================================
+     SOURCING / QUALITY PROCESS
+========================================================= -->
+
+<section class="section-padding">
+    <div class="container">
+        <div class="section-heading text-center reveal">
+            <span class="section-label">HOW WE WORK</span>
+            <h2 class="section-title">Sourcing & Quality Process</h2>
+            <p>Four checks every fabric passes before it reaches you.</p>
+        </div>
+
+        <div class="row g-4">
+            <div class="col-sm-6 col-lg-3 reveal">
+                <div class="hover-card">
+                    <span class="step-number">STEP 01</span>
+                    <div class="icon-badge mt-2"><i class="bi bi-search-heart"></i></div>
+                    <h5 class="fw-bold">Careful Sourcing</h5>
+                    <p class="mb-0 text-muted">We buy from vetted mills and importers known for colourfast, durable lace and Ankara.</p>
+                </div>
+            </div>
+            <div class="col-sm-6 col-lg-3 reveal reveal-delay-1">
+                <div class="hover-card">
+                    <span class="step-number">STEP 02</span>
+                    <div class="icon-badge mt-2"><i class="bi bi-clipboard2-check"></i></div>
+                    <h5 class="fw-bold">Physical Inspection</h5>
+                    <p class="mb-0 text-muted">Every roll is unrolled and checked for defects, dye consistency and true yardage.</p>
+                </div>
+            </div>
+            <div class="col-sm-6 col-lg-3 reveal reveal-delay-1">
+                <div class="hover-card">
+                    <span class="step-number">STEP 03</span>
+                    <div class="icon-badge mt-2"><i class="bi bi-scissors"></i></div>
+                    <h5 class="fw-bold">Cut & Match</h5>
+                    <p class="mb-0 text-muted">We cut precisely and help match head-tie, lining and Aso Ebi quantities to your event.</p>
+                </div>
+            </div>
+            <div class="col-sm-6 col-lg-3 reveal reveal-delay-2">
+                <div class="hover-card">
+                    <span class="step-number">STEP 04</span>
+                    <div class="icon-badge mt-2"><i class="bi bi-box-seam"></i></div>
+                    <h5 class="fw-bold">Pack & Deliver</h5>
+                    <p class="mb-0 text-muted">Neatly folded, securely packed and dispatched — in-store pickup or nationwide delivery.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+
+<!-- =========================================================
+     WHY CHOOSE US
+========================================================= -->
+
+<section class="categories-section section-padding">
+    <div class="container">
+        <div class="section-heading text-center reveal">
+            <span class="section-label">WHY CHOOSE US</span>
+            <h2 class="section-title">Quality You Can Feel</h2>
+            <p>Five reasons customers stay with IYAWO XSTO.</p>
+        </div>
+
+        <div class="row g-4">
+            <div class="col-sm-6 col-lg-4 reveal">
+                <div class="hover-card">
+                    <div class="icon-badge light"><i class="bi bi-stars"></i></div>
+                    <h5 class="fw-bold">Quality Fabrics</h5>
+                    <p class="mb-0 text-muted">Beautiful, carefully selected materials for weddings, celebrations and everyday fashion.</p>
+                </div>
+            </div>
+            <div class="col-sm-6 col-lg-4 reveal reveal-delay-1">
+                <div class="hover-card">
+                    <div class="icon-badge light"><i class="bi bi-cash-coin"></i></div>
+                    <h5 class="fw-bold">Affordable Prices</h5>
+                    <p class="mb-0 text-muted">Excellent value for money with transparent wholesale and retail pricing.</p>
+                </div>
+            </div>
+            <div class="col-sm-6 col-lg-4 reveal reveal-delay-2">
+                <div class="hover-card">
+                    <div class="icon-badge light"><i class="bi bi-palette"></i></div>
+                    <h5 class="fw-bold">Unique Designs</h5>
+                    <p class="mb-0 text-muted">Swiss, beaded, Ankara, Damask and dry lace in styles that suit every taste.</p>
+                </div>
+            </div>
+            <div class="col-sm-6 col-lg-6 reveal">
+                <div class="hover-card">
+                    <div class="icon-badge light"><i class="bi bi-handshake"></i></div>
+                    <h5 class="fw-bold">Excellent Service</h5>
+                    <p class="mb-0 text-muted">Patient, honest guidance — from choosing colours on WhatsApp to confirming delivery. Our customers truly matter to us.</p>
+                </div>
+            </div>
+            <div class="col-sm-6 col-lg-6 reveal reveal-delay-1">
+                <div class="hover-card">
+                    <div class="icon-badge light"><i class="bi bi-heart-fill"></i></div>
+                    <h5 class="fw-bold">Customer Satisfaction</h5>
+                    <p class="mb-0 text-muted">We work hard to make every shopping experience smooth, so you return with confidence — and bring friends.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+
+<!-- =========================================================
+     TEAM
+========================================================= -->
+
+<section class="new-arrivals section-padding">
+    <div class="container">
+        <div class="section-heading text-center reveal">
+            <span class="section-label">MEET THE TEAM</span>
+            <h2 class="section-title">People Behind the Fabrics</h2>
+            <p>A small, dedicated team that treats your outfit like our own.</p>
+        </div>
+
+        <div class="row g-4">
+            <div class="col-md-4 reveal">
+                <div class="team-card p-4">
+                    <div class="team-avatar"><i class="bi bi-person-fill"></i></div>
+                    <h5 class="fw-bold mb-1">Founder & CEO</h5>
+                    <small class="text-warning fw-bold">LEADERSHIP & SOURCING</small>
+                    <p class="text-muted mt-2 mb-3">Leads fabric selection and supplier relationships to keep quality consistent across both stores.</p>
+                    <a href="https://wa.me/2347079057773" target="_blank" rel="noopener" class="btn btn-sm btn-outline-dark"><i class="bi bi-whatsapp me-1"></i>Chat</a>
+                </div>
+            </div>
+            <div class="col-md-4 reveal reveal-delay-1">
+                <div class="team-card p-4">
+                    <div class="team-avatar"><i class="bi bi-shop"></i></div>
+                    <h5 class="fw-bold mb-1">Store Managers</h5>
+                    <small class="text-warning fw-bold">AGO & ZAMBARI MARKETS</small>
+                    <p class="text-muted mt-2 mb-3">Run day-to-day sales, wholesale bundles and Aso Ebi coordination at both Ilorin locations.</p>
+                    <a href="contact-us.html" class="btn btn-sm btn-outline-dark"><i class="bi bi-geo-alt me-1"></i>Visit Us</a>
+                </div>
+            </div>
+            <div class="col-md-4 reveal reveal-delay-2">
+                <div class="team-card p-4">
+                    <div class="team-avatar"><i class="bi bi-headset"></i></div>
+                    <h5 class="fw-bold mb-1">Customer Experience</h5>
+                    <small class="text-warning fw-bold">ONLINE & WHATSAPP</small>
+                    <p class="text-muted mt-2 mb-3">Helps with colour matching, orders, tracking and after-sales support nationwide.</p>
+                    <a href="mailto:11victorchris@gmail.com" class="btn btn-sm btn-outline-dark"><i class="bi bi-envelope me-1"></i>Email</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+
+<!-- =========================================================
+     TESTIMONIALS
+========================================================= -->
+
+<section class="section-padding">
+    <div class="container">
+        <div class="section-heading text-center reveal">
+            <span class="section-label">TESTIMONIALS</span>
+            <h2 class="section-title">Loved by Customers</h2>
+            <p>Real feedback from weddings, resellers and everyday fashion lovers.</p>
+        </div>
+
+        <div class="row g-4">
+            <div class="col-md-4 reveal">
+                <div class="testimonial-card">
+                    <div class="testimonial-stars mb-2">
+                        <i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i>
+                    </div>
+                    <p>"My Aso Ebi lace was exactly as pictured. Colours were rich and delivery to Lagos was faster than expected."</p>
+                    <div class="d-flex align-items-center gap-2 mt-3">
+                        <span class="team-avatar m-0" style="width:44px;height:44px;font-size:1.2rem;"><i class="bi bi-person-fill"></i></span>
+                        <div><strong>Adaeze O.</strong><br><small class="text-muted">Bride — Lagos</small></div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4 reveal reveal-delay-1">
+                <div class="testimonial-card">
+                    <div class="testimonial-stars mb-2">
+                        <i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i>
+                    </div>
+                    <p>"I restock Senator and dry lace for my boutique here in Ilorin. Honest yardage and good wholesale prices every time."</p>
+                    <div class="d-flex align-items-center gap-2 mt-3">
+                        <span class="team-avatar m-0" style="width:44px;height:44px;font-size:1.2rem;"><i class="bi bi-person-fill"></i></span>
+                        <div><strong>Mallam Suleiman</strong><br><small class="text-muted">Reseller — Ilorin</small></div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4 reveal reveal-delay-2">
+                <div class="testimonial-card">
+                    <div class="testimonial-stars mb-2">
+                        <i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-half"></i>
+                    </div>
+                    <p>"They helped me match head-tie and lining on WhatsApp with photos before I paid. Very patient customer service."</p>
+                    <div class="d-flex align-items-center gap-2 mt-3">
+                        <span class="team-avatar m-0" style="width:44px;height:44px;font-size:1.2rem;"><i class="bi bi-person-fill"></i></span>
+                        <div><strong>Mrs. Adeyemi</strong><br><small class="text-muted">Retail Customer — Abuja</small></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+
+<!-- =========================================================
+     FAQ
+========================================================= -->
+
+<section class="categories-section section-padding">
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-lg-8">
+                <div class="section-heading text-center reveal">
+                    <span class="section-label">FAQ</span>
+                    <h2 class="section-title">Common Questions</h2>
+                    <p>Everything you need to know before you order.</p>
+                </div>
+
+                <div class="accordion d-flex flex-column gap-3 reveal" id="aboutFaq">
+                    <div class="accordion-item">
+                        <h2 class="accordion-header">
+                            <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#faq1" aria-expanded="true" aria-controls="faq1">
+                                <i class="bi bi-patch-question me-2"></i>Do you sell wholesale and retail?
+                            </button>
+                        </h2>
+                        <div id="faq1" class="accordion-collapse collapse show" data-bs-parent="#aboutFaq">
+                            <div class="accordion-body">Yes. Single yards are available for personal use, and discounted bundles are available for resellers, boutiques and Aso Ebi groups. Chat with us on WhatsApp for a wholesale price list.</div>
+                        </div>
+                    </div>
+                    <div class="accordion-item">
+                        <h2 class="accordion-header">
+                            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faq2" aria-expanded="false" aria-controls="faq2">
+                                <i class="bi bi-truck me-2"></i>Do you deliver outside Ilorin?
+                            </button>
+                        </h2>
+                        <div id="faq2" class="accordion-collapse collapse" data-bs-parent="#aboutFaq">
+                            <div class="accordion-body">Yes, we deliver nationwide. Orders are packed securely and dispatched quickly. Delivery fee and timeline depend on your location — confirm with us before payment.</div>
+                        </div>
+                    </div>
+                    <div class="accordion-item">
+                        <h2 class="accordion-header">
+                            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faq3" aria-expanded="false" aria-controls="faq3">
+                                <i class="bi bi-people me-2"></i>Can you handle Aso Ebi for weddings?
+                            </button>
+                        </h2>
+                        <div id="faq3" class="accordion-collapse collapse" data-bs-parent="#aboutFaq">
+                            <div class="accordion-body">Absolutely. We help you choose the fabric, confirm quantities for your guests, match head-tie and lining, and reserve stock so everyone gets the same dye lot.</div>
+                        </div>
+                    </div>
+                    <div class="accordion-item">
+                        <h2 class="accordion-header">
+                            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faq4" aria-expanded="false" aria-controls="faq4">
+                                <i class="bi bi-arrow-left-right me-2"></i>What is your exchange policy?
+                            </button>
+                        </h2>
+                        <div id="faq4" class="accordion-collapse collapse" data-bs-parent="#aboutFaq">
+                            <div class="accordion-body">Uncut fabrics in original condition can be exchanged within a reasonable period with proof of purchase. Cut or tailored fabrics cannot be returned. Contact us immediately if there is an issue.</div>
+                        </div>
+                    </div>
+                    <div class="accordion-item">
+                        <h2 class="accordion-header">
+                            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faq5" aria-expanded="false" aria-controls="faq5">
+                                <i class="bi bi-geo-alt me-2"></i>Where are your stores located?
+                            </button>
+                        </h2>
+                        <div id="faq5" class="accordion-collapse collapse" data-bs-parent="#aboutFaq">
+                            <div class="accordion-body">Head Office: No. 1 Fagba Street, Ago Market, Ilorin, Kwara State. Branch: No. 2 Bolanta Street, Zambari Market, Ilorin, Kwara State. You can also order online via WhatsApp or this website.</div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+</section>
+
+
+<!-- =========================================================
+     LOCATIONS + CONTACT
+========================================================= -->
+
+<section class="new-arrivals section-padding">
+    <div class="container">
+        <div class="section-heading text-center reveal">
+            <span class="section-label">VISIT OR CONTACT US</span>
+            <h2 class="section-title">Our Locations</h2>
+            <p>Walk in, call, or chat — we would love to serve you.</p>
+        </div>
+
+        <div class="row g-4">
+            <div class="col-md-6 reveal">
+                <div class="store-card">
+                    <div class="icon-badge"><i class="bi bi-geo-alt-fill"></i></div>
+                    <h4 class="fw-bold">Head Office — Ago Market</h4>
+                    <p class="mb-2"><i class="bi bi-pin-map me-2 text-warning"></i>No. 1 Fagba Street, Ago Market,<br class="ms-4">Ilorin, Kwara State.</p>
+                    <p class="mb-2"><i class="bi bi-clock me-2 text-warning"></i>Mon – Sat: 8:00am – 6:00pm</p>
+                    <a href="https://wa.me/2347079057773?text=Hello%20IYAWO%20XSTO!%20I%20want%20to%20visit%20your%20Ago%20Market%20store." target="_blank" rel="noopener" class="btn btn-dark btn-sm mt-2"><i class="bi bi-whatsapp me-1"></i>Chat Before Visiting</a>
+                </div>
+            </div>
+            <div class="col-md-6 reveal reveal-delay-1">
+                <div class="store-card">
+                    <div class="icon-badge"><i class="bi bi-shop"></i></div>
+                    <h4 class="fw-bold">Branch Office — Zambari Market</h4>
+                    <p class="mb-2"><i class="bi bi-pin-map me-2 text-warning"></i>No. 2 Bolanta Street, Zambari Market,<br class="ms-4">Ilorin, Kwara State.</p>
+                    <p class="mb-2"><i class="bi bi-clock me-2 text-warning"></i>Mon – Sat: 8:00am – 6:00pm</p>
+                    <a href="https://wa.me/2347079057773?text=Hello%20IYAWO%20XSTO!%20I%20want%20to%20visit%20your%20Zambari%20Market%20store." target="_blank" rel="noopener" class="btn btn-dark btn-sm mt-2"><i class="bi bi-whatsapp me-1"></i>Chat Before Visiting</a>
+                </div>
+            </div>
+        </div>
+
+        <div class="row g-4 mt-1">
+            <div class="col-md-4 reveal">
+                <div class="store-card text-center">
+                    <div class="icon-badge light"><i class="bi bi-whatsapp"></i></div>
+                    <h6 class="fw-bold">WhatsApp</h6>
+                    <a href="https://wa.me/2347079057773" target="_blank" rel="noopener" class="fw-bold">+234 707 905 7773</a>
+                </div>
+            </div>
+            <div class="col-md-4 reveal reveal-delay-1">
+                <div class="store-card text-center">
+                    <div class="icon-badge light"><i class="bi bi-envelope-fill"></i></div>
+                    <h6 class="fw-bold">Email</h6>
+                    <a href="mailto:11victorchris@gmail.com" class="fw-bold text-break">11victorchris@gmail.com</a>
+                </div>
+            </div>
+            <div class="col-md-4 reveal reveal-delay-2">
+                <div class="store-card text-center">
+                    <div class="icon-badge light"><i class="bi bi-bag-fill"></i></div>
+                    <h6 class="fw-bold">Ready to Shop?</h6>
+                    <a href="shop.html" class="btn btn-warning btn-sm mt-1">Browse Fabrics<i class="bi bi-arrow-right ms-1"></i></a>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</section>
+
+
+<!-- =========================================================
+     CTA
+========================================================= -->
+
+<section class="cta-section">
+    <div class="container">
+        <div class="row justify-content-center text-center">
+            <div class="col-lg-8 reveal">
+                <span class="section-label">YOUR PERFECT FABRIC AWAITS</span>
+                <h2>
+                    Make Every Outfit
+                    <span>Unforgettable.</span>
+                </h2>
+                <p>
+                    Contact us today to order quality fabric for personal
+                    use, Aso Ebi or resale — wholesale and retail available.
+                </p>
+                <div class="mt-4 d-flex flex-column flex-sm-row justify-content-center gap-3">
+                    <a href="https://wa.me/2347079057773" target="_blank" rel="noopener" class="btn btn-warning btn-lg">
+                        <i class="bi bi-whatsapp me-2"></i>Contact Us on WhatsApp
+                    </a>
+                    <a href="shop.html" class="btn btn-outline-light btn-lg">
+                        <i class="bi bi-bag-fill me-2"></i>Place an Order
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+</main>
+
+
+<!-- =========================================================
+     FOOTER (identical to index.html)
+========================================================= -->
+
+<footer class="footer">
+
+    <div class="container">
+
+        <div class="row g-5">
+
+            <!-- BRAND -->
+
+            <div class="col-lg-4">
+
+                <a
+                    href="index.html"
+                    class="footer-brand"
+                >
+                    <span class="brand-orange">
+                        IYAWO
+                    </span>
+
+                    <span class="brand-white">
+                        XSTO
+                    </span>
+                </a>
+
+                <p class="mt-3">
+                    Iyawo Xsto Fabric Store is a unisex
+                    fashion brand offering quality lace and
+                    fabrics in wholesale and retail.
+                </p>
+
+                <p>
+                    For quality fashion, contact Iyawo Xsto
+                    Fabric Store today.
+                </p>
+
+                <a
+                    href="contact-us.html"
+                    class="footer-contact-link"
+                >
+                    Get in touch <i class="bi bi-arrow-right"></i>
+                </a>
+
+            </div>
+
+
+            <!-- SHOP -->
+
+            <div class="col-6 col-lg-2">
+
+                <h5>
+                    SHOP
+                </h5>
+
+                <ul class="footer-links">
+
+                    <li>
+                        <a href="shop.html">
+                            All Products
+                        </a>
+                    </li>
+
+                    <li>
+                        <a href="sale.html">
+                            Sales
+                        </a>
+                    </li>
+
+                    <li>
+                        <a href="swiss-lace.html">
+                            Swiss Lace
+                        </a>
+                    </li>
+
+                    <li>
+                        <a href="ankara-lace.html">
+                            Ankara Lace
+                        </a>
+                    </li>
+
+                    <li>
+                        <a href="beaded.html">
+                            Beaded Lace
+                        </a>
+                    </li>
+
+                    <li>
+                        <a href="damask.html">
+                            Damask
+                        </a>
+                    </li>
+
+                    <li>
+                        <a href="white-lace.html">
+                            White Lace
+                        </a>
+                    </li>
+
+                </ul>
+
+            </div>
+
+
+            <!-- COMPANY -->
+
+            <div class="col-6 col-lg-2">
+
+                <h5>
+                    COMPANY
+                </h5>
+
+                <ul class="footer-links">
+
+                    <li>
+                        <a href="about-us.html">
+                            About Us
+                        </a>
+                    </li>
+
+                    <li>
+                        <a href="services.html">
+                            Services
+                        </a>
+                    </li>
+
+                    <li>
+                        <a href="contact-us.html">
+                            Contact
+                        </a>
+                    </li>
+
+                    <li>
+                        <a href="find-job.html">
+                            Find Job
+                        </a>
+                    </li>
+
+                </ul>
+
+            </div>
+
+
+            <!-- CONTACT -->
+
+            <div class="col-lg-4">
+
+                <h5>
+                    CONTACT
+                </h5>
+
+
+                <div class="contact-item">
+
+                    <span>
+                        WHATSAPP
+                    </span>
+
+                    <a
+                        href="https://wa.me/2347079057773"
+                        target="_blank"
+                        rel="noopener"
+                    >
+                        +234 707 905 7773
+                    </a>
+
+                </div>
+
+
+                <div class="contact-item">
+
+                    <span>
+                        EMAIL
+                    </span>
+
+                    <a href="mailto:11victorchris@gmail.com">
+                        11victorchris@gmail.com
+                    </a>
+
+                </div>
+
+
+                <div class="contact-item">
+
+                    <span>
+                        LOCATIONS
+                    </span>
+
+                    <p>
+                        No. 1 Fagba Street, Ago Market,
+                        Ilorin, Kwara State.
+                    </p>
+
+                    <p>
+                        No. 2 Bolanta Street, Zambari Market,
+                        Ilorin, Kwara State.
+                    </p>
+
+                </div>
+
+            </div>
+
+        </div>
+
+
+        <div class="footer-bottom">
+
+            <p>
+                © 2026 IYAWO XSTO FABRIC STORE.
+                ALL RIGHTS RESERVED.
+            </p>
+
+            <a href="#top">
+                Back to Top <i class="bi bi-arrow-up"></i>
+            </a>
+
+        </div>
+
+    </div>
+
+</footer>
+
+
+<!-- Bootstrap JS -->
+
+<script
+    src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js">
+</script>
+
+<!-- Supabase + store config -->
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+<script src="assets/js/config.js"></script>
+<script src="assets/js/store-common.js"></script>
+
+<script>
+// AOS-like reveal via IntersectionObserver (no heavy libs)
+(function () {
+    var els = document.querySelectorAll('.reveal');
+    if (!('IntersectionObserver' in window)) {
+        els.forEach(function (el) { el.classList.add('visible'); });
+        return;
+    }
+    var observer = new IntersectionObserver(function (entries) {
+        entries.forEach(function (entry) {
+            if (entry.isIntersecting) {
+                entry.target.classList.add('visible');
+                observer.unobserve(entry.target);
+            }
+        });
+    }, { threshold: 0.12 });
+    els.forEach(function (el) { observer.observe(el); });
+})();
+
+// Animated stat counters
+(function () {
+    function animateCount(el) {
+        var target = parseInt(el.getAttribute('data-count'), 10) || 0;
+        var duration = 1600;
+        var start = null;
+        function step(timestamp) {
+            if (!start) start = timestamp;
+            var progress = Math.min((timestamp - start) / duration, 1);
+            var value = Math.floor(progress * target);
+            el.textContent = value.toLocaleString();
+            if (progress < 1) requestAnimationFrame(step);
+            else el.textContent = target.toLocaleString();
+        }
+        requestAnimationFrame(step);
+    }
+    var counters = document.querySelectorAll('[data-count]');
+    if (!('IntersectionObserver' in window)) {
+        counters.forEach(animateCount);
+        return;
+    }
+    var seen = new WeakSet();
+    var counterObserver = new IntersectionObserver(function (entries) {
+        entries.forEach(function (entry) {
+            if (entry.isIntersecting && !seen.has(entry.target)) {
+                seen.add(entry.target);
+                animateCount(entry.target);
+                counterObserver.unobserve(entry.target);
+            }
+        });
+    }, { threshold: 0.4 });
+    counters.forEach(function (el) { counterObserver.observe(el); });
+})();
+</script>
+
+</body>
+</html>
