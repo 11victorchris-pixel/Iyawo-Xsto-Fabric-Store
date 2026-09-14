@@ -1366,9 +1366,9 @@
 
                 </div>
 
-                <!-- NOTE: href matches existing file "white -lace.html" exactly (space preserved). See fallback script. -->
+                <!-- NOTE: href matches existing file "white-lace.html" exactly (space preserved). See fallback script. -->
                 <a
-                    href="white -lace.html"
+                    href="white-lace.html"
                     class="collection-link"
                     data-white-lace
                 >
@@ -1998,9 +1998,9 @@
                     </li>
 
                     <li>
-                        <!-- NOTE: filename intentionally contains a space ("white -lace.html"). Do NOT rename file.
+                        <!-- NOTE: filename intentionally contains a space ("white-lace.html"). Do NOT rename file.
                              href matches existing file exactly; JS fallback below also tries "white-lace.html" alias. -->
-                        <a href="white -lace.html" data-white-lace>
+                        <a href="white-lace.html" data-white-lace>
                             White Lace
                         </a>
                     </li>
@@ -2203,11 +2203,11 @@
 })();
 </script>
 <script>
-// White-lace filename fallback: file on disk is "white -lace.html" (with space).
+// White-lace filename fallback: file on disk is "white-lace.html" (with space).
 // Keep exact href working; if alias "white-lace.html" ever exists, prefer whichever resolves.
 document.querySelectorAll('[data-white-lace]').forEach(function (a) {
   a.addEventListener('click', function (ev) {
-    var exact = 'white -lace.html';
+    var exact = 'white-lace.html';
     var alias = 'white-lace.html';
     if (a.getAttribute('href') !== exact) return;
     // On http(s), probe alias first without breaking exact link

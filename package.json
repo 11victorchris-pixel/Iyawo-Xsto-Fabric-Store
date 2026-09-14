@@ -4,7 +4,7 @@
   "private": true,
   "description": "Iyawo Xsto Fabric Store - e-commerce backend (Supabase + Paystack) for the existing static website",
   "engines": {
-    "node": ">=18"
+    "node": "20.x"
   },
   "dependencies": {
     "@supabase/supabase-js": "^2.45.4"
