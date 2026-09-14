@@ -1,20 +1,23 @@
 // POST /api/orders/track - customer-facing order status lookup.
 // Body: { order_number, email }
 // Returns only safe fields - never payment references or full addresses.
-const { supabase } = require('../_lib/supabase');
-const { ok, fail, readBody, methodNotAllowed } = require('../_lib/respond');
+const { getClients } = require('../_lib/supabase');
+const { ok, fail, readBody, methodNotAllowed, handleOptions } = require('../_lib/respond');
 
-module.exports = async function handler(req) {
-  if (req.method === 'OPTIONS') return ok({}, 204);
+module.exports = async function handler(req, res) {
+  if (handleOptions(req, res)) return;
 
-  if (req.method !== 'POST') return methodNotAllowed(req, ['POST']);
+  if (req.method !== 'POST') return methodNotAllowed(res, req, ['POST']);
+
+  const { supabase, missing } = getClients();
+  if (missing || !supabase) return fail(res, 'Backend is not configured yet.', 500);
 
   const body = await readBody(req);
   const orderNumber = String(body.order_number || '').trim().toUpperCase();
   const email = String(body.email || '').trim().toLowerCase();
 
   if (!orderNumber || !email) {
-    return fail('Please enter your order number and email.');
+    return fail(res, 'Please enter your order number and email.');
   }
 
   const { data: order, error } = await supabase
@@ -24,12 +27,12 @@ module.exports = async function handler(req) {
     .ilike('customer_email', email)
     .maybeSingle();
 
-  if (error) return fail('Something went wrong. Please try again.', 500);
+  if (error) return fail(res, 'Something went wrong. Please try again.', 500);
   if (!order) {
-    return fail('Order not found. Check the order number and email and try again.', 404);
+    return fail(res, 'Order not found. Check the order number and email and try again.', 404);
   }
 
-  return ok({
+  return ok(res, {
     order_number: order.order_number,
     customer_name: order.customer_name,
     city: order.city,
@@ -43,4 +46,4 @@ module.exports = async function handler(req) {
     created_at: order.created_at,
     items: order.order_items || []
   });
-}
+};

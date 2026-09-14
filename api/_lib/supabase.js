@@ -1,15 +1,8 @@
-// Server-side Supabase clients.
+// Server-side Supabase clients (lazy - never throw at import time so
+// `vercel build` and /api/health work even when env vars are missing).
 // The service-role client is used for privileged operations (orders,
 // admin writes, stock) - it must NEVER be exposed to the browser.
 const { createClient } = require('@supabase/supabase-js');
-
-const url = process.env.SUPABASE_URL;
-const serviceKey = process.env.SUPABASE_SERVICE_ROLE_KEY;
-const anonKey = process.env.SUPABASE_ANON_KEY;
-
-if (!url) {
-  throw new Error('Missing SUPABASE_URL environment variable.');
-}
 
 const options = {
   auth: {
@@ -19,10 +12,36 @@ const options = {
   }
 };
 
-// Privileged client (bypasses RLS). Server-side only.
-const supabase = createClient(url, serviceKey || anonKey, options);
+let cached = null;
 
-// Public client (respects RLS - only sees active/approved rows).
-const supabaseAnon = createClient(url, anonKey || 'public-anon-key', options);
+function getClients() {
+  if (cached) return cached;
+  const url = process.env.SUPABASE_URL;
+  const serviceKey = process.env.SUPABASE_SERVICE_ROLE_KEY;
+  const anonKey = process.env.SUPABASE_ANON_KEY;
 
-module.exports = { supabase, supabaseAnon };
+  if (!url || (!serviceKey && !anonKey)) {
+    return { supabase: null, supabaseAnon: null, missing: true };
+  }
+
+  const supabase = createClient(url, serviceKey || anonKey, options);
+  const supabaseAnon = createClient(url, anonKey || serviceKey, options);
+  cached = { supabase, supabaseAnon, missing: false };
+  return cached;
+}
+
+// Backward-compatible getters: `const { supabase } = require('./_lib/supabase')`
+// still works, but is null until env vars exist. Prefer getClients().
+const proxy = new Proxy({}, {
+  get(_target, prop) {
+    if (prop === 'getClients') return getClients;
+    if (prop === 'supabase' || prop === 'supabaseAnon') {
+      return getClients()[prop];
+    }
+    if (prop === '__esModule') return false;
+    return undefined;
+  }
+});
+
+module.exports = proxy;
+module.exports.getClients = getClients;

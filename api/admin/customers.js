@@ -1,18 +1,22 @@
 // GET /api/admin/customers - admin only
 // Aggregates customers from orders: name, email, phone, order count,
 // total spent (paid orders only), last order date.
-const { supabase } = require('../_lib/supabase');
-const { ok, fail, methodNotAllowed } = require('../_lib/respond');
+const { getClients } = require('../_lib/supabase');
+const { ok, fail, methodNotAllowed, getQuery, handleOptions } = require('../_lib/respond');
 const { requireAdmin } = require('../_lib/auth');
 
-module.exports = async function handler(req) {
-  if (req.method === 'OPTIONS') return ok({}, 204);
-  if (req.method !== 'GET') return methodNotAllowed(req, ['GET']);
+module.exports = async function handler(req, res) {
+  if (handleOptions(req, res)) return;
+  if (req.method !== 'GET') return methodNotAllowed(res, req, ['GET']);
+
+  const { supabase, missing } = getClients();
+  if (missing || !supabase) return fail(res, 'Backend is not configured yet.', 500);
 
   const auth = await requireAdmin(req, supabase);
-  if (auth.error) return fail(auth.error.message, auth.error.status);
+  if (auth.error) return fail(res, auth.error.message, auth.error.status);
 
-  const limit = Math.min(Math.max(Number(new URL(req.url).searchParams.get('limit')) || 500, 1), 2000);
+  const params = getQuery(req);
+  const limit = Math.min(Math.max(Number(params.limit) || 500, 1), 2000);
 
   const { data: orders, error } = await supabase
     .from('orders')
@@ -20,7 +24,7 @@ module.exports = async function handler(req) {
     .order('created_at', { ascending: false })
     .limit(limit);
 
-  if (error) return fail('Something went wrong while loading customers.', 500);
+  if (error) return fail(res, 'Something went wrong while loading customers.', 500);
 
   const map = new Map();
 
@@ -55,5 +59,5 @@ module.exports = async function handler(req) {
       last_order_at: c.last_order_at
     }));
 
-  return ok({ customers });
-}
+  return ok(res, { customers });
+};

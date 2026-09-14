@@ -1,17 +1,17 @@
 // POST /api/orders - create an order (public; used by the WhatsApp checkout flow)
 // GET  /api/orders - list orders (admin only) with filters
-const { supabase, supabaseAnon } = require('./_lib/supabase');
-const { ok, fail, readBody, methodNotAllowed } = require('./_lib/respond');
+const { getClients } = require('./_lib/supabase');
+const { ok, fail, readBody, methodNotAllowed, getQuery, getAuthHeader, handleOptions } = require('./_lib/respond');
 const { requireAdmin } = require('./_lib/auth');
 const { computeOrder, createOrder } = require('./_lib/order');
 
-module.exports = async function handler(req) {
-  if (req.method === 'OPTIONS') return ok({}, 204);
+module.exports = async function handler(req, res) {
+  if (handleOptions(req, res)) return;
 
-  if (req.method === 'POST') return handlePost(req);
-  if (req.method === 'GET') return handleGet(req);
+  if (req.method === 'POST') return handlePost(req, res);
+  if (req.method === 'GET') return handleGet(req, res);
 
-  return methodNotAllowed(req, ['GET', 'POST']);
+  return methodNotAllowed(res, req, ['GET', 'POST']);
 };
 
 function cleanCustomer(body) {
@@ -22,15 +22,17 @@ function cleanCustomer(body) {
   };
 }
 
-async function handlePost(req) {
+async function handlePost(req, res) {
+  const { supabase, missing } = getClients();
+  if (missing || !supabase) return fail(res, 'Backend is not configured yet.', 500);
   const body = await readBody(req);
 
   const customer = cleanCustomer(body);
   if (!customer.name || !customer.phone || !customer.email) {
-    return fail('Please provide your full name, phone number and email.');
+    return fail(res, 'Please provide your full name, phone number and email.');
   }
   if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(customer.email)) {
-    return fail('Please provide a valid email address.');
+    return fail(res, 'Please provide a valid email address.');
   }
 
   const delivery = {
@@ -42,7 +44,7 @@ async function handlePost(req) {
 
   // Resolve the customer's Supabase user id if a session was supplied.
   let customerId = null;
-  const header = req.headers.get('authorization') || '';
+  const header = getAuthHeader(req) || '';
   if (header.startsWith('Bearer ')) {
     const token = header.slice(7).trim();
     const { data: userData } = await supabase.auth.getUser(token);
@@ -53,7 +55,7 @@ async function handlePost(req) {
   try {
     computed = await computeOrder(supabase, body.items, delivery);
   } catch (err) {
-    return fail(err.message, err.status || 400);
+    return fail(res, err.message, err.status || 400);
   }
 
   const paymentMethod = body.payment_method === 'whatsapp' ? 'whatsapp' : 'paystack';
@@ -64,9 +66,13 @@ async function handlePost(req) {
     paymentMethod,
     computed,
     customerId
-  });
+  }).catch((err) => ({ err }));
 
-  return ok({
+  if (result && result.err) {
+    return fail(res, result.err.message || 'Could not create your order.', result.err.status || 500);
+  }
+
+  return ok(res, {
     order: result.order,
     items: result.items,
     subtotal: computed.subtotal,
@@ -75,34 +81,36 @@ async function handlePost(req) {
   }, 201);
 }
 
-async function handleGet(req) {
+async function handleGet(req, res) {
+  const { supabase, missing } = getClients();
+  if (missing || !supabase) return fail(res, 'Backend is not configured yet.', 500);
   const auth = await requireAdmin(req, supabase);
-  if (auth.error) return fail(auth.error.message, auth.error.status);
+  if (auth.error) return fail(res, auth.error.message, auth.error.status);
 
-  const url = new URL(req.url);
-  const params = url.searchParams;
+  const params = getQuery(req);
+  const get = (k) => (params[k] !== undefined ? String(params[k]) : null);
 
   let query = supabase
     .from('orders')
     .select('*, order_items(id,product_id,product_name,price,quantity,subtotal,unit,image_url)', { count: 'exact' })
     .order('created_at', { ascending: false });
 
-  const status = params.get('status');
+  const status = get('status');
   if (status) query = query.eq('order_status', status);
 
-  const paymentStatus = params.get('payment_status');
+  const paymentStatus = get('payment_status');
   if (paymentStatus) query = query.eq('payment_status', paymentStatus);
 
-  const search = params.get('search');
+  const search = get('search');
   if (search) query = query.or(`order_number.ilike.%${search}%,customer_name.ilike.%${search}%,customer_email.ilike.%${search}%`);
 
-  const limit = Math.min(Math.max(Number(params.get('limit')) || 25, 1), 100);
-  const page = Math.max(Number(params.get('page')) || 1, 1);
+  const limit = Math.min(Math.max(Number(get('limit')) || 25, 1), 100);
+  const page = Math.max(Number(get('page')) || 1, 1);
   const from = (page - 1) * limit;
   const to = from + limit - 1;
 
   const { data, error, count } = await query.range(from, to);
-  if (error) return fail('Something went wrong while loading orders.', 500);
+  if (error) return fail(res, 'Something went wrong while loading orders.', 500);
 
-  return ok({ orders: data || [], page, limit, total: count });
+  return ok(res, { orders: data || [], page, limit, total: count });
 }

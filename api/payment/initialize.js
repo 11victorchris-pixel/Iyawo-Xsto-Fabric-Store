@@ -5,19 +5,22 @@
 //
 // The amount paid is ALWAYS recalculated on the server. Never trust
 // prices or totals coming from the browser.
-const { supabase } = require('../_lib/supabase');
-const { ok, fail, readBody, methodNotAllowed } = require('../_lib/respond');
+const { getClients } = require('../_lib/supabase');
+const { ok, fail, readBody, methodNotAllowed, getOrigin, handleOptions } = require('../_lib/respond');
 const { computeOrder, createOrder, makePaymentReference } = require('../_lib/order');
 
 const PAYSTACK_API = 'https://api.paystack.co';
 
-module.exports = async function handler(req) {
-  if (req.method === 'OPTIONS') return ok({}, 204);
-  if (req.method !== 'POST') return methodNotAllowed(req, ['POST']);
+module.exports = async function handler(req, res) {
+  if (handleOptions(req, res)) return;
+  if (req.method !== 'POST') return methodNotAllowed(res, req, ['POST']);
+
+  const { supabase, missing } = getClients();
+  if (missing || !supabase) return fail(res, 'Backend is not configured yet.', 500);
 
   const secretKey = process.env.PAYSTACK_SECRET_KEY;
   if (!secretKey) {
-    return fail('Payment is not configured yet. Please contact the store.', 500);
+    return fail(res, 'Payment is not configured yet. Please contact the store.', 500);
   }
 
   const body = await readBody(req);
@@ -27,10 +30,10 @@ module.exports = async function handler(req) {
   const phone = String(body.customer_phone || '').trim();
 
   if (!name || !phone || !email) {
-    return fail('Please provide your full name, phone number and email.');
+    return fail(res, 'Please provide your full name, phone number and email.');
   }
   if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
-    return fail('Please provide a valid email address.');
+    return fail(res, 'Please provide a valid email address.');
   }
 
   const delivery = {
@@ -45,7 +48,7 @@ module.exports = async function handler(req) {
   try {
     computed = await computeOrder(supabase, body.items, delivery);
   } catch (err) {
-    return fail(err.message, err.status || 400);
+    return fail(res, err.message, err.status || 400);
   }
 
   // 2. Create the order (pending payment).
@@ -60,13 +63,13 @@ module.exports = async function handler(req) {
     });
     order = result.order;
   } catch (err) {
-    return fail(err.message, err.status || 400);
+    return fail(res, err.message, err.status || 400);
   }
 
   const reference = makePaymentReference();
 
   // 3. Initialize the Paystack transaction.
-  const origin = new URL(req.url).origin;
+  const origin = getOrigin(req);
   const callbackBase = process.env.SITE_URL || origin;
   const callbackUrl =
     `${callbackBase}/order-confirmation.html?order=${encodeURIComponent(order.order_number)}&reference=${encodeURIComponent(reference)}`;
@@ -97,7 +100,7 @@ module.exports = async function handler(req) {
     });
   } catch (err) {
     await supabase.from('orders').update({ payment_status: 'failed' }).eq('id', order.id);
-    return fail('Something went wrong. Please check your connection and try again.', 500);
+    return fail(res, 'Something went wrong. Please check your connection and try again.', 500);
   }
 
   let paystackData;
@@ -105,12 +108,12 @@ module.exports = async function handler(req) {
     paystackData = await paystackRes.json();
   } catch (err) {
     await supabase.from('orders').update({ payment_status: 'failed' }).eq('id', order.id);
-    return fail('Payment could not be started. Please try again.', 500);
+    return fail(res, 'Payment could not be started. Please try again.', 500);
   }
 
   if (!paystackData.status) {
     await supabase.from('orders').update({ payment_status: 'failed' }).eq('id', order.id);
-    return fail('Payment could not be started. Please try again.', 502);
+    return fail(res, 'Payment could not be started. Please try again.', 502);
   }
 
   // 4. Save the reference so verification can find this order.
@@ -119,7 +122,7 @@ module.exports = async function handler(req) {
     .update({ payment_reference: reference })
     .eq('id', order.id);
 
-  return ok({
+  return ok(res, {
     order_id: order.id,
     order_number: order.order_number,
     reference,
@@ -129,4 +132,4 @@ module.exports = async function handler(req) {
     delivery_fee: computed.delivery_fee,
     total_amount: computed.total
   }, 201);
-}
+};

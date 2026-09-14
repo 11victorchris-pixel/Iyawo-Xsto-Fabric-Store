@@ -1,16 +1,22 @@
 // GET  /api/categories - public list
 // POST /api/categories - create category (admin only)
-const { supabase, supabaseAnon } = require('./_lib/supabase');
-const { ok, fail, readBody, methodNotAllowed } = require('./_lib/respond');
+const { getClients } = require('./_lib/supabase');
+const { ok, fail, readBody, methodNotAllowed, getAuthHeader, handleOptions } = require('./_lib/respond');
 const { requireAdmin } = require('./_lib/auth');
 const { uniqueSlug } = require('./_lib/slugify');
 
-module.exports = async function handler(req) {
-  if (req.method === 'OPTIONS') return ok({}, 204);
+module.exports = async function handler(req, res) {
+  if (handleOptions(req, res)) return;
+
+  const clients = getClients();
+  if (clients.missing || !clients.supabase || !clients.supabaseAnon) {
+    return fail(res, 'Backend is not configured yet. Set Supabase env vars in Vercel.', 500);
+  }
+  const { supabase, supabaseAnon } = clients;
 
   if (req.method === 'GET') {
     // Admin requests (valid token) also see inactive categories.
-    const hasToken = (req.headers.get('authorization') || '').startsWith('Bearer ');
+    const hasToken = (getAuthHeader(req) || '').startsWith('Bearer ');
     const auth = hasToken ? await requireAdmin(req, supabase).catch(() => null) : null;
     const client = auth && auth.admin ? supabase : supabaseAnon;
 
@@ -22,17 +28,17 @@ module.exports = async function handler(req) {
     query = query.order('sort_order', { ascending: true });
 
     const { data, error } = await query;
-    if (error) return fail('Something went wrong while loading categories.', 500);
-    return ok({ categories: data || [] });
+    if (error) return fail(res, 'Something went wrong while loading categories.', 500);
+    return ok(res, { categories: data || [] });
   }
 
   if (req.method === 'POST') {
     const auth = await requireAdmin(req, supabase);
-    if (auth.error) return fail(auth.error.message, auth.error.status);
+    if (auth.error) return fail(res, auth.error.message, auth.error.status);
 
     const body = await readBody(req);
     const name = String(body.name || '').trim();
-    if (!name) return fail('Category name is required.');
+    if (!name) return fail(res, 'Category name is required.');
 
     const slug = await uniqueSlug(supabase, 'categories', name);
 
@@ -49,9 +55,9 @@ module.exports = async function handler(req) {
       .select()
       .single();
 
-    if (error) return fail('Could not create the category. Please try again.', 500);
-    return ok({ category: data }, 201);
+    if (error) return fail(res, 'Could not create the category. Please try again.', 500);
+    return ok(res, { category: data }, 201);
   }
 
-  return methodNotAllowed(req, ['GET', 'POST']);
-}
+  return methodNotAllowed(res, req, ['GET', 'POST']);
+};

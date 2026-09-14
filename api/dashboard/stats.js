@@ -1,15 +1,18 @@
 // GET /api/dashboard/stats - admin only
 // Returns headline numbers for the dashboard + recent orders.
-const { supabase } = require('../_lib/supabase');
-const { ok, fail, methodNotAllowed } = require('../_lib/respond');
+const { getClients } = require('../_lib/supabase');
+const { ok, fail, methodNotAllowed, handleOptions } = require('../_lib/respond');
 const { requireAdmin } = require('../_lib/auth');
 
-module.exports = async function handler(req) {
-  if (req.method === 'OPTIONS') return ok({}, 204);
-  if (req.method !== 'GET') return methodNotAllowed(req, ['GET']);
+module.exports = async function handler(req, res) {
+  if (handleOptions(req, res)) return;
+  if (req.method !== 'GET') return methodNotAllowed(res, req, ['GET']);
+
+  const { supabase, missing } = getClients();
+  if (missing || !supabase) return fail(res, 'Backend is not configured yet.', 500);
 
   const auth = await requireAdmin(req, supabase);
-  if (auth.error) return fail(auth.error.message, auth.error.status);
+  if (auth.error) return fail(res, auth.error.message, auth.error.status);
 
   try {
     const [
@@ -38,7 +41,7 @@ module.exports = async function handler(req) {
 
     const totalSales = (salesRes.data || []).reduce((sum, o) => sum + Number(o.total_amount), 0);
 
-    return ok({
+    return ok(res, {
       products: productsRes.count || 0,
       products_in_stock: inStockRes.count || 0,
       products_out_of_stock: outStockRes.count || 0,
@@ -51,6 +54,6 @@ module.exports = async function handler(req) {
       recent_orders: recentRes.data || []
     });
   } catch (err) {
-    return fail('Something went wrong while loading statistics.', 500);
+    return fail(res, 'Something went wrong while loading statistics.', 500);
   }
-}
+};

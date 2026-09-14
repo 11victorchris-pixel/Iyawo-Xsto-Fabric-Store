@@ -1,8 +1,8 @@
 // GET    /api/products/:id-or-slug - public
 // PUT    /api/products/:id-or-slug - update (admin only)
 // DELETE /api/products/:id-or-slug - soft delete, active = false (admin only)
-const { supabase, supabaseAnon } = require('../_lib/supabase');
-const { ok, fail, readBody, methodNotAllowed } = require('../_lib/respond');
+const { getClients } = require('../_lib/supabase');
+const { ok, fail, readBody, methodNotAllowed, getIdParam, handleOptions } = require('../_lib/respond');
 const { requireAdmin } = require('../_lib/auth');
 const { uniqueSlug, isUuid } = require('../_lib/slugify');
 
@@ -11,16 +11,22 @@ const FIELDS =
   'stock_quantity,stock_status,image_url,additional_images,featured,' +
   'wholesale_available,retail_available,active,created_at,updated_at';
 
-module.exports = async function handler(req) {
-  if (req.method === 'OPTIONS') return ok({}, 204);
+module.exports = async function handler(req, res) {
+  if (handleOptions(req, res)) return;
 
-  const idOrSlug = decodeURIComponent(req.url.split('/').pop() || '');
+  const clients = getClients();
+  if (clients.missing || !clients.supabase || !clients.supabaseAnon) {
+    return fail(res, 'Backend is not configured yet. Set Supabase env vars in Vercel.', 500);
+  }
 
-  if (req.method === 'GET') return handleGet(idOrSlug);
-  if (req.method === 'PUT') return handlePut(idOrSlug, req);
-  if (req.method === 'DELETE') return handleDelete(idOrSlug, req);
+  const idOrSlug = getIdParam(req);
+  if (!idOrSlug) return fail(res, 'Missing product id.', 400);
 
-  return methodNotAllowed(req, ['GET', 'PUT', 'DELETE']);
+  if (req.method === 'GET') return handleGet(res, clients, idOrSlug);
+  if (req.method === 'PUT') return handlePut(req, res, clients, idOrSlug);
+  if (req.method === 'DELETE') return handleDelete(req, res, clients, idOrSlug);
+
+  return methodNotAllowed(res, req, ['GET', 'PUT', 'DELETE']);
 };
 
 async function findProduct(client, idOrSlug, activeOnly) {
@@ -30,26 +36,26 @@ async function findProduct(client, idOrSlug, activeOnly) {
   return query.maybeSingle();
 }
 
-async function handleGet(idOrSlug) {
+async function handleGet(res, { supabaseAnon }, idOrSlug) {
   const { data, error } = await findProduct(supabaseAnon, idOrSlug, true);
-  if (error) return fail('Something went wrong while loading the product.', 500);
-  if (!data) return fail('Sorry, this product is currently unavailable.', 404);
-  return ok({ product: data });
+  if (error) return fail(res, 'Something went wrong while loading the product.', 500);
+  if (!data) return fail(res, 'Sorry, this product is currently unavailable.', 404);
+  return ok(res, { product: data });
 }
 
-async function handlePut(idOrSlug, req) {
+async function handlePut(req, res, { supabase }, idOrSlug) {
   const auth = await requireAdmin(req, supabase);
-  if (auth.error) return fail(auth.error.message, auth.error.status);
+  if (auth.error) return fail(res, auth.error.message, auth.error.status);
 
   const existing = await findProduct(supabase, idOrSlug, false);
-  if (!existing.data) return fail('Product not found.', 404);
+  if (!existing.data) return fail(res, 'Product not found.', 404);
 
   const body = await readBody(req);
   const updates = {};
 
   if (body.name !== undefined) {
     const name = String(body.name).trim();
-    if (!name) return fail('Product name is required.');
+    if (!name) return fail(res, 'Product name is required.');
     updates.name = name;
     updates.slug = await uniqueSlug(supabase, 'products', name, existing.data.id);
   }
@@ -102,17 +108,17 @@ async function handlePut(idOrSlug, req) {
     .select()
     .single();
 
-  if (error) return fail('Could not update the product. Please try again.', 500);
+  if (error) return fail(res, 'Could not update the product. Please try again.', 500);
 
-  return ok({ product: data });
+  return ok(res, { product: data });
 }
 
-async function handleDelete(idOrSlug, req) {
+async function handleDelete(req, res, { supabase }, idOrSlug) {
   const auth = await requireAdmin(req, supabase);
-  if (auth.error) return fail(auth.error.message, auth.error.status);
+  if (auth.error) return fail(res, auth.error.message, auth.error.status);
 
   const existing = await findProduct(supabase, idOrSlug, false);
-  if (!existing.data) return fail('Product not found.', 404);
+  if (!existing.data) return fail(res, 'Product not found.', 404);
 
   // Soft delete - keep the record for order history.
   const { data, error } = await supabase
@@ -122,7 +128,7 @@ async function handleDelete(idOrSlug, req) {
     .select()
     .single();
 
-  if (error) return fail('Could not deactivate the product. Please try again.', 500);
+  if (error) return fail(res, 'Could not deactivate the product. Please try again.', 500);
 
-  return ok({ product: data });
+  return ok(res, { product: data });
 }

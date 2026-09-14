@@ -1,21 +1,27 @@
 // GET    /api/categories/:id-or-slug
 // PUT    /api/categories/:id-or-slug - update (admin only)
 // DELETE /api/categories/:id-or-slug - soft delete, active = false (admin only)
-const { supabase, supabaseAnon } = require('../_lib/supabase');
-const { ok, fail, readBody, methodNotAllowed } = require('../_lib/respond');
+const { getClients } = require('../_lib/supabase');
+const { ok, fail, readBody, methodNotAllowed, getIdParam, handleOptions } = require('../_lib/respond');
 const { requireAdmin } = require('../_lib/auth');
 const { uniqueSlug, isUuid } = require('../_lib/slugify');
 
-module.exports = async function handler(req) {
-  if (req.method === 'OPTIONS') return ok({}, 204);
+module.exports = async function handler(req, res) {
+  if (handleOptions(req, res)) return;
 
-  const idOrSlug = decodeURIComponent(req.url.split('/').pop() || '');
+  const clients = getClients();
+  if (clients.missing || !clients.supabase || !clients.supabaseAnon) {
+    return fail(res, 'Backend is not configured yet. Set Supabase env vars in Vercel.', 500);
+  }
 
-  if (req.method === 'GET') return handleGet(idOrSlug);
-  if (req.method === 'PUT') return handlePut(idOrSlug, req);
-  if (req.method === 'DELETE') return handleDelete(idOrSlug, req);
+  const idOrSlug = getIdParam(req);
+  if (!idOrSlug) return fail(res, 'Missing category id.', 400);
 
-  return methodNotAllowed(req, ['GET', 'PUT', 'DELETE']);
+  if (req.method === 'GET') return handleGet(res, clients, idOrSlug);
+  if (req.method === 'PUT') return handlePut(req, res, clients, idOrSlug);
+  if (req.method === 'DELETE') return handleDelete(req, res, clients, idOrSlug);
+
+  return methodNotAllowed(res, req, ['GET', 'PUT', 'DELETE']);
 };
 
 async function findCategory(client, idOrSlug) {
@@ -24,26 +30,26 @@ async function findCategory(client, idOrSlug) {
   return query.maybeSingle();
 }
 
-async function handleGet(idOrSlug) {
+async function handleGet(res, { supabaseAnon }, idOrSlug) {
   const { data, error } = await findCategory(supabaseAnon, idOrSlug);
-  if (error) return fail('Something went wrong.', 500);
-  if (!data || !data.active) return fail('Category not found.', 404);
-  return ok({ category: data });
+  if (error) return fail(res, 'Something went wrong.', 500);
+  if (!data || !data.active) return fail(res, 'Category not found.', 404);
+  return ok(res, { category: data });
 }
 
-async function handlePut(idOrSlug, req) {
+async function handlePut(req, res, { supabase }, idOrSlug) {
   const auth = await requireAdmin(req, supabase);
-  if (auth.error) return fail(auth.error.message, auth.error.status);
+  if (auth.error) return fail(res, auth.error.message, auth.error.status);
 
   const existing = await findCategory(supabase, idOrSlug);
-  if (!existing.data) return fail('Category not found.', 404);
+  if (!existing.data) return fail(res, 'Category not found.', 404);
 
   const body = await readBody(req);
   const updates = {};
 
   if (body.name !== undefined) {
     const name = String(body.name).trim();
-    if (!name) return fail('Category name is required.');
+    if (!name) return fail(res, 'Category name is required.');
     updates.name = name;
     updates.slug = await uniqueSlug(supabase, 'categories', name, existing.data.id);
   }
@@ -59,16 +65,16 @@ async function handlePut(idOrSlug, req) {
     .select()
     .single();
 
-  if (error) return fail('Could not update the category. Please try again.', 500);
-  return ok({ category: data });
+  if (error) return fail(res, 'Could not update the category. Please try again.', 500);
+  return ok(res, { category: data });
 }
 
-async function handleDelete(idOrSlug, req) {
+async function handleDelete(req, res, { supabase }, idOrSlug) {
   const auth = await requireAdmin(req, supabase);
-  if (auth.error) return fail(auth.error.message, auth.error.status);
+  if (auth.error) return fail(res, auth.error.message, auth.error.status);
 
   const existing = await findCategory(supabase, idOrSlug);
-  if (!existing.data) return fail('Category not found.', 404);
+  if (!existing.data) return fail(res, 'Category not found.', 404);
 
   const { data, error } = await supabase
     .from('categories')
@@ -77,6 +83,6 @@ async function handleDelete(idOrSlug, req) {
     .select()
     .single();
 
-  if (error) return fail('Could not deactivate the category. Please try again.', 500);
-  return ok({ category: data });
+  if (error) return fail(res, 'Could not deactivate the category. Please try again.', 500);
+  return ok(res, { category: data });
 }

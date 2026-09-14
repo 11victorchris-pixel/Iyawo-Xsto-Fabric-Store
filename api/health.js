@@ -1,13 +1,13 @@
 // GET /api/health - simple liveness check for testing deployments.
-const { ok, methodNotAllowed } = require('./_lib/respond');
+const { ok, methodNotAllowed, handleOptions } = require('./_lib/respond');
 
-module.exports = async function handler(req) {
-  if (req.method === 'OPTIONS') return ok({}, 204);
-  if (req.method !== 'GET') return methodNotAllowed(req, ['GET']);
+module.exports = async function handler(req, res) {
+  if (handleOptions(req, res)) return;
+  if (req.method !== 'GET') return methodNotAllowed(res, req, ['GET']);
 
-  return ok({
+  return ok(res, {
     service: 'iyawo-xsto-backend',
     status: 'ok',
     time: new Date().toISOString()
   });
-}
+};

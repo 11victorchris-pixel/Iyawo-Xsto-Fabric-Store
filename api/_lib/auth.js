@@ -1,7 +1,9 @@
 // Verifies the Authorization header (Supabase access token) and
 // confirms the user exists in the admins table.
+const { getAuthHeader } = require('./respond');
+
 async function requireAdmin(req, supabase) {
-  const header = req.headers.get('authorization') || '';
+  const header = getAuthHeader(req) || '';
   const token = header.startsWith('Bearer ') ? header.slice(7).trim() : null;
 
   if (!token) {
