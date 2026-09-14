@@ -468,7 +468,7 @@
                     <li><a href="ankara-lace.html">Ankara Lace</a></li>
                     <li><a href="beaded.html">Beaded Lace</a></li>
                     <li><a href="damask.html">Damask</a></li>
-                    <li><a href="white -lace.html" data-white-lace>White Lace</a></li>
+                    <li><a href="white-lace.html" data-white-lace>White Lace</a></li>
                 </ul>
             </div>
             <div class="col-6 col-lg-2">
@@ -653,10 +653,10 @@
 </script>
 
 <script>
-// White-lace filename fallback: file on disk is "white -lace.html" (with space).
+// White-lace filename fallback: file on disk is "white-lace.html" (with space).
 document.querySelectorAll('[data-white-lace]').forEach(function (a) {
     a.addEventListener('click', function (ev) {
-        var exact = 'white -lace.html';
+        var exact = 'white-lace.html';
         var alias = 'white-lace.html';
         if (a.getAttribute('href') !== exact) return;
         if (location.protocol.indexOf('http') !== 0) return;
