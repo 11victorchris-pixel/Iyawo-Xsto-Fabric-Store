@@ -3,8 +3,32 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" type="image/svg+xml" href="assets/logo/favicon.svg">
+    <link rel="alternate icon" type="image/png" href="assets/logo/logo.png">
+    <link rel="apple-touch-icon" href="assets/logo/logo.png">
 
-    <title>IYAWO XSTO | Premium Lace & Fabrics</title>
+    <title>IYAWO XSTO | Premium Lace & Fabrics in Ilorin, Nigeria</title>
+    <meta name="description" content="IYAWO XSTO Fabric Store — Premium Swiss Lace, Ankara Lace, Beaded Lace, Damask & White Lace in Ilorin, Kwara State. Wholesale & retail. Shop quality fabrics for weddings, celebrations & everyday elegance.">
+    <meta name="keywords" content="Iyawo Xsto, lace Nigeria, Ankara lace, Swiss lace Ilorin, Beaded lace, Damask fabric, White lace, fabric store Kwara, wholesale fabrics Nigeria">
+    <meta name="author" content="IYAWO XSTO Fabric Store">
+    <meta name="robots" content="index, follow">
+    <link rel="canonical" href="https://iyawo-xsto.example.com/index.html">
+
+    <!-- Open Graph -->
+    <meta property="og:type" content="website">
+    <meta property="og:site_name" content="IYAWO XSTO Fabric Store">
+    <meta property="og:title" content="IYAWO XSTO | Premium Lace & Fabrics">
+    <meta property="og:description" content="Premium lace, Ankara, Damask, Swiss & beaded fabrics — wholesale & retail. Dress with elegance.">
+    <meta property="og:image" content="assets/logo/logo.png">
+    <meta property="og:url" content="https://iyawo-xsto.example.com/index.html">
+    <meta property="og:locale" content="en_NG">
+
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="IYAWO XSTO | Premium Lace & Fabrics">
+    <meta name="twitter:description" content="Premium lace, Ankara, Damask, Swiss & beaded fabrics — wholesale & retail in Ilorin, Nigeria.">
+    <meta name="twitter:image" content="assets/logo/logo.png">
+    <meta name="theme-color" content="#0a1238">
 
     <!-- Bootstrap -->
     <link
@@ -12,17 +36,75 @@
         rel="stylesheet"
     >
 
+    <!-- Bootstrap Icons -->
+    <link
+        rel="stylesheet"
+        href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css"
+    >
+
     <!-- Unified Custom CSS -->
     <link rel="stylesheet" href="assets/css/s.css">
+    <link rel="stylesheet" href="assets/css/iyawo-pro.css">
+    <link rel="stylesheet" href="assets/css/responsive-fix.css">
+
+    <style>
+        /* Modern touches — index-only overrides */
+        .announcement-bar{background:#f59e0b;color:#0a1238;font-size:.82rem;font-weight:600;letter-spacing:.3px;padding:8px 0;position:relative;z-index:1050}
+        .announcement-bar a{color:#0a1238;text-decoration:underline;font-weight:800}
+        #hero-3d{position:absolute;inset:0;width:100%;height:100%;z-index:0;opacity:.9;pointer-events:none}
+        .hero-section .hero-overlay{z-index:1}
+        .hero-section .container.position-relative{z-index:2}
+        .trust-badges{background:#fff;border-bottom:1px solid #e8e5df}
+        .trust-badges .trust-item{display:flex;align-items:center;gap:12px;padding:18px 10px}
+        .trust-badges .trust-item i{font-size:1.6rem;color:#f59e0b}
+        .trust-badges strong{display:block;font-size:.9rem;color:#0a1238}
+        .trust-badges span{font-size:.78rem;color:#888}
+        .testimonial-card{background:#fff;border:1px solid #e8e5df;border-radius:10px;padding:28px;height:100%;box-shadow:0 8px 25px rgba(10,18,56,.06)}
+        .testimonial-card i{color:#f59e0b;font-size:1.4rem}
+        .insta-gallery img{height:220px;object-fit:cover;width:100%;border-radius:8px;transition:transform .4s ease}
+        .insta-gallery a:hover img{transform:scale(1.04)}
+        .newsletter-section{background:#0a1238;color:#fff}
+        /* === Mobile fixes (inline only, tokens navy #0a1238 gold #f59e0b) === */
+        .category-card img,.product-image img{aspect-ratio:4/3;object-fit:cover;width:100%;height:auto;display:block}
+        .product-card h5,.product-card h4{display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden;min-height:2.6em}
+        @media (max-width:767.98px){
+            .hero-section .min-vh-100{min-height:auto!important;padding:110px 0 56px}
+            .hero-buttons{display:flex;flex-direction:column;gap:10px}
+            .hero-buttons .btn{width:100%}
+            .hero-features{display:grid!important;grid-template-columns:1fr 1fr;gap:12px}
+            #hero-3d{opacity:.35}
+            .newsletter-section form.d-flex{flex-direction:column;align-items:stretch}
+            .newsletter-section form .btn{width:100%}
+            .accordion-button{min-height:48px;font-size:.95rem}
+            .accordion-body{font-size:.95rem}
+            table{width:100%;font-size:.95rem}
+        }
+        @media (max-width:360px){
+            .announcement-bar{font-size:.72rem;line-height:1.4}
+            .announcement-bar .container{gap:4px!important}
+        }
+    </style>
 </head>
 
 <body id="top">
 
 <!-- =========================================================
+     ANNOUNCEMENT BAR
+========================================================= -->
+<div class="announcement-bar text-center" data-site="announcement-bar">
+    <div class="container d-flex flex-wrap justify-content-center align-items-center gap-2">
+        <span data-site="announcement"><i class="bi bi-stars me-1"></i> New Season Sale — up to 20% off selected laces <i class="bi bi-stars ms-1"></i></span>
+        <a href="sale.html" class="ms-2">Shop Sale <i class="bi bi-arrow-right"></i></a>
+        <span class="d-none d-md-inline ms-3"><i class="bi bi-truck"></i> Nationwide delivery</span>
+        <span class="d-none d-md-inline ms-2"><i class="bi bi-whatsapp"></i> +234 707 905 7773</span>
+    </div>
+</div>
+
+<!-- =========================================================
      NAVBAR
 ========================================================= -->
 
-<nav class="navbar navbar-expand-lg navbar-dark fixed-top">
+<nav class="navbar navbar-expand-lg navbar-dark sticky-top">
 
     <div class="container">
 
@@ -60,6 +142,12 @@
                 </li>
 
                 <li class="nav-item">
+                    <a class="nav-link" href="shop.html">
+                        Shop
+                    </a>
+                </li>
+
+                <li class="nav-item">
                     <a class="nav-link" href="about-us.html">
                         About
                     </a>
@@ -86,10 +174,28 @@
                 <li class="nav-item ms-lg-3 mt-3 mt-lg-0">
 
                     <a
-                        href="sale.html"
+                        href="shop.html"
                         class="btn btn-warning navbar-btn"
                     >
                         Shop Collection
+                    </a>
+
+                </li>
+
+                <li class="nav-item ms-lg-2 mt-3 mt-lg-0">
+
+                    <a
+                        href="cart.html"
+                        class="btn btn-outline-light position-relative"
+                        title="View Cart"
+                    >
+                        <i class="bi bi-cart3"></i>
+                        Cart
+                        <span
+                            class="badge rounded-pill bg-danger position-absolute top-0 start-100 translate-middle"
+                            data-cart-count
+                            hidden
+                        >0</span>
                     </a>
 
                 </li>
@@ -109,6 +215,7 @@
 
 <header class="hero-section">
 
+    <canvas id="hero-3d" aria-hidden="true"></canvas>
     <div class="hero-overlay"></div>
 
     <div class="container position-relative">
@@ -120,7 +227,7 @@
                 <div class="hero-content">
 
                     <span class="hero-tag">
-                        PREMIUM FABRICS & LACE
+                        <i class="bi bi-stars me-1"></i> PREMIUM FABRICS & LACE
                     </span>
 
                     <h1>
@@ -144,14 +251,14 @@
                             href="sale.html"
                             class="btn btn-warning btn-lg"
                         >
-                            Shop Now
+                            Shop Now <i class="bi bi-arrow-right ms-1"></i>
                         </a>
 
                         <a
                             href="about-us.html"
                             class="btn btn-outline-light btn-lg"
                         >
-                            Discover Our Story
+                            Discover Our Story <i class="bi bi-diamond ms-1"></i>
                         </a>
 
                     </div>
@@ -187,7 +294,7 @@
 
                     <div class="hero-circle"></div>
 
-                    <img
+                    <img loading="lazy"
                         src="assets/logo/logo.png"
                         alt="Iyawo Xsto Fabric Store"
                         class="hero-logo"
@@ -242,7 +349,7 @@
                 <div class="promo-item">
 
                     <span class="promo-icon">
-                        ✦
+                        <i class="bi bi-stars"></i>
                     </span>
 
                     <div>
@@ -265,7 +372,7 @@
                 <div class="promo-item">
 
                     <span class="promo-icon">
-                        ◆
+                        <i class="bi bi-diamond"></i>
                     </span>
 
                     <div>
@@ -286,6 +393,54 @@
 
     </div>
 
+</section>
+
+
+<!-- =========================================================
+     TRUST BADGES
+========================================================= -->
+
+<section class="trust-badges">
+    <div class="container">
+        <div class="row text-start">
+            <div class="col-6 col-lg-3">
+                <div class="trust-item">
+                    <i class="bi bi-patch-check"></i>
+                    <div>
+                        <strong>Premium Quality</strong>
+                        <span>Authentic lace & fabrics</span>
+                    </div>
+                </div>
+            </div>
+            <div class="col-6 col-lg-3">
+                <div class="trust-item">
+                    <i class="bi bi-truck"></i>
+                    <div>
+                        <strong>Nationwide Delivery</strong>
+                        <span>Fast dispatch from Ilorin</span>
+                    </div>
+                </div>
+            </div>
+            <div class="col-6 col-lg-3">
+                <div class="trust-item">
+                    <i class="bi bi-whatsapp"></i>
+                    <div>
+                        <strong>WhatsApp Support</strong>
+                        <span>+234 707 905 7773</span>
+                    </div>
+                </div>
+            </div>
+            <div class="col-6 col-lg-3">
+                <div class="trust-item">
+                    <i class="bi bi-cash-coin"></i>
+                    <div>
+                        <strong>Wholesale & Retail</strong>
+                        <span>Bulk prices available</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
 </section>
 
 
@@ -327,7 +482,7 @@
                     href="about-us.html"
                     class="btn btn-dark mt-3"
                 >
-                    Learn More About Us
+                    Learn More About Us <i class="bi bi-arrow-right ms-1"></i>
                 </a>
 
             </div>
@@ -376,7 +531,7 @@
                     class="category-card"
                 >
 
-                    <img
+                    <img loading="lazy"
                         src="assets/images/Swiss Lace/1 (27).jpg"
                         alt="Swiss Lace"
                     >
@@ -394,7 +549,7 @@
                             </h3>
 
                             <span>
-                                Explore →
+                                Explore <i class="bi bi-arrow-right"></i>
                             </span>
 
                         </div>
@@ -415,7 +570,7 @@
                     class="category-card"
                 >
 
-                    <img
+                    <img loading="lazy"
                         src="assets/images/Damask/1 (2).jpg"
                         alt="Damask"
                     >
@@ -433,7 +588,7 @@
                             </h3>
 
                             <span>
-                                Explore →
+                                Explore <i class="bi bi-arrow-right"></i>
                             </span>
 
                         </div>
@@ -454,7 +609,7 @@
                     class="category-card"
                 >
 
-                    <img
+                    <img loading="lazy"
                         src="assets/images/Ankara Lace/1 (11).jpg"
                         alt="Ankara Lace"
                     >
@@ -472,7 +627,7 @@
                             </h3>
 
                             <span>
-                                Explore →
+                                Explore <i class="bi bi-arrow-right"></i>
                             </span>
 
                         </div>
@@ -493,7 +648,7 @@
                     class="category-card"
                 >
 
-                    <img
+                    <img loading="lazy"
                         src="assets/images/Beaded Lace/1 (16).jpg"
                         alt="Beaded Lace"
                     >
@@ -511,7 +666,7 @@
                             </h3>
 
                             <span>
-                                Explore →
+                                Explore <i class="bi bi-arrow-right"></i>
                             </span>
 
                         </div>
@@ -562,7 +717,7 @@
                     href="sale.html"
                     class="btn btn-outline-dark"
                 >
-                    View All Products →
+                    View All Products <i class="bi bi-arrow-right"></i>
                 </a>
 
             </div>
@@ -599,7 +754,7 @@
                     href="swiss-lace.html"
                     class="collection-link"
                 >
-                    View Collection →
+                    View Collection <i class="bi bi-arrow-right"></i>
                 </a>
 
             </div>
@@ -609,7 +764,7 @@
 
                 <!-- PRODUCT 1 -->
 
-                <div class="col-md-6 col-lg-4">
+                <div class="col-12 col-sm-6 col-lg-4">
 
                     <div class="product-card">
 
@@ -619,7 +774,7 @@
                                 SALE
                             </span>
 
-                            <img
+                            <img loading="lazy"
                                 src="assets/images/Swiss Lace/1 (24).jpg"
                                 alt="Latest Swiss Lace"
                             >
@@ -657,12 +812,7 @@
 
                             </div>
 
-                            <a
-                                href="sale.html"
-                                class="btn btn-dark w-100"
-                            >
-                                Shop Product
-                            </a>
+                            <div class="d-flex gap-2 mb-2"><select class="form-select yard-select" style="max-width:115px;" aria-label="Number of yards"><option value="1">1 yard</option><option value="2" selected>2 yards</option><option value="3">3 yards</option><option value="4">4 yards</option><option value="5">5 yards</option><option value="6">6 yards</option><option value="7">7 yards</option><option value="8">8 yards</option><option value="9">9 yards</option><option value="10">10 yards</option></select><button type="button" class="btn btn-dark flex-grow-1 js-index-add" data-name="Latest Swiss Lace" data-price="12000" data-unit="yard" data-image="assets/images/Swiss Lace/1 (24).jpg" data-slug="latest-swiss-lace"><i class="bi bi-cart-plus"></i> ADD TO CART</button></div><a href="shop.html" class="btn btn-warning w-100">View in Shop <i class="bi bi-arrow-right"></i></a>
 
                         </div>
 
@@ -673,7 +823,7 @@
 
                 <!-- PRODUCT 2 -->
 
-                <div class="col-md-6 col-lg-4">
+                <div class="col-12 col-sm-6 col-lg-4">
 
                     <div class="product-card">
 
@@ -683,7 +833,7 @@
                                 SALE
                             </span>
 
-                            <img
+                            <img loading="lazy"
                                 src="assets/images/Swiss Lace/1 (10).jpg"
                                 alt="Block Design Swiss Lace"
                             >
@@ -722,12 +872,7 @@
 
                             </div>
 
-                            <a
-                                href="sale.html"
-                                class="btn btn-dark w-100"
-                            >
-                                Shop Product
-                            </a>
+                            <div class="d-flex gap-2 mb-2"><select class="form-select yard-select" style="max-width:115px;" aria-label="Number of yards"><option value="1">1 yard</option><option value="2" selected>2 yards</option><option value="3">3 yards</option><option value="4">4 yards</option><option value="5">5 yards</option><option value="6">6 yards</option><option value="7">7 yards</option><option value="8">8 yards</option><option value="9">9 yards</option><option value="10">10 yards</option></select><button type="button" class="btn btn-dark flex-grow-1 js-index-add" data-name="Block Design Swiss Lace" data-price="6500" data-unit="yard" data-image="assets/images/Swiss Lace/1 (10).jpg" data-slug="block-design-swiss-lace"><i class="bi bi-cart-plus"></i> ADD TO CART</button></div><a href="shop.html" class="btn btn-warning w-100">View in Shop <i class="bi bi-arrow-right"></i></a>
 
                         </div>
 
@@ -738,7 +883,7 @@
 
                 <!-- PRODUCT 3 -->
 
-                <div class="col-md-6 col-lg-4">
+                <div class="col-12 col-sm-6 col-lg-4">
 
                     <div class="product-card">
 
@@ -748,7 +893,7 @@
                                 SALE
                             </span>
 
-                            <img
+                            <img loading="lazy"
                                 src="assets/images/Swiss Lace/1 (15).jpg"
                                 alt="Wine Sequence Lace"
                             >
@@ -786,12 +931,7 @@
 
                             </div>
 
-                            <a
-                                href="sale.html"
-                                class="btn btn-dark w-100"
-                            >
-                                Shop Product
-                            </a>
+                            <div class="d-flex gap-2 mb-2"><select class="form-select yard-select" style="max-width:115px;" aria-label="Number of yards"><option value="1">1 yard</option><option value="2" selected>2 yards</option><option value="3">3 yards</option><option value="4">4 yards</option><option value="5">5 yards</option><option value="6">6 yards</option><option value="7">7 yards</option><option value="8">8 yards</option><option value="9">9 yards</option><option value="10">10 yards</option></select><button type="button" class="btn btn-dark flex-grow-1 js-index-add" data-name="Wine Sequence Lace" data-price="6000" data-unit="yard" data-image="assets/images/Swiss Lace/1 (15).jpg" data-slug="wine-sequence-lace"><i class="bi bi-cart-plus"></i> ADD TO CART</button></div><a href="shop.html" class="btn btn-warning w-100">View in Shop <i class="bi bi-arrow-right"></i></a>
 
                         </div>
 
@@ -832,7 +972,7 @@
                     href="ankara-lace.html"
                     class="collection-link"
                 >
-                    View Collection →
+                    View Collection <i class="bi bi-arrow-right"></i>
                 </a>
 
             </div>
@@ -840,13 +980,13 @@
 
             <div class="row g-4">
 
-                <div class="col-md-6 col-lg-4">
+                <div class="col-12 col-sm-6 col-lg-4">
 
                     <div class="product-card">
 
                         <div class="product-image">
 
-                            <img
+                            <img loading="lazy"
                                 src="assets/images/Ankara Lace/1 (21).jpg"
                                 alt="White Ankara Lace"
                             >
@@ -884,12 +1024,7 @@
 
                             </div>
 
-                            <a
-                                href="sale.html"
-                                class="btn btn-dark w-100"
-                            >
-                                Shop Product
-                            </a>
+                            <div class="d-flex gap-2 mb-2"><select class="form-select yard-select" style="max-width:115px;" aria-label="Number of yards"><option value="1">1 yard</option><option value="2" selected>2 yards</option><option value="3">3 yards</option><option value="4">4 yards</option><option value="5">5 yards</option><option value="6">6 yards</option><option value="7">7 yards</option><option value="8">8 yards</option><option value="9">9 yards</option><option value="10">10 yards</option></select><button type="button" class="btn btn-dark flex-grow-1 js-index-add" data-name="White Ankara Lace" data-price="33000" data-unit="yard" data-image="assets/images/Ankara Lace/1 (21).jpg" data-slug="white-ankara-lace"><i class="bi bi-cart-plus"></i> ADD TO CART</button></div><a href="shop.html" class="btn btn-warning w-100">View in Shop <i class="bi bi-arrow-right"></i></a>
 
                         </div>
 
@@ -898,13 +1033,13 @@
                 </div>
 
 
-                <div class="col-md-6 col-lg-4">
+                <div class="col-12 col-sm-6 col-lg-4">
 
                     <div class="product-card">
 
                         <div class="product-image">
 
-                            <img
+                            <img loading="lazy"
                                 src="assets/images/Ankara Lace/1 (12).jpg"
                                 alt="Two Colored Ankara Lace"
                             >
@@ -942,12 +1077,7 @@
 
                             </div>
 
-                            <a
-                                href="sale.html"
-                                class="btn btn-dark w-100"
-                            >
-                                Shop Product
-                            </a>
+                            <div class="d-flex gap-2 mb-2"><select class="form-select yard-select" style="max-width:115px;" aria-label="Number of yards"><option value="1">1 yard</option><option value="2" selected>2 yards</option><option value="3">3 yards</option><option value="4">4 yards</option><option value="5">5 yards</option><option value="6">6 yards</option><option value="7">7 yards</option><option value="8">8 yards</option><option value="9">9 yards</option><option value="10">10 yards</option></select><button type="button" class="btn btn-dark flex-grow-1 js-index-add" data-name="Two Colored Ankara Lace" data-price="23000" data-unit="yard" data-image="assets/images/Ankara Lace/1 (12).jpg" data-slug="two-colored-ankara-lace"><i class="bi bi-cart-plus"></i> ADD TO CART</button></div><a href="shop.html" class="btn btn-warning w-100">View in Shop <i class="bi bi-arrow-right"></i></a>
 
                         </div>
 
@@ -956,13 +1086,13 @@
                 </div>
 
 
-                <div class="col-md-6 col-lg-4">
+                <div class="col-12 col-sm-6 col-lg-4">
 
                     <div class="product-card">
 
                         <div class="product-image">
 
-                            <img
+                            <img loading="lazy"
                                 src="assets/images/Ankara Lace/1 (7).jpg"
                                 alt="Multi Layer Ankara Lace"
                             >
@@ -1000,12 +1130,7 @@
 
                             </div>
 
-                            <a
-                                href="sale.html"
-                                class="btn btn-dark w-100"
-                            >
-                                Shop Product
-                            </a>
+                            <div class="d-flex gap-2 mb-2"><select class="form-select yard-select" style="max-width:115px;" aria-label="Number of yards"><option value="1">1 yard</option><option value="2" selected>2 yards</option><option value="3">3 yards</option><option value="4">4 yards</option><option value="5">5 yards</option><option value="6">6 yards</option><option value="7">7 yards</option><option value="8">8 yards</option><option value="9">9 yards</option><option value="10">10 yards</option></select><button type="button" class="btn btn-dark flex-grow-1 js-index-add" data-name="Multi Layer Lace" data-price="23000" data-unit="yard" data-image="assets/images/Ankara Lace/1 (7).jpg" data-slug="multi-layer-lace"><i class="bi bi-cart-plus"></i> ADD TO CART</button></div><a href="shop.html" class="btn btn-warning w-100">View in Shop <i class="bi bi-arrow-right"></i></a>
 
                         </div>
 
@@ -1046,7 +1171,7 @@
                     href="beaded.html"
                     class="collection-link"
                 >
-                    View Collection →
+                    View Collection <i class="bi bi-arrow-right"></i>
                 </a>
 
             </div>
@@ -1054,13 +1179,13 @@
 
             <div class="row g-4">
 
-                <div class="col-md-6 col-lg-4">
+                <div class="col-12 col-sm-6 col-lg-4">
 
                     <div class="product-card">
 
                         <div class="product-image">
 
-                            <img
+                            <img loading="lazy"
                                 src="assets/images/Beaded Lace/1 (7).jpg"
                                 alt="Full Beaded Lace"
                             >
@@ -1098,12 +1223,7 @@
 
                             </div>
 
-                            <a
-                                href="sale.html"
-                                class="btn btn-dark w-100"
-                            >
-                                Shop Product
-                            </a>
+                            <div class="d-flex gap-2 mb-2"><select class="form-select yard-select" style="max-width:115px;" aria-label="Number of yards"><option value="1">1 yard</option><option value="2" selected>2 yards</option><option value="3">3 yards</option><option value="4">4 yards</option><option value="5">5 yards</option><option value="6">6 yards</option><option value="7">7 yards</option><option value="8">8 yards</option><option value="9">9 yards</option><option value="10">10 yards</option></select><button type="button" class="btn btn-dark flex-grow-1 js-index-add" data-name="Full Beaded Lace" data-price="22000" data-unit="yard" data-image="assets/images/Beaded Lace/1 (7).jpg" data-slug="full-beaded-lace"><i class="bi bi-cart-plus"></i> ADD TO CART</button></div><a href="shop.html" class="btn btn-warning w-100">View in Shop <i class="bi bi-arrow-right"></i></a>
 
                         </div>
 
@@ -1112,13 +1232,13 @@
                 </div>
 
 
-                <div class="col-md-6 col-lg-4">
+                <div class="col-12 col-sm-6 col-lg-4">
 
                     <div class="product-card">
 
                         <div class="product-image">
 
-                            <img
+                            <img loading="lazy"
                                 src="assets/images/Beaded Lace/1 (17).jpg"
                                 alt="Premium Beaded Lace"
                             >
@@ -1156,12 +1276,7 @@
 
                             </div>
 
-                            <a
-                                href="sale.html"
-                                class="btn btn-dark w-100"
-                            >
-                                Shop Product
-                            </a>
+                            <div class="d-flex gap-2 mb-2"><select class="form-select yard-select" style="max-width:115px;" aria-label="Number of yards"><option value="1">1 yard</option><option value="2" selected>2 yards</option><option value="3">3 yards</option><option value="4">4 yards</option><option value="5">5 yards</option><option value="6">6 yards</option><option value="7">7 yards</option><option value="8">8 yards</option><option value="9">9 yards</option><option value="10">10 yards</option></select><button type="button" class="btn btn-dark flex-grow-1 js-index-add" data-name="Premium Beaded Lace" data-price="22000" data-unit="yard" data-image="assets/images/Beaded Lace/1 (17).jpg" data-slug="premium-beaded-lace"><i class="bi bi-cart-plus"></i> ADD TO CART</button></div><a href="shop.html" class="btn btn-warning w-100">View in Shop <i class="bi bi-arrow-right"></i></a>
 
                         </div>
 
@@ -1170,13 +1285,13 @@
                 </div>
 
 
-                <div class="col-md-6 col-lg-4">
+                <div class="col-12 col-sm-6 col-lg-4">
 
                     <div class="product-card">
 
                         <div class="product-image">
 
-                            <img
+                            <img loading="lazy"
                                 src="assets/images/Beaded Lace/1 (34).jpg"
                                 alt="Luxury Beaded Lace"
                             >
@@ -1214,12 +1329,7 @@
 
                             </div>
 
-                            <a
-                                href="sale.html"
-                                class="btn btn-dark w-100"
-                            >
-                                Shop Product
-                            </a>
+                            <div class="d-flex gap-2 mb-2"><select class="form-select yard-select" style="max-width:115px;" aria-label="Number of yards"><option value="1">1 yard</option><option value="2" selected>2 yards</option><option value="3">3 yards</option><option value="4">4 yards</option><option value="5">5 yards</option><option value="6">6 yards</option><option value="7">7 yards</option><option value="8">8 yards</option><option value="9">9 yards</option><option value="10">10 yards</option></select><button type="button" class="btn btn-dark flex-grow-1 js-index-add" data-name="Luxury Beaded Lace" data-price="18000" data-unit="yard" data-image="assets/images/Beaded Lace/1 (34).jpg" data-slug="luxury-beaded-lace"><i class="bi bi-cart-plus"></i> ADD TO CART</button></div><a href="shop.html" class="btn btn-warning w-100">View in Shop <i class="bi bi-arrow-right"></i></a>
 
                         </div>
 
@@ -1256,11 +1366,13 @@
 
                 </div>
 
+                <!-- NOTE: href matches existing file "white -lace.html" exactly (space preserved). See fallback script. -->
                 <a
                     href="white -lace.html"
                     class="collection-link"
+                    data-white-lace
                 >
-                    View Collection →
+                    View Collection <i class="bi bi-arrow-right"></i>
                 </a>
 
             </div>
@@ -1268,13 +1380,13 @@
 
             <div class="row g-4">
 
-                <div class="col-md-6 col-lg-4">
+                <div class="col-12 col-sm-6 col-lg-4">
 
                     <div class="product-card">
 
                         <div class="product-image">
 
-                            <img
+                            <img loading="lazy"
                                 src="assets/images/White fine lace/1 (23).jpg"
                                 alt="White Swiss Lace"
                             >
@@ -1312,12 +1424,7 @@
 
                             </div>
 
-                            <a
-                                href="sale.html"
-                                class="btn btn-dark w-100"
-                            >
-                                Shop Product
-                            </a>
+                            <div class="d-flex gap-2 mb-2"><select class="form-select yard-select" style="max-width:115px;" aria-label="Number of yards"><option value="1">1 yard</option><option value="2" selected>2 yards</option><option value="3">3 yards</option><option value="4">4 yards</option><option value="5">5 yards</option><option value="6">6 yards</option><option value="7">7 yards</option><option value="8">8 yards</option><option value="9">9 yards</option><option value="10">10 yards</option></select><button type="button" class="btn btn-dark flex-grow-1 js-index-add" data-name="White Swiss Lace" data-price="7000" data-unit="yard" data-image="assets/images/White fine lace/1 (23).jpg" data-slug="white-swiss-lace"><i class="bi bi-cart-plus"></i> ADD TO CART</button></div><a href="shop.html" class="btn btn-warning w-100">View in Shop <i class="bi bi-arrow-right"></i></a>
 
                         </div>
 
@@ -1326,13 +1433,13 @@
                 </div>
 
 
-                <div class="col-md-6 col-lg-4">
+                <div class="col-12 col-sm-6 col-lg-4">
 
                     <div class="product-card">
 
                         <div class="product-image">
 
-                            <img
+                            <img loading="lazy"
                                 src="assets/images/White fine lace/1 (27).jpg"
                                 alt="White Fine Lace"
                             >
@@ -1370,12 +1477,7 @@
 
                             </div>
 
-                            <a
-                                href="sale.html"
-                                class="btn btn-dark w-100"
-                            >
-                                Shop Product
-                            </a>
+                            <div class="d-flex gap-2 mb-2"><select class="form-select yard-select" style="max-width:115px;" aria-label="Number of yards"><option value="1">1 yard</option><option value="2" selected>2 yards</option><option value="3">3 yards</option><option value="4">4 yards</option><option value="5">5 yards</option><option value="6">6 yards</option><option value="7">7 yards</option><option value="8">8 yards</option><option value="9">9 yards</option><option value="10">10 yards</option></select><button type="button" class="btn btn-dark flex-grow-1 js-index-add" data-name="White Fine Lace" data-price="7000" data-unit="yard" data-image="assets/images/White fine lace/1 (27).jpg" data-slug="white-fine-lace"><i class="bi bi-cart-plus"></i> ADD TO CART</button></div><a href="shop.html" class="btn btn-warning w-100">View in Shop <i class="bi bi-arrow-right"></i></a>
 
                         </div>
 
@@ -1384,13 +1486,13 @@
                 </div>
 
 
-                <div class="col-md-6 col-lg-4">
+                <div class="col-12 col-sm-6 col-lg-4">
 
                     <div class="product-card">
 
                         <div class="product-image">
 
-                            <img
+                            <img loading="lazy"
                                 src="assets/images/White fine lace/1 (25).jpg"
                                 alt="Premium White Lace"
                             >
@@ -1428,12 +1530,7 @@
 
                             </div>
 
-                            <a
-                                href="sale.html"
-                                class="btn btn-dark w-100"
-                            >
-                                Shop Product
-                            </a>
+                            <div class="d-flex gap-2 mb-2"><select class="form-select yard-select" style="max-width:115px;" aria-label="Number of yards"><option value="1">1 yard</option><option value="2" selected>2 yards</option><option value="3">3 yards</option><option value="4">4 yards</option><option value="5">5 yards</option><option value="6">6 yards</option><option value="7">7 yards</option><option value="8">8 yards</option><option value="9">9 yards</option><option value="10">10 yards</option></select><button type="button" class="btn btn-dark flex-grow-1 js-index-add" data-name="Premium White Lace" data-price="7000" data-unit="yard" data-image="assets/images/White fine lace/1 (25).jpg" data-slug="premium-white-lace"><i class="bi bi-cart-plus"></i> ADD TO CART</button></div><a href="shop.html" class="btn btn-warning w-100">View in Shop <i class="bi bi-arrow-right"></i></a>
 
                         </div>
 
@@ -1474,7 +1571,7 @@
                     href="damask.html"
                     class="collection-link"
                 >
-                    View Collection →
+                    View Collection <i class="bi bi-arrow-right"></i>
                 </a>
 
             </div>
@@ -1482,13 +1579,13 @@
 
             <div class="row g-4">
 
-                <div class="col-md-6 col-lg-4">
+                <div class="col-12 col-sm-6 col-lg-4">
 
                     <div class="product-card">
 
                         <div class="product-image">
 
-                            <img
+                            <img loading="lazy"
                                 src="assets/images/Damask/1 (15).jpg"
                                 alt="Quality Damask"
                             >
@@ -1526,12 +1623,7 @@
 
                             </div>
 
-                            <a
-                                href="sale.html"
-                                class="btn btn-dark w-100"
-                            >
-                                Shop Product
-                            </a>
+                            <div class="d-flex gap-2 mb-2"><select class="form-select yard-select" style="max-width:115px;" aria-label="Number of yards"><option value="1">1 yard</option><option value="2" selected>2 yards</option><option value="3">3 yards</option><option value="4">4 yards</option><option value="5">5 yards</option><option value="6">6 yards</option><option value="7">7 yards</option><option value="8">8 yards</option><option value="9">9 yards</option><option value="10">10 yards</option></select><button type="button" class="btn btn-dark flex-grow-1 js-index-add" data-name="Quality Damask" data-price="7500" data-unit="yard" data-image="assets/images/Damask/1 (15).jpg" data-slug="quality-damask"><i class="bi bi-cart-plus"></i> ADD TO CART</button></div><a href="shop.html" class="btn btn-warning w-100">View in Shop <i class="bi bi-arrow-right"></i></a>
 
                         </div>
 
@@ -1540,13 +1632,13 @@
                 </div>
 
 
-                <div class="col-md-6 col-lg-4">
+                <div class="col-12 col-sm-6 col-lg-4">
 
                     <div class="product-card">
 
                         <div class="product-image">
 
-                            <img
+                            <img loading="lazy"
                                 src="assets/images/Damask/1 (19).jpg"
                                 alt="Damask Double Length"
                             >
@@ -1584,12 +1676,7 @@
 
                             </div>
 
-                            <a
-                                href="sale.html"
-                                class="btn btn-dark w-100"
-                            >
-                                Shop Product
-                            </a>
+                            <div class="d-flex gap-2 mb-2"><select class="form-select yard-select" style="max-width:115px;" aria-label="Number of yards"><option value="1">1 yard</option><option value="2" selected>2 yards</option><option value="3">3 yards</option><option value="4">4 yards</option><option value="5">5 yards</option><option value="6">6 yards</option><option value="7">7 yards</option><option value="8">8 yards</option><option value="9">9 yards</option><option value="10">10 yards</option></select><button type="button" class="btn btn-dark flex-grow-1 js-index-add" data-name="Damask Double Length" data-price="7500" data-unit="yard" data-image="assets/images/Damask/1 (19).jpg" data-slug="damask-double-length"><i class="bi bi-cart-plus"></i> ADD TO CART</button></div><a href="shop.html" class="btn btn-warning w-100">View in Shop <i class="bi bi-arrow-right"></i></a>
 
                         </div>
 
@@ -1598,13 +1685,13 @@
                 </div>
 
 
-                <div class="col-md-6 col-lg-4">
+                <div class="col-12 col-sm-6 col-lg-4">
 
                     <div class="product-card">
 
                         <div class="product-image">
 
-                            <img
+                            <img loading="lazy"
                                 src="assets/images/Damask/1 (7).jpg"
                                 alt="Latest Damask"
                             >
@@ -1642,12 +1729,7 @@
 
                             </div>
 
-                            <a
-                                href="sale.html"
-                                class="btn btn-dark w-100"
-                            >
-                                Shop Product
-                            </a>
+                            <div class="d-flex gap-2 mb-2"><select class="form-select yard-select" style="max-width:115px;" aria-label="Number of yards"><option value="1">1 yard</option><option value="2" selected>2 yards</option><option value="3">3 yards</option><option value="4">4 yards</option><option value="5">5 yards</option><option value="6">6 yards</option><option value="7">7 yards</option><option value="8">8 yards</option><option value="9">9 yards</option><option value="10">10 yards</option></select><button type="button" class="btn btn-dark flex-grow-1 js-index-add" data-name="Latest Damask" data-price="7500" data-unit="yard" data-image="assets/images/Damask/1 (7).jpg" data-slug="latest-damask"><i class="bi bi-cart-plus"></i> ADD TO CART</button></div><a href="shop.html" class="btn btn-warning w-100">View in Shop <i class="bi bi-arrow-right"></i></a>
 
                         </div>
 
@@ -1697,14 +1779,14 @@
                         href="sale.html"
                         class="btn btn-warning btn-lg me-2"
                     >
-                        Shop Now
+                        Shop Now <i class="bi bi-arrow-right ms-1"></i>
                     </a>
 
                     <a
                         href="contact-us.html"
                         class="btn btn-outline-light btn-lg"
                     >
-                        Contact Us
+                        Contact Us <i class="bi bi-chat-dots ms-1"></i>
                     </a>
 
                 </div>
@@ -1715,6 +1797,109 @@
 
     </div>
 
+</section>
+
+
+<!-- =========================================================
+     TESTIMONIALS
+========================================================= -->
+
+<section class="testimonials-section section-padding" style="background:#faf8f3">
+    <div class="container">
+        <div class="section-heading text-center">
+            <span class="section-label"><i class="bi bi-chat-quote me-1"></i> CUSTOMER LOVE</span>
+            <h2 class="section-title">What Our Customers Say</h2>
+            <p>Real reviews from weddings, aso-ebi & everyday slay.</p>
+        </div>
+        <div class="row g-4">
+            <div class="col-md-4">
+                <div class="testimonial-card">
+                    <i class="bi bi-stars"></i>
+                    <p class="mt-3">"My Swiss lace was exactly as pictured. Quality is top-notch and delivery to Lagos was fast!"</p>
+                    <div class="d-flex align-items-center gap-2 mt-3">
+                        <i class="bi bi-person-circle fs-4"></i>
+                        <div><strong>Aisha M.</strong><br><small class="text-muted">Lagos — Swiss Lace</small></div>
+                    </div>
+                    <div class="mt-2 text-warning">
+                        <i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="testimonial-card">
+                    <i class="bi bi-stars"></i>
+                    <p class="mt-3">"Bought Ankara lace in bulk for my boutique. Great wholesale price and beautiful colours."</p>
+                    <div class="d-flex align-items-center gap-2 mt-3">
+                        <i class="bi bi-person-circle fs-4"></i>
+                        <div><strong>Mrs. Adeyemi</strong><br><small class="text-muted">Ilorin — Ankara Lace</small></div>
+                    </div>
+                    <div class="mt-2 text-warning">
+                        <i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-half"></i>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="testimonial-card">
+                    <i class="bi bi-stars"></i>
+                    <p class="mt-3">"The beaded lace made my wedding dress unforgettable. Highly recommend IYAWO XSTO!"</p>
+                    <div class="d-flex align-items-center gap-2 mt-3">
+                        <i class="bi bi-person-circle fs-4"></i>
+                        <div><strong>Blessing O.</strong><br><small class="text-muted">Abuja — Beaded Lace</small></div>
+                    </div>
+                    <div class="mt-2 text-warning">
+                        <i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+
+<!-- =========================================================
+     INSTAGRAM GALLERY (PLACEHOLDER)
+========================================================= -->
+
+<section class="insta-gallery section-padding" style="background:#fff">
+    <div class="container">
+        <div class="d-flex flex-wrap justify-content-between align-items-end mb-4 gap-3">
+            <div>
+                <span class="section-label"><i class="bi bi-instagram me-1"></i> @IYAWO.XSTO</span>
+                <h2 class="section-title mb-0">Style Inspiration</h2>
+            </div>
+            <a href="https://www.instagram.com/" target="_blank" rel="noopener" class="btn btn-outline-dark">Follow Us <i class="bi bi-arrow-right ms-1"></i></a>
+        </div>
+        <div class="row g-3">
+            <div class="col-6 col-md-3"><a href="shop.html"><img src="assets/images/Swiss Lace/1 (27).jpg" alt="Swiss lace style inspiration" loading="lazy"></a></div>
+            <div class="col-6 col-md-3"><a href="shop.html"><img src="assets/images/Ankara Lace/1 (11).jpg" alt="Ankara lace style inspiration" loading="lazy"></a></div>
+            <div class="col-6 col-md-3"><a href="shop.html"><img src="assets/images/Beaded Lace/1 (16).jpg" alt="Beaded lace style inspiration" loading="lazy"></a></div>
+            <div class="col-6 col-md-3"><a href="shop.html"><img src="assets/images/Damask/1 (2).jpg" alt="Damask style inspiration" loading="lazy"></a></div>
+        </div>
+    </div>
+</section>
+
+
+<!-- =========================================================
+     NEWSLETTER
+========================================================= -->
+
+<section class="newsletter-section section-padding" style="padding:70px 0">
+    <div class="container">
+        <div class="row align-items-center g-4">
+            <div class="col-lg-6">
+                <h3 class="mb-2"><i class="bi bi-envelope-heart me-2"></i>Get 10% Off Your First Order</h3>
+                <p class="mb-0 text-white-50">Join our list for new arrivals, secret sales & style tips. No spam.</p>
+            </div>
+            <div class="col-lg-6">
+                <form class="d-flex gap-2" onsubmit="event.preventDefault();this.querySelector('button').innerHTML='<i class=\'bi bi-check-circle\'></i> Subscribed!';">
+                    <label for="newsletter-email" class="visually-hidden">Email address</label>
+                    <input id="newsletter-email" type="email" required class="form-control form-control-lg" placeholder="Enter your email address">
+                    <button type="submit" class="btn btn-warning btn-lg flex-shrink-0">Subscribe <i class="bi bi-send ms-1"></i></button>
+                </form>
+                <small class="text-white-50"><i class="bi bi-shield-check me-1"></i>We respect your privacy. Unsubscribe anytime.</small>
+            </div>
+        </div>
+    </div>
 </section>
 
 
@@ -1760,7 +1945,7 @@
                     href="contact-us.html"
                     class="footer-contact-link"
                 >
-                    Get in touch →
+                    Get in touch <i class="bi bi-arrow-right"></i>
                 </a>
 
             </div>
@@ -1775,6 +1960,12 @@
                 </h5>
 
                 <ul class="footer-links">
+
+                    <li>
+                        <a href="shop.html">
+                            All Products
+                        </a>
+                    </li>
 
                     <li>
                         <a href="sale.html">
@@ -1807,7 +1998,9 @@
                     </li>
 
                     <li>
-                        <a href="white -lace.html">
+                        <!-- NOTE: filename intentionally contains a space ("white -lace.html"). Do NOT rename file.
+                             href matches existing file exactly; JS fallback below also tries "white-lace.html" alias. -->
+                        <a href="white -lace.html" data-white-lace>
                             White Lace
                         </a>
                     </li>
@@ -1868,15 +2061,16 @@
                 <div class="contact-item">
 
                     <span>
-                        WHATSAPP
+                        <i class="bi bi-whatsapp me-1"></i> WHATSAPP
                     </span>
 
                     <a
                         href="https://wa.me/2347079057773"
                         target="_blank"
                         rel="noopener"
+                        data-site="whatsapp-link"
                     >
-                        +234 707 905 7773
+                        <i class="bi bi-chat-dots me-1"></i> <span data-site="whatsapp-display">+234 707 905 7773</span>
                     </a>
 
                 </div>
@@ -1885,11 +2079,11 @@
                 <div class="contact-item">
 
                     <span>
-                        EMAIL
+                        <i class="bi bi-envelope me-1"></i> EMAIL
                     </span>
 
-                    <a href="mailto:11victorchris@gmail.com">
-                        11victorchris@gmail.com
+                    <a href="mailto:11victorchris@gmail.com" data-site="email">
+                        <i class="bi bi-send me-1"></i> <span data-site="email">11victorchris@gmail.com</span>
                     </a>
 
                 </div>
@@ -1898,15 +2092,15 @@
                 <div class="contact-item">
 
                     <span>
-                        LOCATIONS
+                        <i class="bi bi-geo-alt me-1"></i> LOCATIONS
                     </span>
 
-                    <p>
+                    <p data-site="address1">
                         No. 1 Fagba Street, Ago Market,
                         Ilorin, Kwara State.
                     </p>
 
-                    <p>
+                    <p data-site="address2">
                         No. 2 Bolanta Street, Zambari Market,
                         Ilorin, Kwara State.
                     </p>
@@ -1926,7 +2120,7 @@
             </p>
 
             <a href="#top">
-                Back to Top ↑
+                Back to Top <i class="bi bi-arrow-up"></i>
             </a>
 
         </div>
@@ -1941,6 +2135,168 @@
 <script
     src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js">
 </script>
+
+<!-- Supabase + store config -->
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+<script src="assets/js/config.js"></script>
+<script src="assets/js/store-common.js"></script>
+
+<!-- Three.js subtle 3D fabric particles -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+<script>
+(function () {
+  var canvas = document.getElementById('hero-3d');
+  if (!canvas) return;
+  // Accessibility: respect reduced motion
+  if (window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+  // Fallback if WebGL / Three.js missing
+  if (typeof THREE === 'undefined') return;
+  var gl = null;
+  try { gl = canvas.getContext('webgl') || canvas.getContext('experimental-webgl'); } catch (e) { return; }
+  if (!gl) return;
+  var scene = new THREE.Scene();
+  var camera = new THREE.PerspectiveCamera(60, 1, 0.1, 100);
+  camera.position.z = 8;
+  var renderer = new THREE.WebGLRenderer({ canvas: canvas, alpha: true, antialias: true });
+  renderer.setPixelRatio(Math.min(window.devicePixelRatio || 1, 2));
+  function resize() {
+    var w = canvas.clientWidth || canvas.parentElement.clientWidth;
+    var h = canvas.clientHeight || canvas.parentElement.clientHeight;
+    renderer.setSize(w, h, false);
+    camera.aspect = w / h;
+    camera.updateProjectionMatrix();
+  }
+  resize();
+  window.addEventListener('resize', resize);
+  // Fabric-like floating particles: soft gold + cream dots
+  var COUNT = 220;
+  var pos = new Float32Array(COUNT * 3);
+  for (var i = 0; i < COUNT; i++) {
+    pos[i * 3] = (Math.random() - 0.5) * 16;
+    pos[i * 3 + 1] = (Math.random() - 0.5) * 10;
+    pos[i * 3 + 2] = (Math.random() - 0.5) * 6;
+  }
+  var geo = new THREE.BufferGeometry();
+  geo.setAttribute('position', new THREE.BufferAttribute(pos, 3));
+  var mat = new THREE.PointsMaterial({ color: 0xf59e0b, size: 0.07, transparent: true, opacity: 0.65 });
+  var points = new THREE.Points(geo, mat);
+  scene.add(points);
+  var mat2 = new THREE.PointsMaterial({ color: 0xffffff, size: 0.045, transparent: true, opacity: 0.35 });
+  var points2 = new THREE.Points(geo.clone(), mat2);
+  points2.position.x = 0.6;
+  scene.add(points2);
+  var mx = 0, my = 0;
+  window.addEventListener('mousemove', function (e) {
+    mx = (e.clientX / window.innerWidth - 0.5) * 0.6;
+    my = (e.clientY / window.innerHeight - 0.5) * 0.4;
+  });
+  var t = 0;
+  (function animate() {
+    t += 0.0035;
+    points.rotation.y = t * 0.6 + mx;
+    points.rotation.x = Math.sin(t * 0.8) * 0.15 + my;
+    points.position.y = Math.sin(t * 1.4) * 0.25;
+    points2.rotation.y = -t * 0.4 + mx * 0.7;
+    renderer.render(scene, camera);
+    requestAnimationFrame(animate);
+  })();
+})();
+</script>
+<script>
+// White-lace filename fallback: file on disk is "white -lace.html" (with space).
+// Keep exact href working; if alias "white-lace.html" ever exists, prefer whichever resolves.
+document.querySelectorAll('[data-white-lace]').forEach(function (a) {
+  a.addEventListener('click', function (ev) {
+    var exact = 'white -lace.html';
+    var alias = 'white-lace.html';
+    if (a.getAttribute('href') !== exact) return;
+    // On http(s), probe alias first without breaking exact link
+    if (location.protocol.indexOf('http') !== 0) return; // file:// -> let browser handle space natively
+    ev.preventDefault();
+    fetch(alias, { method: 'HEAD' }).then(function (r) {
+      location.href = r.ok ? alias : exact;
+    }).catch(function () { location.href = exact; });
+  });
+});
+</script>
+<script>
+// IYAWO XSTO - index yard-based Add to Cart (local fallback, works without Supabase API)
+(function () {
+  function getCart() {
+    try {
+      var raw = localStorage.getItem('iyawo_cart_v1');
+      var cart = raw ? JSON.parse(raw) : [];
+      return Array.isArray(cart) ? cart : [];
+    } catch (e) { return []; }
+  }
+  function saveCart(cart) {
+    localStorage.setItem('iyawo_cart_v1', JSON.stringify(cart));
+    if (window.IYAWO && window.IYAWO.updateCartBadge) window.IYAWO.updateCartBadge();
+    else document.querySelectorAll('[data-cart-count]').forEach(function (el) {
+      var n = cart.reduce(function (s, i) { return s + (Number(i.quantity) || 0); }, 0);
+      el.textContent = n > 99 ? '99+' : String(n);
+      el.hidden = n <= 0;
+    });
+  }
+  function toast(msg, type) {
+    if (window.IYAWO && window.IYAWO.showToast) { window.IYAWO.showToast(msg, type || 'success'); return; }
+    alert(msg);
+  }
+  document.addEventListener('click', function (e) {
+    var btn = e.target.closest('.js-index-add, .js-sale-add');
+    if (!btn) return;
+    var card = btn.closest('.product-card') || btn.parentElement;
+    var yards = 1;
+    if (card) {
+      var sel = card.querySelector('.yard-select');
+      if (sel) yards = Number(sel.value) || 1;
+    }
+    if (!Number.isFinite(yards) || yards < 1) yards = 1;
+    if (yards > 10) yards = 10;
+    var slug = btn.getAttribute('data-slug') || '';
+    var product = {
+      id: 'index-' + slug,
+      slug: slug,
+      name: btn.getAttribute('data-name') || 'Fabric',
+      price: Number(btn.getAttribute('data-price')) || 0,
+      price_unit: btn.getAttribute('data-unit') || 'yard',
+      image_url: btn.getAttribute('data-image') || '',
+      stock_quantity: 99
+    };
+    var original = btn.innerHTML;
+    btn.disabled = true;
+    btn.innerHTML = 'Adding...';
+    var result;
+    try {
+      if (window.IYAWO && window.IYAWO.addToCart) {
+        result = window.IYAWO.addToCart(product, yards);
+      } else {
+        var cart = getCart();
+        var found = null;
+        for (var i = 0; i < cart.length; i++) { if (cart[i].product_id === product.id) found = cart[i]; }
+        if (found) found.quantity = Number(found.quantity) + yards;
+        else cart.push({ product_id: product.id, slug: product.slug, name: product.name, price: product.price, unit: product.price_unit, image_url: product.image_url, stock_quantity: 99, quantity: yards });
+        saveCart(cart);
+        result = { ok: true };
+      }
+    } catch (err) {
+      result = { ok: false, message: 'Could not add to cart. Please try again.' };
+    }
+    if (result && result.ok) {
+      btn.innerHTML = '<i class="bi bi-check"></i> Added';
+      toast(product.name + ' (' + yards + (yards === 1 ? ' yard' : ' yards') + ') added to your cart.', 'success');
+    } else {
+      btn.innerHTML = original;
+      toast((result && result.message) || 'Could not add to cart.', 'warning');
+    }
+    setTimeout(function () { btn.innerHTML = original; btn.disabled = false; }, 1400);
+  });
+  document.addEventListener('DOMContentLoaded', function () {
+    if (window.IYAWO && window.IYAWO.updateCartBadge) window.IYAWO.updateCartBadge();
+  });
+})();
+</script>
+<script src="assets/js/site-settings.js"></script>
 
 </body>
 </html>

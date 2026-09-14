@@ -1,0 +1,12 @@
+{
+  "name": "iyawo-xsto-fabric-store",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Iyawo Xsto Fabric Store - e-commerce backend (Supabase + Paystack) for the existing static website",
+  "engines": {
+    "node": ">=18"
+  },
+  "dependencies": {
+    "@supabase/supabase-js": "^2.45.4"
+  }
+}

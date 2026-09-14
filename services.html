@@ -3,6 +3,10 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" type="image/svg+xml" href="assets/logo/favicon.svg">
+    <link rel="alternate icon" type="image/png" href="assets/logo/logo.png">
+    <link rel="apple-touch-icon" href="assets/logo/logo.png">
+    <meta name="theme-color" content="#0a1238">
 
     <title>Services | IYAWO XSTO</title>
 
@@ -12,8 +16,16 @@
         rel="stylesheet"
     >
 
+    <!-- Bootstrap Icons -->
+    <link
+        rel="stylesheet"
+        href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css"
+    >
+
     <!-- Your Existing CSS -->
     <link rel="stylesheet" href="assets/css/s.css">
+    <link rel="stylesheet" href="assets/css/iyawo-pro.css">
+    <link rel="stylesheet" href="assets/css/responsive-fix.css">
 
     <style>
         /* =========================================================
@@ -294,6 +306,15 @@
                 padding: 80px 20px;
             }
 
+            .service-icon{width:56px;height:56px;font-size:1.5rem}
+            .services-hero .mt-4{display:flex;flex-direction:column;gap:10px}
+            .services-hero .mt-4 .btn{width:100%;margin-right:0!important}
+            .services-cta .mt-4{display:flex;flex-direction:column;gap:10px}
+            .services-cta .mt-4 .btn{width:100%;margin-right:0!important}
+            .accordion-button{min-height:48px;font-size:.95rem}
+            .accordion-body{font-size:.95rem}
+            table{width:100%;font-size:.95rem}
+
         }
     </style>
 </head>
@@ -366,6 +387,15 @@
                 <li class="nav-item">
                     <a
                         class="nav-link"
+                        href="shop.html"
+                    >
+                        Shop
+                    </a>
+                </li>
+
+                <li class="nav-item">
+                    <a
+                        class="nav-link"
                         href="about-us.html"
                     >
                         About
@@ -390,22 +420,20 @@
                     </a>
                 </li>
 
-                <li class="nav-item">
-                    <a
-                        class="nav-link"
-                        href="find-job.html"
-                    >
-                        Find Job
-                    </a>
-                </li>
-
-                <li class="nav-item ms-lg-3 mt-3 mt-lg-0">
+                <li class="nav-item ms-lg-2 mt-3 mt-lg-0">
 
                     <a
-                        href="sale.html"
-                        class="btn btn-warning navbar-btn"
+                        href="cart.html"
+                        class="btn btn-warning navbar-btn position-relative"
+                        title="View Cart"
                     >
-                        Shop Collection
+                        <i class="bi bi-cart3"></i>
+                        Cart
+                        <span
+                            class="badge rounded-pill bg-danger position-absolute top-0 start-100 translate-middle"
+                            data-cart-count
+                            hidden
+                        >0</span>
                     </a>
 
                 </li>
@@ -558,7 +586,7 @@
                     </div>
 
                     <div class="service-icon">
-                        🛍
+                        <i class="bi bi-bag"></i>
                     </div>
 
                     <h3>
@@ -606,7 +634,7 @@
                     </div>
 
                     <div class="service-icon">
-                        📦
+                        <i class="bi bi-box-seam"></i>
                     </div>
 
                     <h3>
@@ -655,7 +683,7 @@
                     </div>
 
                     <div class="service-icon">
-                        ✨
+                        <i class="bi bi-stars"></i>
                     </div>
 
                     <h3>
@@ -704,7 +732,7 @@
                     </div>
 
                     <div class="service-icon">
-                        💍
+                        <i class="bi bi-gem"></i>
                     </div>
 
                     <h3>
@@ -754,7 +782,7 @@
                     </div>
 
                     <div class="service-icon">
-                        🚚
+                        <i class="bi bi-truck"></i>
                     </div>
 
                     <h3>
@@ -803,7 +831,7 @@
                     </div>
 
                     <div class="service-icon">
-                        💬
+                        <i class="bi bi-chat-dots"></i>
                     </div>
 
                     <h3>
@@ -1084,7 +1112,7 @@
                 <div class="benefit-card">
 
                     <div class="benefit-icon">
-                        ◆
+                        <i class="bi bi-diamond-fill"></i>
                     </div>
 
                     <h4>
@@ -1106,7 +1134,7 @@
                 <div class="benefit-card">
 
                     <div class="benefit-icon">
-                        ✦
+                        <i class="bi bi-stars"></i>
                     </div>
 
                     <h4>
@@ -1128,7 +1156,7 @@
                 <div class="benefit-card">
 
                     <div class="benefit-icon">
-                        ★
+                        <i class="bi bi-star-fill"></i>
                     </div>
 
                     <h4>
@@ -1150,7 +1178,7 @@
                 <div class="benefit-card">
 
                     <div class="benefit-icon">
-                        ♢
+                        <i class="bi bi-diamond"></i>
                     </div>
 
                     <h4>
@@ -1273,7 +1301,7 @@
                     href="contact-us.html"
                     class="footer-contact-link"
                 >
-                    Get in touch →
+                    Get in touch <i class="bi bi-arrow-right"></i>
                 </a>
 
             </div>
@@ -1288,6 +1316,12 @@
                 </h5>
 
                 <ul class="footer-links">
+
+                    <li>
+                        <a href="shop.html">
+                            All Products
+                        </a>
+                    </li>
 
                     <li>
                         <a href="sale.html">
@@ -1441,7 +1475,7 @@
             </p>
 
             <a href="#top">
-                Back to Top ↑
+                Back to Top <i class="bi bi-arrow-up"></i>
             </a>
 
         </div>

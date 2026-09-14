@@ -1,0 +1,18 @@
+{
+  "$schema": "https://openapi.vercel.sh/vercel.json",
+  "rewrites": [
+    { "source": "/shop/:slug", "destination": "/shop.html?category=:slug" },
+    { "source": "/product/:slug", "destination": "/product.html?slug=:slug" },
+    { "source": "/track-order", "destination": "/track-order.html" },
+    { "source": "/admin", "destination": "/admin/index.html" },
+    { "source": "/admin/login", "destination": "/admin/login.html" },
+    { "source": "/admin/products", "destination": "/admin/products.html" },
+    { "source": "/admin/orders", "destination": "/admin/orders.html" },
+    { "source": "/admin/customers", "destination": "/admin/customers.html" },
+    { "source": "/admin/categories", "destination": "/admin/categories.html" },
+    { "source": "/admin/settings", "destination": "/admin/settings.html" },
+    { "source": "/admin/unlock-codes", "destination": "/admin/unlock-codes.html" },
+    { "source": "/admin/deliveries", "destination": "/admin/deliveries.html" },
+    { "source": "/admin/content", "destination": "/admin/content.html" }
+  ]
+}

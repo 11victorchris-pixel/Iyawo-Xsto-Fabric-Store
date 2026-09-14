@@ -3,215 +3,671 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" type="image/svg+xml" href="assets/logo/favicon.svg">
+    <link rel="alternate icon" type="image/png" href="assets/logo/logo.png">
+    <link rel="apple-touch-icon" href="assets/logo/logo.png">
+    <title>Sales | IYAWO XSTO Fabric Store — Up to 20% Off</title>
+    <meta name="description" content="IYAWO XSTO end-of-month fabric sale — Swiss Lace, Ankara Lace, Beaded Lace, Damask, White Lace at up to 20% off. Wholesale & retail in Ilorin, Nigeria.">
+    <meta name="theme-color" content="#0a1238">
 
-    <title>Sales | IYAWO XSTO Fabric Store</title>
-
-    <!-- Bootstrap CSS -->
-    <link
-        href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css"
-        rel="stylesheet"
-    >
-
+    <!-- Bootstrap 5.3.3 -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Bootstrap Icons -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
     <!-- Custom CSS -->
-    <link rel="stylesheet" href="assets/css/style.css">
+    <link rel="stylesheet" href="assets/css/s.css">
+    <link rel="stylesheet" href="assets/css/iyawo-pro.css">
+    <link rel="stylesheet" href="assets/css/responsive-fix.css">
+
+    <style>
+        .announcement-bar{background:#f59e0b;color:#0a1238;font-size:.82rem;font-weight:600;letter-spacing:.3px;padding:8px 0;position:relative;z-index:1050}
+        .announcement-bar a{color:#0a1238;text-decoration:underline;font-weight:800}
+        .sale-hero{background:linear-gradient(135deg,#0a1238 0%,#111c5c 60%,#1b256e 100%);color:#fff;position:relative;overflow:hidden;padding:72px 0 56px}
+        .sale-hero::before{content:"";position:absolute;width:520px;height:520px;border-radius:50%;background:radial-gradient(circle,rgba(245,158,11,.28),transparent 65%);top:-160px;right:-120px}
+        .sale-hero::after{content:"";position:absolute;width:380px;height:380px;border-radius:50%;background:radial-gradient(circle,rgba(255,255,255,.08),transparent 65%);bottom:-140px;left:-100px}
+        .sale-hero .container{position:relative;z-index:2}
+        .sale-badge{background:#f59e0b;color:#0a1238;font-weight:800;letter-spacing:1.5px;font-size:.75rem;border-radius:50px;padding:7px 16px;display:inline-flex;align-items:center;gap:8px}
+        .sale-hero h1{font-family:'Playfair Display',serif;font-weight:800;font-size:clamp(2rem,5vw,3.4rem);line-height:1.08}
+        .sale-hero h1 span{color:#f59e0b}
+        .countdown-wrap{display:flex;gap:12px;flex-wrap:wrap;margin-top:22px}
+        .count-box{background:rgba(255,255,255,.1);border:1px solid rgba(255,255,255,.2);border-radius:12px;min-width:86px;text-align:center;padding:12px 8px;backdrop-filter:blur(6px)}
+        .count-box strong{display:block;font-size:1.7rem;font-weight:800;color:#f59e0b;line-height:1}
+        .count-box span{font-size:.72rem;letter-spacing:1.5px;text-transform:uppercase;color:#e8e5df}
+        .filter-pills{display:flex;gap:10px;flex-wrap:wrap;justify-content:center}
+        .filter-pills a{border:1px solid #e8e5df;background:#fff;color:#0a1238;border-radius:50px;padding:9px 18px;font-size:.86rem;font-weight:600;text-decoration:none;transition:all .25s ease;display:inline-flex;align-items:center;gap:7px}
+        .filter-pills a:hover,.filter-pills a.active{background:#0a1238;color:#fff;border-color:#0a1238}
+        .filter-pills a i{color:#f59e0b}
+        .sale-card{background:#fff;border:1px solid #e8e5df;border-radius:14px;overflow:hidden;height:100%;box-shadow:0 8px 25px rgba(10,18,56,.06);transition:transform .25s ease,box-shadow .25s ease;transform-style:preserve-3d;will-change:transform}
+        .sale-card:hover{box-shadow:0 18px 50px rgba(10,18,56,.12)}
+        .sale-media{position:relative;overflow:hidden;aspect-ratio:4/3;background:#faf8f3}
+        .sale-media img{width:100%;height:100%;object-fit:cover;transition:transform .5s ease}
+        .sale-card:hover .sale-media img{transform:scale(1.06)}
+        .sale-off{position:absolute;top:12px;left:12px;background:#dc3545;color:#fff;font-weight:800;font-size:.75rem;letter-spacing:.5px;border-radius:50px;padding:6px 12px;display:inline-flex;align-items:center;gap:6px}
+        .sale-wish{position:absolute;top:12px;right:12px;background:rgba(255,255,255,.92);border:0;border-radius:50%;width:36px;height:36px;display:grid;place-items:center;color:#0a1238}
+        .sale-body{padding:20px}
+        .sale-stars{color:#f59e0b;font-size:.82rem;display:flex;align-items:center;gap:2px}
+        .sale-stars small{color:#888;margin-left:6px}
+        .price-row{display:flex;align-items:baseline;gap:10px;margin:8px 0}
+        .price-old{text-decoration:line-through;color:#888;font-size:.9rem}
+        .price-new{color:#0a1238;font-weight:800;font-size:1.25rem}
+        .price-unit{font-size:.78rem;color:#888}
+        .step-card{background:#fff;border:1px solid #e8e5df;border-radius:14px;padding:28px;height:100%;text-align:center;box-shadow:0 8px 25px rgba(10,18,56,.06)}
+        .step-num{width:52px;height:52px;border-radius:50%;background:#fff4df;color:#d97706;display:grid;place-items:center;font-size:1.4rem;margin:0 auto 14px}
+        .terms-box{background:#fff;border:1px solid #e8e5df;border-radius:14px;padding:28px}
+        .terms-box li{margin-bottom:10px}
+        .cta-banner{background:linear-gradient(135deg,#f59e0b,#d97706);border-radius:16px;color:#0a1238;padding:40px}
+        .reveal{opacity:0;transform:translateY(24px);transition:opacity .6s ease,transform .6s ease}
+        .reveal.visible{opacity:1;transform:none}
+        @media (prefers-reduced-motion: reduce){.reveal{opacity:1;transform:none;transition:none}.sale-card{transition:none}}
+        /* === Mobile fixes (inline only, navy #0a1238 gold #f59e0b) === */
+        .sale-media{aspect-ratio:4/3}
+        .sale-media img{width:100%;height:100%;object-fit:cover}
+        .sale-card h5{display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden;min-height:2.6em}
+        .count-box strong{font-variant-numeric:tabular-nums}
+        @media (max-width:767.98px){
+            .sale-hero{padding:56px 0 44px}
+            .sale-hero .card-img-top{height:220px!important}
+            .sale-hero .d-flex.flex-wrap.gap-2.mt-3 .btn{width:100%}
+            .countdown-wrap{flex-wrap:wrap}
+            .count-box{min-width:64px;flex:1 1 64px}
+            .accordion-button{min-height:48px;font-size:.95rem}
+            .accordion-body{font-size:.95rem}
+            .cta-banner{padding:28px 20px}
+            .cta-banner .d-flex{flex-direction:column;align-items:stretch}
+            .cta-banner .btn{width:100%}
+            table{width:100%;font-size:.95rem}
+        }
+        @media (max-width:380px){
+            .countdown-wrap{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+            .count-box{min-width:64px}
+            .announcement-bar{font-size:.72rem;line-height:1.4}
+        }
+    </style>
 </head>
 
-<body>
+<body id="top">
 
-   
-    <!-- ================= HEADER ================= -->
-    <header class="store-header py-4" id="top">
+<!-- =========================================================
+     ANNOUNCEMENT BAR (identical to index.html)
+========================================================= -->
+<div class="announcement-bar text-center">
+    <div class="container d-flex flex-wrap justify-content-center align-items-center gap-2">
+        <span><i class="bi bi-stars me-1"></i> New Season Sale — up to 20% off selected laces <i class="bi bi-stars ms-1"></i></span>
+        <a href="sale.html" class="ms-2">Shop Sale <i class="bi bi-arrow-right"></i></a>
+        <span class="d-none d-md-inline ms-3"><i class="bi bi-truck"></i> Nationwide delivery</span>
+        <span class="d-none d-md-inline ms-2"><i class="bi bi-whatsapp"></i> +234 707 905 7773</span>
+    </div>
+</div>
 
-        <div class="container text-center">
-
-            <img
-                src="assets/logo/logo.png"
-                alt="IYAWO XSTO Fabric Store Logo"
-                class="store-logo mb-3"
-            >
-
-            <div class="brand-name">
-                <span class="iyawo">IYAWO</span>
-                <span class="xsto">XSTO</span>
-                <span class="fabric">FABRIC STORE</span>
-            </div>
-
-            <p class="tagline mt-3 mb-2">
-                *** Your outlook is our priority 😊 ***
-            </p>
-
-            <hr class="border-light">
-
-            <div class="discount">
-                Receive up to
-                <span>20%</span>
-                discount
-            </div>
-
-        </div>
-
-    </header>
-
-
-    <!-- ================= NAVIGATION ================= -->
-    <nav class="navbar navbar-expand-lg navbar-dark bg-dark sticky-top">
-
-        <div class="container">
-            
+<!-- =========================================================
+     NAVBAR (identical to index.html pattern)
+========================================================= -->
+<nav class="navbar navbar-expand-lg navbar-dark sticky-top">
+    <div class="container">
         <a class="navbar-brand fw-bold" href="index.html">
-            <i class="bi bi-shop"></i>
-            IYAWO XSTO
+            <span class="brand-orange">IYAWO</span>
+            <span class="brand-white">XSTO</span>
         </a>
-
-
-            <!-- Mobile Menu Button -->
-            <button
-                class="navbar-toggler"
-                type="button"
-                data-bs-toggle="collapse"
-                data-bs-target="#mainNavbar"
-                aria-controls="mainNavbar"
-                aria-expanded="false"
-                aria-label="Toggle navigation"
-            >
-                <span class="navbar-toggler-icon"></span>
-            </button>
-
-            <!-- Navigation Links -->
-            <div class="collapse navbar-collapse" id="mainNavbar">
-
-                <ul class="navbar-nav ms-auto text-center">
-
-                    <li class="nav-item">
-                        <a class="nav-link" href="index.html">
-                            Home
-                        </a>
-                    </li>
-                    
-                    <li class="nav-item">
-                        <a class="nav-link active" href="sale.html">
-                            Sales
-                        </a>
-                    </li>
-
-
-                    <li class="nav-item">
-                        <a class="nav-link" href="about-us.html">
-                            About
-                        </a>
-                    </li>
-
-                    <li class="nav-item">
-                        <a class="nav-link" href="contact-us.html">
-                            Contact Us
-                        </a>
-                    </li>
-
-                    <li class="nav-item">
-                        <a class="nav-link" href="find-job.html">
-                            Find Job
-                        </a>
-                    </li>
-
-                </ul>
-
-            </div>
-
+        <button class="navbar-toggler border-0 shadow-none" type="button" data-bs-toggle="collapse" data-bs-target="#mainNavbar" aria-controls="mainNavbar" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="mainNavbar">
+            <ul class="navbar-nav ms-auto align-items-lg-center">
+                <li class="nav-item"><a class="nav-link" href="index.html">Home</a></li>
+                <li class="nav-item"><a class="nav-link active" href="sale.html">Sales</a></li>
+                <li class="nav-item"><a class="nav-link" href="shop.html">Shop</a></li>
+                <li class="nav-item"><a class="nav-link" href="about-us.html">About</a></li>
+                <li class="nav-item"><a class="nav-link" href="services.html">Services</a></li>
+                <li class="nav-item"><a class="nav-link" href="contact-us.html">Contact</a></li>
+                <li class="nav-item"><a class="nav-link" href="find-job.html">Find Job</a></li>
+                <li class="nav-item ms-lg-3 mt-3 mt-lg-0">
+                    <a href="shop.html" class="btn btn-warning navbar-btn">Shop Collection</a>
+                </li>
+                <li class="nav-item ms-lg-2 mt-3 mt-lg-0">
+                    <a href="cart.html" class="btn btn-outline-light position-relative" title="View Cart">
+                        <i class="bi bi-cart3"></i> Cart
+                        <span class="badge rounded-pill bg-danger position-absolute top-0 start-100 translate-middle" data-cart-count hidden>0</span>
+                    </a>
+                </li>
+            </ul>
         </div>
+    </div>
+</nav>
 
-    </nav>
-    <!-- Main Content -->
-    <main class="container my-5">
-
-        <!-- Welcome -->
-        <section class="text-center mb-5">
-
-            <h1 class="fw-bold">
-                Welcome to
-                <span class="text-primary">
-                    IYAWO XSTO Fabric Store
-                </span>
-            </h1>
-
-            <p class="lead">
-                We sell quality fabrics wholesale and retail
-                in different categories.
-            </p>
-
-        </section>
-
-
-        <!-- Services -->
-        <section class="services-section">
-
-            <div class="section-title">
-                <h2>OUR SERVICES</h2>
-            </div>
-
-            <div class="row justify-content-center mt-4">
-
-                <div class="col-md-8 col-lg-6">
-
-                    <div class="card shadow border-0 text-center">
-
-                        <div class="card-body p-5">
-
-                            <div class="service-icon">
-                                🧵
-                            </div>
-
-                            <h3 class="card-title mt-3">
-                                Services Not Available
-                            </h3>
-
-                            <p class="card-text text-muted">
-                                Our services are currently unavailable.
-                                Please contact us for more information
-                                about our fabrics and future availability.
-                            </p>
-
-                            <a
-                                href="tel:+2347079057773"
-                                class="btn btn-primary px-4"
-                            >
-                                Contact Us
-                            </a>
-
-                        </div>
-
-                    </div>
-
+<!-- =========================================================
+     HERO + COUNTDOWN
+========================================================= -->
+<header class="sale-hero">
+    <div class="container">
+        <div class="row align-items-center g-4">
+            <div class="col-lg-7">
+                <span class="sale-badge"><i class="bi bi-tag-fill"></i> END-OF-MONTH SALE • UP TO 20% OFF</span>
+                <h1 class="mt-3">Premium Lace on Sale.<br><span>Dress With Elegance.</span></h1>
+                <p class="mt-3 mb-1 text-white-50">Wholesale and retail deals on Swiss Lace, Ankara Lace, Beaded Lace, Damask and White Lace.</p>
+                <p class="mb-0"><i class="bi bi-geo-alt me-1"></i> Available in-store in Ilorin and online with nationwide delivery.</p>
+                <div class="countdown-wrap" role="timer" aria-label="Sale countdown">
+                    <div class="count-box"><strong id="cd-days">00</strong><span>Days</span></div>
+                    <div class="count-box"><strong id="cd-hours">00</strong><span>Hours</span></div>
+                    <div class="count-box"><strong id="cd-mins">00</strong><span>Mins</span></div>
+                    <div class="count-box"><strong id="cd-secs">00</strong><span>Secs</span></div>
                 </div>
+                <p class="mt-3 small text-white-50"><i class="bi bi-clock me-1"></i> <span id="sale-ends-label">Sale ends soon — while stock lasts.</span></p>
+                <div class="d-flex flex-wrap gap-2 mt-3">
+                    <a href="#sale-grid" class="btn btn-warning btn-lg fw-bold"><i class="bi bi-bag-fill me-1"></i> Shop Sale Now</a>
+                    <a href="https://wa.me/2347079057773?text=Hello%20IYAWO%20XSTO%2C%20I%20want%20to%20ask%20about%20the%20sale" target="_blank" rel="noopener" class="btn btn-outline-light btn-lg"><i class="bi bi-whatsapp me-1"></i> WhatsApp Us</a>
+                </div>
+            </div>
+            <div class="col-lg-5">
+                <div class="card border-0 shadow-lg overflow-hidden">
+                    <img src="assets/images/Swiss%20Lace/1%20(1).jpg" class="card-img-top" alt="Swiss Lace on sale at IYAWO XSTO" style="height:320px;object-fit:cover" onerror="this.onerror=null;this.src='assets/logo/logo.png'">
+                    <div class="card-body d-flex justify-content-between align-items-center">
+                        <div>
+                            <strong class="d-block">Swiss Lace — Bestseller</strong>
+                            <small class="text-muted"><span class="text-decoration-line-through">₦12,500</span> <span class="text-danger fw-bold">₦10,000 / yard</span></small>
+                        </div>
+                        <span class="badge bg-danger"><i class="bi bi-lightning-fill me-1"></i>SALE -20%</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</header>
 
+<!-- Trust strip -->
+<div class="bg-white border-bottom">
+    <div class="container py-3">
+        <div class="row text-center g-3 small fw-semibold">
+            <div class="col-6 col-md-3"><i class="bi bi-patch-check-fill text-warning me-1"></i> Quality guaranteed</div>
+            <div class="col-6 col-md-3"><i class="bi bi-truck me-1 text-warning"></i> Nationwide delivery</div>
+            <div class="col-6 col-md-3"><i class="bi bi-arrow-repeat me-1 text-warning"></i> Easy wholesale options</div>
+            <div class="col-6 col-md-3"><i class="bi bi-headset me-1 text-warning"></i> WhatsApp support</div>
+        </div>
+    </div>
+</div>
+
+<main class="container my-5">
+
+    <!-- Category filter pills -->
+    <section class="text-center mb-5 reveal">
+        <h2 class="fw-bold"><i class="bi bi-funnel me-2 text-warning"></i>Shop Sale by Category</h2>
+        <p class="text-muted">Tap a category to see full prices and availability in the shop.</p>
+        <div class="filter-pills mt-3">
+            <a href="shop.html" class="active"><i class="bi bi-grid-fill"></i> All Products</a>
+            <a href="shop.html?category=swiss-lace"><i class="bi bi-gem"></i> Swiss Lace</a>
+            <a href="shop.html?category=ankara-lace"><i class="bi bi-palette-fill"></i> Ankara Lace</a>
+            <a href="shop.html?category=beaded-lace"><i class="bi bi-stars"></i> Beaded Lace</a>
+            <a href="shop.html?category=damask"><i class="bi bi-layers-fill"></i> Damask</a>
+            <a href="shop.html?category=white-lace"><i class="bi bi-snow"></i> White Lace</a>
+            <a href="shop.html?category=foil-lace"><i class="bi bi-brightness-high-fill"></i> Foil Lace</a>
+        </div>
+    </section>
+
+    <!-- Sale grid -->
+    <section id="sale-grid" class="mb-5">
+        <div class="d-flex flex-wrap justify-content-between align-items-end gap-2 mb-4">
+            <div>
+                <h2 class="fw-bold mb-1"><i class="bi bi-fire text-danger me-2"></i>Sale Products</h2>
+                <p class="text-muted mb-0">Per-yard pricing. Choose yards, add to cart, check out fast.</p>
+            </div>
+            <a href="shop.html" class="btn btn-outline-dark btn-sm"><i class="bi bi-shop me-1"></i> View all in Shop</a>
+        </div>
+
+        <div class="row g-4" id="saleCards">
+
+            <!-- 1 Swiss -->
+            <div class="col-sm-6 col-lg-4 reveal">
+                <article class="sale-card" data-tilt>
+                    <div class="sale-media">
+                        <img src="assets/images/Swiss%20Lace/1%20(1).jpg" alt="Premium Swiss Lace" loading="lazy" onerror="this.onerror=null;this.src='assets/logo/logo.png'">
+                        <span class="sale-off"><i class="bi bi-tag-fill"></i> SALE -20%</span>
+                        <button class="sale-wish" type="button" aria-label="Save to wishlist"><i class="bi bi-heart"></i></button>
+                    </div>
+                    <div class="sale-body">
+                        <div class="sale-stars"><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><small>4.9 (212)</small></div>
+                        <h5 class="fw-bold mt-2 mb-1">Premium Swiss Lace</h5>
+                        <div class="price-row"><span class="price-old">₦12,500</span><span class="price-new">₦10,000</span><span class="price-unit">per yard</span></div>
+                        <label class="form-label small fw-semibold" for="yards-1"><i class="bi bi-rulers me-1"></i>Yards</label>
+                        <select id="yards-1" class="form-select mb-3 sale-yards">
+                            <option value="1">1 yard</option><option value="2">2 yards</option><option value="3">3 yards</option><option value="4">4 yards</option><option value="5" selected>5 yards</option><option value="6">6 yards</option><option value="7">7 yards</option><option value="8">8 yards</option><option value="9">9 yards</option><option value="10">10 yards</option>
+                        </select>
+                        <div class="d-grid gap-2">
+                            <button type="button" class="btn btn-warning fw-bold js-sale-add" data-name="Premium Swiss Lace" data-price="10000" data-unit="yard" data-image="assets/images/Swiss%20Lace/1%20(1).jpg"><i class="bi bi-cart-plus-fill me-1"></i> ADD TO CART</button>
+                            <a href="shop.html?category=swiss-lace" class="btn btn-link btn-sm text-decoration-none"><i class="bi bi-eye me-1"></i> View in Shop</a>
+                        </div>
+                    </div>
+                </article>
             </div>
 
-        </section>
+            <!-- 2 Ankara -->
+            <div class="col-sm-6 col-lg-4 reveal">
+                <article class="sale-card" data-tilt>
+                    <div class="sale-media">
+                        <img src="assets/images/Ankara%20Lace/1%20(1).jpg" alt="Vibrant Ankara Lace" loading="lazy" onerror="this.onerror=null;this.src='assets/logo/logo.png'">
+                        <span class="sale-off"><i class="bi bi-tag-fill"></i> SALE -20%</span>
+                        <button class="sale-wish" type="button" aria-label="Save to wishlist"><i class="bi bi-heart"></i></button>
+                    </div>
+                    <div class="sale-body">
+                        <div class="sale-stars"><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-half"></i><small>4.7 (186)</small></div>
+                        <h5 class="fw-bold mt-2 mb-1">Vibrant Ankara Lace</h5>
+                        <div class="price-row"><span class="price-old">₦8,000</span><span class="price-new">₦6,400</span><span class="price-unit">per yard</span></div>
+                        <label class="form-label small fw-semibold" for="yards-2"><i class="bi bi-rulers me-1"></i>Yards</label>
+                        <select id="yards-2" class="form-select mb-3 sale-yards">
+                            <option value="1">1 yard</option><option value="2">2 yards</option><option value="3">3 yards</option><option value="4">4 yards</option><option value="5" selected>5 yards</option><option value="6">6 yards</option><option value="7">7 yards</option><option value="8">8 yards</option><option value="9">9 yards</option><option value="10">10 yards</option>
+                        </select>
+                        <div class="d-grid gap-2">
+                            <button type="button" class="btn btn-warning fw-bold js-sale-add" data-name="Vibrant Ankara Lace" data-price="6400" data-unit="yard" data-image="assets/images/Ankara%20Lace/1%20(1).jpg"><i class="bi bi-cart-plus-fill me-1"></i> ADD TO CART</button>
+                            <a href="shop.html?category=ankara-lace" class="btn btn-link btn-sm text-decoration-none"><i class="bi bi-eye me-1"></i> View in Shop</a>
+                        </div>
+                    </div>
+                </article>
+            </div>
 
+            <!-- 3 Beaded -->
+            <div class="col-sm-6 col-lg-4 reveal">
+                <article class="sale-card" data-tilt>
+                    <div class="sale-media">
+                        <img src="assets/images/Beaded%20Lace/1%20(1).jpg" alt="Luxury Beaded Lace" loading="lazy" onerror="this.onerror=null;this.src='assets/logo/logo.png'">
+                        <span class="sale-off"><i class="bi bi-tag-fill"></i> SALE -20%</span>
+                        <button class="sale-wish" type="button" aria-label="Save to wishlist"><i class="bi bi-heart"></i></button>
+                    </div>
+                    <div class="sale-body">
+                        <div class="sale-stars"><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><small>5.0 (98)</small></div>
+                        <h5 class="fw-bold mt-2 mb-1">Luxury Beaded Lace</h5>
+                        <div class="price-row"><span class="price-old">₦18,000</span><span class="price-new">₦14,400</span><span class="price-unit">per yard</span></div>
+                        <label class="form-label small fw-semibold" for="yards-3"><i class="bi bi-rulers me-1"></i>Yards</label>
+                        <select id="yards-3" class="form-select mb-3 sale-yards">
+                            <option value="1">1 yard</option><option value="2">2 yards</option><option value="3">3 yards</option><option value="4">4 yards</option><option value="5" selected>5 yards</option><option value="6">6 yards</option><option value="7">7 yards</option><option value="8">8 yards</option><option value="9">9 yards</option><option value="10">10 yards</option>
+                        </select>
+                        <div class="d-grid gap-2">
+                            <button type="button" class="btn btn-warning fw-bold js-sale-add" data-name="Luxury Beaded Lace" data-price="14400" data-unit="yard" data-image="assets/images/Beaded%20Lace/1%20(1).jpg"><i class="bi bi-cart-plus-fill me-1"></i> ADD TO CART</button>
+                            <a href="shop.html?category=beaded-lace" class="btn btn-link btn-sm text-decoration-none"><i class="bi bi-eye me-1"></i> View in Shop</a>
+                        </div>
+                    </div>
+                </article>
+            </div>
 
-        <!-- Back to top -->
-        <div class="text-center mt-5">
-            <a href="#top" class="btn btn-dark">
-                Back to Top
-            </a>
+            <!-- 4 Damask -->
+            <div class="col-sm-6 col-lg-4 reveal">
+                <article class="sale-card" data-tilt>
+                    <div class="sale-media">
+                        <img src="assets/images/Damask/1%20(1).jpg" alt="Classic Damask Fabric" loading="lazy" onerror="this.onerror=null;this.src='assets/logo/logo.png'">
+                        <span class="sale-off"><i class="bi bi-tag-fill"></i> SALE -20%</span>
+                        <button class="sale-wish" type="button" aria-label="Save to wishlist"><i class="bi bi-heart"></i></button>
+                    </div>
+                    <div class="sale-body">
+                        <div class="sale-stars"><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star"></i><small>4.5 (143)</small></div>
+                        <h5 class="fw-bold mt-2 mb-1">Classic Damask Fabric</h5>
+                        <div class="price-row"><span class="price-old">₦9,500</span><span class="price-new">₦7,600</span><span class="price-unit">per yard</span></div>
+                        <label class="form-label small fw-semibold" for="yards-4"><i class="bi bi-rulers me-1"></i>Yards</label>
+                        <select id="yards-4" class="form-select mb-3 sale-yards">
+                            <option value="1">1 yard</option><option value="2">2 yards</option><option value="3">3 yards</option><option value="4">4 yards</option><option value="5" selected>5 yards</option><option value="6">6 yards</option><option value="7">7 yards</option><option value="8">8 yards</option><option value="9">9 yards</option><option value="10">10 yards</option>
+                        </select>
+                        <div class="d-grid gap-2">
+                            <button type="button" class="btn btn-warning fw-bold js-sale-add" data-name="Classic Damask Fabric" data-price="7600" data-unit="yard" data-image="assets/images/Damask/1%20(1).jpg"><i class="bi bi-cart-plus-fill me-1"></i> ADD TO CART</button>
+                            <a href="shop.html?category=damask" class="btn btn-link btn-sm text-decoration-none"><i class="bi bi-eye me-1"></i> View in Shop</a>
+                        </div>
+                    </div>
+                </article>
+            </div>
+
+            <!-- 5 White lace -->
+            <div class="col-sm-6 col-lg-4 reveal">
+                <article class="sale-card" data-tilt>
+                    <div class="sale-media">
+                        <img src="assets/images/White%20fine%20lace/1%20(1).jpg" alt="Elegant White Fine Lace" loading="lazy" onerror="this.onerror=null;this.src='assets/logo/logo.png'">
+                        <span class="sale-off"><i class="bi bi-tag-fill"></i> SALE -20%</span>
+                        <button class="sale-wish" type="button" aria-label="Save to wishlist"><i class="bi bi-heart"></i></button>
+                    </div>
+                    <div class="sale-body">
+                        <div class="sale-stars"><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><small>4.8 (167)</small></div>
+                        <h5 class="fw-bold mt-2 mb-1">Elegant White Fine Lace</h5>
+                        <div class="price-row"><span class="price-old">₦11,000</span><span class="price-new">₦8,800</span><span class="price-unit">per yard</span></div>
+                        <label class="form-label small fw-semibold" for="yards-5"><i class="bi bi-rulers me-1"></i>Yards</label>
+                        <select id="yards-5" class="form-select mb-3 sale-yards">
+                            <option value="1">1 yard</option><option value="2">2 yards</option><option value="3">3 yards</option><option value="4">4 yards</option><option value="5" selected>5 yards</option><option value="6">6 yards</option><option value="7">7 yards</option><option value="8">8 yards</option><option value="9">9 yards</option><option value="10">10 yards</option>
+                        </select>
+                        <div class="d-grid gap-2">
+                            <button type="button" class="btn btn-warning fw-bold js-sale-add" data-name="Elegant White Fine Lace" data-price="8800" data-unit="yard" data-image="assets/images/White%20fine%20lace/1%20(1).jpg"><i class="bi bi-cart-plus-fill me-1"></i> ADD TO CART</button>
+                            <a href="shop.html?category=white-lace" class="btn btn-link btn-sm text-decoration-none"><i class="bi bi-eye me-1"></i> View in Shop</a>
+                        </div>
+                    </div>
+                </article>
+            </div>
+
+            <!-- 6 Foil lace -->
+            <div class="col-sm-6 col-lg-4 reveal">
+                <article class="sale-card" data-tilt>
+                    <div class="sale-media">
+                        <img src="assets/images/Foil%20Lace/1%20(1).jpg" alt="Shimmer Foil Lace" loading="lazy" onerror="this.onerror=null;this.src='assets/logo/logo.png'">
+                        <span class="sale-off"><i class="bi bi-tag-fill"></i> SALE -20%</span>
+                        <button class="sale-wish" type="button" aria-label="Save to wishlist"><i class="bi bi-heart"></i></button>
+                    </div>
+                    <div class="sale-body">
+                        <div class="sale-stars"><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-half"></i><small>4.6 (121)</small></div>
+                        <h5 class="fw-bold mt-2 mb-1">Shimmer Foil Lace</h5>
+                        <div class="price-row"><span class="price-old">₦13,500</span><span class="price-new">₦10,800</span><span class="price-unit">per yard</span></div>
+                        <label class="form-label small fw-semibold" for="yards-6"><i class="bi bi-rulers me-1"></i>Yards</label>
+                        <select id="yards-6" class="form-select mb-3 sale-yards">
+                            <option value="1">1 yard</option><option value="2">2 yards</option><option value="3">3 yards</option><option value="4">4 yards</option><option value="5" selected>5 yards</option><option value="6">6 yards</option><option value="7">7 yards</option><option value="8">8 yards</option><option value="9">9 yards</option><option value="10">10 yards</option>
+                        </select>
+                        <div class="d-grid gap-2">
+                            <button type="button" class="btn btn-warning fw-bold js-sale-add" data-name="Shimmer Foil Lace" data-price="10800" data-unit="yard" data-image="assets/images/Foil%20Lace/1%20(1).jpg"><i class="bi bi-cart-plus-fill me-1"></i> ADD TO CART</button>
+                            <a href="shop.html?category=foil-lace" class="btn btn-link btn-sm text-decoration-none"><i class="bi bi-eye me-1"></i> View in Shop</a>
+                        </div>
+                    </div>
+                </article>
+            </div>
+
         </div>
+        <div id="sale-toast" class="alert alert-success d-none mt-4" role="status"><i class="bi bi-check-circle-fill me-1"></i> <span id="sale-toast-text">Added to cart.</span> <a href="cart.html" class="alert-link ms-2">View Cart <i class="bi bi-arrow-right"></i></a></div>
+    </section>
 
-    </main>
-
-
-    <!-- Footer -->
-    <footer class="store-footer">
-        <div class="container text-center py-4">
-
-            <p class="mb-1">
-                &copy; 2026 IYAWO XSTO Fabric Store
-            </p>
-
-            <small>
-                Quality fabrics at affordable prices.
-            </small>
-
+    <!-- How sale works -->
+    <section class="mb-5">
+        <h2 class="fw-bold text-center mb-1"><i class="bi bi-info-circle me-2 text-warning"></i>How Sale Works</h2>
+        <p class="text-muted text-center mb-4">Three quick steps — no coupons needed, discount already applied.</p>
+        <div class="row g-4">
+            <div class="col-md-4 reveal">
+                <div class="step-card">
+                    <div class="step-num"><i class="bi bi-rulers"></i></div>
+                    <h5 class="fw-bold">1. Pick Fabric and Yards</h5>
+                    <p class="text-muted mb-0">Choose any sale fabric, select 1 to 10 yards per item. Prices shown are per yard with 20% already removed.</p>
+                </div>
+            </div>
+            <div class="col-md-4 reveal">
+                <div class="step-card">
+                    <div class="step-num"><i class="bi bi-cart-check-fill"></i></div>
+                    <h5 class="fw-bold">2. Add to Cart</h5>
+                    <p class="text-muted mb-0">Tap Add to Cart. Your yards and sale price are saved instantly and the cart badge updates.</p>
+                </div>
+            </div>
+            <div class="col-md-4 reveal">
+                <div class="step-card">
+                    <div class="step-num"><i class="bi bi-truck"></i></div>
+                    <h5 class="fw-bold">3. Check Out and Delivery</h5>
+                    <p class="text-muted mb-0">Check out online or confirm on WhatsApp. Pick up in Ilorin or get nationwide delivery.</p>
+                </div>
+            </div>
         </div>
-    </footer>
+    </section>
+
+    <!-- T&Cs -->
+    <section class="mb-5 reveal">
+        <div class="terms-box">
+            <h3 class="fw-bold mb-3"><i class="bi bi-file-text me-2 text-warning"></i>Sale Terms and Conditions</h3>
+            <ul class="mb-0 text-muted">
+                <li><i class="bi bi-check2-circle text-success me-1"></i> Sale discount is 20% off the regular per-yard price on listed fabrics only.</li>
+                <li><i class="bi bi-check2-circle text-success me-1"></i> Sale runs until the end of the current month, while stock lasts. Countdown above shows remaining time.</li>
+                <li><i class="bi bi-check2-circle text-success me-1"></i> Prices are per yard. Minimum order is 1 yard per fabric unless stated otherwise.</li>
+                <li><i class="bi bi-check2-circle text-success me-1"></i> Sale items cannot be combined with other coupons or wholesale price overrides.</li>
+                <li><i class="bi bi-check2-circle text-success me-1"></i> Inspect fabrics on pickup or delivery. Contact us within 48 hours for any issue.</li>
+            </ul>
+        </div>
+    </section>
+
+    <!-- FAQ -->
+    <section class="mb-5 reveal">
+        <h2 class="fw-bold text-center mb-4"><i class="bi bi-question-circle me-2 text-warning"></i>Sale FAQs</h2>
+        <div class="accordion" id="saleFaq">
+            <div class="accordion-item">
+                <h3 class="accordion-header"><button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#sf1"><i class="bi bi-percent me-2 text-warning"></i> How is the 20% discount applied?</button></h3>
+                <div id="sf1" class="accordion-collapse collapse show" data-bs-parent="#saleFaq"><div class="accordion-body text-muted">The sale price on each card already has 20% removed. What you see is what you pay per yard — no code needed.</div></div>
+            </div>
+            <div class="accordion-item">
+                <h3 class="accordion-header"><button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#sf2"><i class="bi bi-rulers me-2 text-warning"></i> How many yards can I buy?</button></h3>
+                <div id="sf2" class="accordion-collapse collapse" data-bs-parent="#saleFaq"><div class="accordion-body text-muted">Use the yard selector to choose 1 to 10 yards per add. For larger wholesale quantities, chat with us on WhatsApp at +234 707 905 7773.</div></div>
+            </div>
+            <div class="accordion-item">
+                <h3 class="accordion-header"><button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#sf3"><i class="bi bi-truck me-2 text-warning"></i> Do you deliver outside Ilorin?</button></h3>
+                <div id="sf3" class="accordion-collapse collapse" data-bs-parent="#saleFaq"><div class="accordion-body text-muted">Yes. We deliver nationwide. Delivery fees depend on location and order size — confirm on WhatsApp or at checkout.</div></div>
+            </div>
+            <div class="accordion-item">
+                <h3 class="accordion-header"><button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#sf4"><i class="bi bi-arrow-return-left me-2 text-warning"></i> Can I return a sale fabric?</button></h3>
+                <div id="sf4" class="accordion-collapse collapse" data-bs-parent="#saleFaq"><div class="accordion-body text-muted">Cut fabrics are final sale unless there is a quality defect. Report any issue with photos within 48 hours of receipt.</div></div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA -->
+    <section class="mb-4 reveal">
+        <div class="cta-banner d-flex flex-column flex-md-row align-items-md-center justify-content-between gap-3">
+            <div>
+                <h3 class="fw-bold mb-1"><i class="bi bi-bag-heart-fill me-2"></i>Sale ends at month close — do not miss out.</h3>
+                <p class="mb-0">Visit our Ilorin stores or order online today.</p>
+            </div>
+            <div class="d-flex flex-wrap gap-2">
+                <a href="shop.html" class="btn btn-dark btn-lg fw-bold"><i class="bi bi-shop me-1"></i> Go to Shop</a>
+                <a href="contact-us.html" class="btn btn-outline-dark btn-lg fw-bold"><i class="bi bi-telephone me-1"></i> Contact Us</a>
+            </div>
+        </div>
+    </section>
+
+</main>
+
+<!-- =========================================================
+     FOOTER (identical to index.html)
+========================================================= -->
+<footer class="footer">
+    <div class="container">
+        <div class="row g-5">
+            <div class="col-lg-4">
+                <a href="index.html" class="footer-brand">
+                    <span class="brand-orange">IYAWO</span>
+                    <span class="brand-white">XSTO</span>
+                </a>
+                <p class="mt-3">Iyawo Xsto Fabric Store is a unisex fashion brand offering quality lace and fabrics in wholesale and retail.</p>
+                <p>For quality fashion, contact Iyawo Xsto Fabric Store today.</p>
+                <a href="contact-us.html" class="footer-contact-link">Get in touch <i class="bi bi-arrow-right"></i></a>
+            </div>
+            <div class="col-6 col-lg-2">
+                <h5>SHOP</h5>
+                <ul class="footer-links">
+                    <li><a href="shop.html">All Products</a></li>
+                    <li><a href="sale.html">Sales</a></li>
+                    <li><a href="swiss-lace.html">Swiss Lace</a></li>
+                    <li><a href="ankara-lace.html">Ankara Lace</a></li>
+                    <li><a href="beaded.html">Beaded Lace</a></li>
+                    <li><a href="damask.html">Damask</a></li>
+                    <li><a href="white -lace.html" data-white-lace>White Lace</a></li>
+                </ul>
+            </div>
+            <div class="col-6 col-lg-2">
+                <h5>COMPANY</h5>
+                <ul class="footer-links">
+                    <li><a href="about-us.html">About Us</a></li>
+                    <li><a href="services.html">Services</a></li>
+                    <li><a href="contact-us.html">Contact</a></li>
+                    <li><a href="find-job.html">Find Job</a></li>
+                </ul>
+            </div>
+            <div class="col-lg-4">
+                <h5>CONTACT</h5>
+                <div class="contact-item">
+                    <span><i class="bi bi-whatsapp me-1"></i> WHATSAPP</span>
+                    <a href="https://wa.me/2347079057773" target="_blank" rel="noopener"><i class="bi bi-chat-dots me-1"></i> +234 707 905 7773</a>
+                </div>
+                <div class="contact-item">
+                    <span><i class="bi bi-envelope me-1"></i> EMAIL</span>
+                    <a href="mailto:11victorchris@gmail.com"><i class="bi bi-send me-1"></i> 11victorchris@gmail.com</a>
+                </div>
+                <div class="contact-item">
+                    <span><i class="bi bi-geo-alt me-1"></i> LOCATIONS</span>
+                    <p>No. 1 Fagba Street, Ago Market, Ilorin, Kwara State.</p>
+                    <p>No. 2 Bolanta Street, Zambari Market, Ilorin, Kwara State.</p>
+                </div>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2026 IYAWO XSTO Fabric Store. All Rights Reserved.</p>
+            <a href="#top">Back to Top <i class="bi bi-arrow-up"></i></a>
+        </div>
+    </div>
+</footer>
+
+<!-- Bootstrap JS -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+<script src="assets/js/config.js"></script>
+<script src="assets/js/store-common.js"></script>
+
+<script>
+// Countdown to end of current month (local time, 23:59:59)
+(function () {
+    var dEl = document.getElementById('cd-days');
+    var hEl = document.getElementById('cd-hours');
+    var mEl = document.getElementById('cd-mins');
+    var sEl = document.getElementById('cd-secs');
+    var label = document.getElementById('sale-ends-label');
+    if (!dEl) return;
+    function endOfMonth() {
+        var now = new Date();
+        return new Date(now.getFullYear(), now.getMonth() + 1, 0, 23, 59, 59, 999);
+    }
+    var target = endOfMonth();
+    function pad(n) { return String(n).padStart(2, '0'); }
+    function tick() {
+        var now = new Date();
+        var diff = target - now;
+        if (diff <= 0) {
+            target = endOfMonth();
+            diff = target - now;
+            if (diff <= 0) {
+                dEl.textContent = hEl.textContent = mEl.textContent = sEl.textContent = '00';
+                if (label) label.textContent = 'Sale has ended — new deals coming soon.';
+                return;
+            }
+        }
+        var dd = Math.floor(diff / 86400000);
+        var hh = Math.floor(diff % 86400000 / 3600000);
+        var mm = Math.floor(diff % 3600000 / 60000);
+        var ss = Math.floor(diff % 60000 / 1000);
+        dEl.textContent = pad(dd); hEl.textContent = pad(hh); mEl.textContent = pad(mm); sEl.textContent = pad(ss);
+        if (label) {
+            var opts = { day: 'numeric', month: 'long', year: 'numeric' };
+            label.textContent = 'Sale ends ' + target.toLocaleDateString('en-NG', opts) + ' at 11:59 PM — while stock lasts.';
+        }
+    }
+    tick();
+    setInterval(tick, 1000);
+})();
+</script>
+
+<script>
+// Subtle CSS 3D tilt on sale cards (vanilla JS, respects prefers-reduced-motion)
+(function () {
+    if (window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+    var cards = document.querySelectorAll('[data-tilt]');
+    cards.forEach(function (card) {
+        var raf = null;
+        card.addEventListener('mousemove', function (e) {
+            if (raf) return;
+            raf = requestAnimationFrame(function () {
+                var r = card.getBoundingClientRect();
+                var px = (e.clientX - r.left) / r.width - 0.5;
+                var py = (e.clientY - r.top) / r.height - 0.5;
+                card.style.transform = 'perspective(900px) rotateY(' + (px * 8).toFixed(2) + 'deg) rotateX(' + (-py * 8).toFixed(2) + 'deg) translateY(-4px)';
+                raf = null;
+            });
+        });
+        card.addEventListener('mouseleave', function () {
+            card.style.transform = '';
+        });
+    });
+})();
+</script>
+
+<script>
+// Sale add-to-cart: uses shared IYAWO store when available, else localStorage fallback
+(function () {
+    function showToast(msg) {
+        var box = document.getElementById('sale-toast');
+        var txt = document.getElementById('sale-toast-text');
+        if (!box || !txt) return;
+        txt.textContent = msg;
+        box.classList.remove('d-none');
+        clearTimeout(box._t);
+        box._t = setTimeout(function () { box.classList.add('d-none'); }, 4000);
+    }
+    function fallbackAdd(name, price, qty, unit, image) {
+        try {
+            var key = 'iyawo_cart_v1';
+            var cart = JSON.parse(localStorage.getItem(key) || '[]');
+            if (!Array.isArray(cart)) cart = [];
+            var id = 'sale-' + name.toLowerCase().replace(/[^a-z0-9]+/g, '-');
+            var found = cart.find(function (i) { return i.product_id === id; });
+            if (found) { found.quantity = Number(found.quantity || 0) + qty; }
+            else { cart.push({ product_id: id, slug: id, name: name, price: price, unit: unit, image_url: image, quantity: qty }); }
+            localStorage.setItem(key, JSON.stringify(cart));
+            if (window.IYAWO && typeof window.IYAWO.updateCartBadge === 'function') window.IYAWO.updateCartBadge();
+            else {
+                var count = cart.reduce(function (s, i) { return s + (Number(i.quantity) || 0); }, 0);
+                document.querySelectorAll('[data-cart-count]').forEach(function (el) {
+                    el.textContent = count > 99 ? '99+' : String(count);
+                    el.hidden = count <= 0;
+                });
+            }
+            return true;
+        } catch (e) { return false; }
+    }
+    document.querySelectorAll('.js-sale-add').forEach(function (btn) {
+        btn.addEventListener('click', function () {
+            var card = btn.closest('.sale-card');
+            var yardsSel = card ? card.querySelector('.sale-yards') : null;
+            var qty = yardsSel ? parseInt(yardsSel.value, 10) : 1;
+            if (!qty || qty < 1) qty = 1;
+            var name = btn.getAttribute('data-name');
+            var price = parseFloat(btn.getAttribute('data-price')) || 0;
+            var unit = btn.getAttribute('data-unit') || 'yard';
+            var image = btn.getAttribute('data-image') || '';
+            var added = false;
+            try {
+                if (window.IYAWO && typeof window.IYAWO.addToCart === 'function') {
+                    var res = window.IYAWO.addToCart({ id: 'sale-' + name.toLowerCase().replace(/[^a-z0-9]+/g, '-'), slug: 'sale-' + name.toLowerCase().replace(/[^a-z0-9]+/g, '-'), name: name, price: price, sale_price: price, is_on_sale: true, price_unit: unit, image_url: image, stock_quantity: 0 }, qty);
+                    added = !!(res && res.ok);
+                    if (!added && res && res.message) { showToast(res.message); return; }
+                } else {
+                    added = fallbackAdd(name, price, qty, unit, image);
+                }
+            } catch (e) {
+                added = fallbackAdd(name, price, qty, unit, image);
+            }
+            if (added) {
+                var orig = btn.innerHTML;
+                btn.innerHTML = '<i class="bi bi-check-circle-fill me-1"></i> ADDED';
+                btn.disabled = true;
+                setTimeout(function () { btn.innerHTML = orig; btn.disabled = false; }, 1600);
+                showToast(qty + ' yard' + (qty > 1 ? 's' : '') + ' of "' + name + '" added to cart.');
+            }
+        });
+    });
+    // Reveal on scroll
+    try {
+        var io = new IntersectionObserver(function (entries) {
+            entries.forEach(function (en) { if (en.isIntersecting) { en.target.classList.add('visible'); io.unobserve(en.target); } });
+        }, { threshold: 0.12 });
+        document.querySelectorAll('.reveal').forEach(function (el) { io.observe(el); });
+    } catch (e) {
+        document.querySelectorAll('.reveal').forEach(function (el) { el.classList.add('visible'); });
+    }
+})();
+</script>
+
+<script>
+// White-lace filename fallback: file on disk is "white -lace.html" (with space).
+document.querySelectorAll('[data-white-lace]').forEach(function (a) {
+    a.addEventListener('click', function (ev) {
+        var exact = 'white -lace.html';
+        var alias = 'white-lace.html';
+        if (a.getAttribute('href') !== exact) return;
+        if (location.protocol.indexOf('http') !== 0) return;
+        ev.preventDefault();
+        fetch(alias, { method: 'HEAD' }).then(function (r) {
+            location.href = r.ok ? alias : exact;
+        }).catch(function () { location.href = exact; });
+    });
+});
+</script>
+<script src="assets/js/site-settings.js"></script>
 
 </body>
 </html>
